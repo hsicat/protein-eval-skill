@@ -1,0 +1,4 @@
+interface:
+  display_name: "Protein Evaluation"
+  short_description: "Evaluate Boltz structure predictions reproducibly"
+  default_prompt: "Use $protein-eval-skill to audit and evaluate my Boltz protein-complex prediction batch."
