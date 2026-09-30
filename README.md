@@ -4,6 +4,14 @@ A Codex skill for audited batch evaluation of Boltz protein/peptide complex
 predictions against annotated ground truth. It combines OpenStructure scores,
 target-aligned and self-aligned binder RMSDs, and residue chirality metrics.
 
+## Features
+- Evaluating protein structure predictions in batch with the following metrics
+  - **Folding**: Target Backbone RMSD, Ligand Backbone RMSD, mean lDDT
+  - **Docking**: DockQ, Target-aligned Ligand Backbone RMSD, iLDDT
+- Create the chain mapping between prediction and native structure and annotating target chain(s) and binder chain(s) automatically.
+- Support multi-chain target and binder. Target alignment is done with all annotated target chains.
+
+
 ## Install from GitHub
 
 Install the standalone repository with Codex's skill installer:
@@ -59,8 +67,7 @@ conda run -n urop python \
 ## Use
 
 ```text
-Use $protein-eval-skill to audit and evaluate <evaluation-directory>.
+Use $protein-eval-skill to evaluate <evaluation-directory>. The native structures are stored in <native-directory>. Audit the files first, ask me about unresolved chain roles or mappings, then run the batch.
 ```
 
-The skill audits before execution and asks for unresolved biological roles,
-assemblies, or chain mappings rather than guessing them.
+The skill audits before execution and asks for unresolved biological roles, assemblies, or chain mappings rather than guessing them.
