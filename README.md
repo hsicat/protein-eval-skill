@@ -6,12 +6,11 @@ target-aligned and self-aligned binder RMSDs, and residue chirality metrics.
 
 ## Install from GitHub
 
-After replacing `OWNER` with the GitHub owner, install the standalone repository
-with Codex's skill installer:
+Install the standalone repository with Codex's skill installer:
 
 ```bash
 python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo OWNER/protein-eval-skill \
+  --repo hsicatowoUST/protein-eval-skill \
   --path . \
   --name protein-eval-skill
 ```
@@ -29,6 +28,26 @@ The skill becomes available as `$protein-eval-skill` on the next Codex turn.
 
 The environment names are currently fixed in the runner. The chirality script
 is supplied at execution time with `--chirality-script`.
+
+Create both runtime environments from the included portable specifications:
+
+```bash
+conda env create --file environment-urop.yml
+conda env create --file environment-ost212.yml
+```
+
+Verify them:
+
+```bash
+conda run -n urop python -c \
+  'import gemmi, numpy; print(gemmi.__version__, numpy.__version__)'
+conda run -n ost212 ost --version
+```
+
+Expected versions are Gemmi 0.7.5, NumPy 1.26.4, and OpenStructure 2.12.0.
+The files intentionally contain only the packages required by this skill rather
+than every package installed in the author's broader research environments.
+The dependency solves were dry-run verified for both `osx-arm64` and `linux-64`.
 
 ## Validate
 

@@ -11,6 +11,9 @@ Evaluate only after biological roles, the exact reference assembly/prepared stru
 
 1. Inspect the repository's current evaluation scripts, especially `tools/evaluation.py` and `tools/chirality_angles_all_residues.py`; do not assume they are unchanged.
 2. Verify `conda run -n ost212 ost --version` reports OpenStructure 2.12.0 and inspect `ost compare-structures --help`. Verify the chirality CLI in `urop`.
+   If either environment is absent, use `environment-urop.yml` and
+   `environment-ost212.yml` from the skill root to prepare it after obtaining
+   the user's permission to install packages.
 3. Recursively enumerate only `.cif`, `.mmcif`, and `.pdb` prediction files beneath `predicted/`.
 4. Inspect candidate reference and prediction structures with `scripts/inspect_structure.py`. Compare label and author chain IDs, ordered sequences, residue modifications, structure metadata, and available manifests. OpenStructure commonly exposes mmCIF label asym IDs; record the ID namespace explicitly.
 5. Create or update the persistent annotations described in [references/annotations.md](references/annotations.md). Ask the user about every unresolved sample match, chain role, assembly, equivalent-chain choice, or chirality-chain scope before proceeding.
