@@ -2,12 +2,20 @@
 
 Each prediction path is preserved below `results/`, including its filename, followed by `runs/<fingerprint-prefix>/`. Thus predictions with identical sample IDs or basenames cannot collide.
 
+Each batch has one content-addressed manifest at
+`results/batches/<batch-fingerprint-prefix>/run_manifest.json`. It records the
+annotation file and hash, complete annotations, shared tool versions, and each
+planned or skipped prediction with its input hashes, settings, run fingerprint,
+and result directory. An identical batch reuses this manifest instead of
+rewriting it.
+
 Each run contains:
 
-- `run_manifest.json`: input hashes, complete relevant annotations, fixed settings, versions, and full fingerprint.
 - `reference_scored_chains.cif`, `model_scored_chains.cif`, and `subset_manifest.json`: exact polymer-only tool inputs containing target and binder chains but excluding context and non-polymer residues.
-- `commands.txt`: exact commands, paths, environments/versions, and exit codes.
-- One stdout and stderr file per tool.
+- `commands.txt`: always retained with exact commands, paths, environments/versions, and exit codes.
+- Diagnostic stream files are conditional: failed commands retain both
+  `<tool>.stdout.txt` and `<tool>.stderr.txt`, including empty files; successful
+  commands retain only a nonempty stderr file and discard stdout.
 - `ost_scores.json`: untouched OpenStructure JSON.
 - `custom_rmsd_config.json` and `binder_rmsd.json`.
 - `chirality/`: the chirality tool's readable report, simple CSV, detailed CSV, and raw summary JSON.
@@ -43,3 +51,8 @@ Missing residues or atoms are excluded only through the recorded aligned interse
 ## Reruns
 
 The fingerprint includes reference and prediction file hashes, complete sample/prediction annotations, settings, inspected script hashes, and tool versions. An existing successful fingerprint is reused. A changed fingerprint creates another run and preserves the earlier result. An incomplete fingerprint is not resumed unless the operator reviews it and passes `--resume-incomplete`.
+
+The batch fingerprint covers the complete annotation document, shared tool
+versions, and the ordered planned/skipped prediction records. A changed batch
+creates a new directory below `results/batches/`; historical batch manifests
+remain available.

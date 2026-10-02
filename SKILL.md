@@ -19,7 +19,7 @@ Evaluate only after biological roles, the exact reference assembly/prepared stru
 5. Create or update the persistent annotations described in [references/annotations.md](references/annotations.md). Ask the user about every unresolved sample match, chain role, assembly, equivalent-chain choice, or chirality-chain scope before proceeding.
 6. Run `scripts/batch_evaluate.py` without `--execute`. Do not execute until its audit is `READY` and the user has resolved any biological ambiguity.
 
-Saved mappings are not authority by themselves. The audit must confirm that paths and chain IDs still exist; the content-addressed run manifest then binds the mapping to input hashes, settings, and tool versions.
+Saved mappings are not authority by themselves. The audit must confirm that paths and chain IDs still exist; the single content-addressed batch manifest then binds all mappings to input hashes, settings, and tool versions.
 
 ## Execute
 

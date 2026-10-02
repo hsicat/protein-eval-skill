@@ -369,8 +369,17 @@ def run_command(
     with command_log.open("a", encoding="utf-8") as handle:
         handle.write(f"\n[{label}]\n{shlex.join(command)}\n")
     result = subprocess.run(command, text=True, capture_output=True, check=False)
-    (run_dir / f"{label}.stdout.txt").write_text(result.stdout, encoding="utf-8")
-    (run_dir / f"{label}.stderr.txt").write_text(result.stderr, encoding="utf-8")
+    stdout_path = run_dir / f"{label}.stdout.txt"
+    stderr_path = run_dir / f"{label}.stderr.txt"
+    if result.returncode:
+        stdout_path.write_text(result.stdout, encoding="utf-8")
+        stderr_path.write_text(result.stderr, encoding="utf-8")
+    else:
+        stdout_path.unlink(missing_ok=True)
+        if result.stderr:
+            stderr_path.write_text(result.stderr, encoding="utf-8")
+        else:
+            stderr_path.unlink(missing_ok=True)
     with command_log.open("a", encoding="utf-8") as handle:
         handle.write(f"exit_code={result.returncode}\n")
     return result
@@ -450,23 +459,17 @@ def chirality_summary(path: Path, exit_code: int) -> dict[str, Any]:
     }
 
 
-def run_one(
+def prediction_run_identity(
     evaluation_dir: Path,
-    annotation_path: Path,
     sample_id: str,
     sample: dict[str, Any],
     prediction_path: str,
     prediction: dict[str, Any],
     audit_item: dict[str, Any],
-    chirality_script: Path,
-    custom_script: Path,
     versions: dict[str, Any],
-    resume_incomplete: bool,
 ) -> dict[str, Any]:
     reference = resolved(evaluation_dir, sample["reference"])
     model = resolved(evaluation_dir, prediction_path)
-    mapping = prediction["chain_mapping"]
-    mapping_pairs = ordered_mapping(reference, sample["reference_chain_id_type"], mapping)
     min_pep_length = 1 if audit_item["short_binder_chains"] else 6
     settings = {
         "ost": {
@@ -486,7 +489,7 @@ def run_one(
         },
         "chirality": {"threshold_deg": 15.0, "primary": "pooled all_selected"},
     }
-    fingerprint_payload = {
+    inputs = {
         "sample_id": sample_id,
         "prediction_path": prediction_path,
         "reference_sha256": sha256(reference),
@@ -497,9 +500,123 @@ def run_one(
         "tool_versions": versions,
     }
     fingerprint = hashlib.sha256(
-        json.dumps(fingerprint_payload, sort_keys=True, separators=(",", ":")).encode()
+        json.dumps(inputs, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
-    run_dir = evaluation_dir / "results" / Path(prediction_path).relative_to("predicted") / "runs" / fingerprint[:16]
+    run_dir = (
+        evaluation_dir
+        / "results"
+        / Path(prediction_path).relative_to("predicted")
+        / "runs"
+        / fingerprint[:16]
+    )
+    return {
+        "fingerprint": fingerprint,
+        "inputs": inputs,
+        "run_dir": run_dir,
+        "settings": settings,
+    }
+
+
+def write_batch_manifest(
+    evaluation_dir: Path,
+    annotation_path: Path,
+    annotations: dict[str, Any],
+    report: dict[str, Any],
+    records: dict[str, tuple[str, dict[str, Any], dict[str, Any]]],
+    versions: dict[str, Any],
+) -> tuple[Path, dict[str, dict[str, Any]]]:
+    prediction_runs: list[dict[str, Any]] = []
+    run_identities: dict[str, dict[str, Any]] = {}
+    audit_by_prediction = {item["prediction"]: item for item in report["predictions"]}
+    for prediction_path in report["discovered_predictions"]:
+        sample_id, sample, prediction = records[prediction_path]
+        if sample.get("skip") or prediction.get("skip"):
+            prediction_runs.append(
+                {
+                    "sample_id": sample_id,
+                    "prediction_path": prediction_path,
+                    "status": "SKIPPED",
+                    "skip_reason": prediction.get("skip_reason") or sample.get("skip_reason"),
+                }
+            )
+            continue
+        identity = prediction_run_identity(
+            evaluation_dir,
+            sample_id,
+            sample,
+            prediction_path,
+            prediction,
+            audit_by_prediction[prediction_path],
+            versions,
+        )
+        run_identities[prediction_path] = identity
+        inputs = identity["inputs"]
+        prediction_runs.append(
+            {
+                "sample_id": sample_id,
+                "prediction_path": prediction_path,
+                "status": "PLANNED",
+                "reference_path": sample["reference"],
+                "reference_sha256": inputs["reference_sha256"],
+                "prediction_sha256": inputs["prediction_sha256"],
+                "settings": identity["settings"],
+                "run_fingerprint": identity["fingerprint"],
+                "run_dir": str(identity["run_dir"].resolve()),
+            }
+        )
+
+    batch_inputs = {
+        "evaluation_dir": str(evaluation_dir.resolve()),
+        "annotations": {
+            "path": str(annotation_path.resolve()),
+            "sha256": sha256(annotation_path),
+            "content": annotations,
+        },
+        "tool_versions": versions,
+        "predictions": prediction_runs,
+    }
+    batch_fingerprint = hashlib.sha256(
+        json.dumps(batch_inputs, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    batch_dir = evaluation_dir / "results" / "batches" / batch_fingerprint[:16]
+    manifest_path = batch_dir / "run_manifest.json"
+    manifest = {
+        "schema_version": 1,
+        "batch_fingerprint": batch_fingerprint,
+        "inputs": batch_inputs,
+        "batch_dir": str(batch_dir.resolve()),
+    }
+    if manifest_path.is_file():
+        existing = load_json(manifest_path)
+        if existing.get("batch_fingerprint") != batch_fingerprint:
+            raise RuntimeError(f"Batch manifest fingerprint collision: {manifest_path}")
+    else:
+        write_json(manifest_path, manifest)
+    return manifest_path, run_identities
+
+
+def run_one(
+    evaluation_dir: Path,
+    annotation_path: Path,
+    sample_id: str,
+    sample: dict[str, Any],
+    prediction_path: str,
+    prediction: dict[str, Any],
+    audit_item: dict[str, Any],
+    chirality_script: Path,
+    custom_script: Path,
+    versions: dict[str, Any],
+    resume_incomplete: bool,
+    run_identity: dict[str, Any],
+) -> dict[str, Any]:
+    reference = resolved(evaluation_dir, sample["reference"])
+    model = resolved(evaluation_dir, prediction_path)
+    mapping = prediction["chain_mapping"]
+    mapping_pairs = ordered_mapping(reference, sample["reference_chain_id_type"], mapping)
+    settings = run_identity["settings"]
+    min_pep_length = settings["ost"]["min_pep_length"]
+    fingerprint = run_identity["fingerprint"]
+    run_dir = run_identity["run_dir"]
     existing_summary = run_dir / "summary.json"
     if existing_summary.is_file() and load_json(existing_summary).get("status") == "SUCCESS":
         return load_json(existing_summary)
@@ -516,14 +633,6 @@ def run_one(
         f"# tool_versions={json.dumps(versions, sort_keys=True)}\n",
         encoding="utf-8",
     )
-    manifest = {
-        "schema_version": 1,
-        "fingerprint": fingerprint,
-        "inputs": fingerprint_payload,
-        "run_dir": str(run_dir.resolve()),
-    }
-    write_json(run_dir / "run_manifest.json", manifest)
-
     scored_reference_chains = set(sample["target_chains"])
     scored_reference_chains.update(
         chain for binder in sample["binders"] for chain in binder["chains"]
@@ -794,6 +903,15 @@ def main() -> int:
         versions = tool_versions(args.chirality_script.resolve(), custom_script)
         records = prediction_records(annotations)
         audit_by_prediction = {item["prediction"]: item for item in report["predictions"]}
+        batch_manifest, run_identities = write_batch_manifest(
+            evaluation_dir,
+            annotation_path,
+            annotations,
+            report,
+            records,
+            versions,
+        )
+        print(f"Batch manifest: {batch_manifest}")
         active_run_fingerprints: set[str] = set()
         for prediction_path in report["discovered_predictions"]:
             sample_id, sample, prediction = records[prediction_path]
@@ -814,6 +932,7 @@ def main() -> int:
                 custom_script,
                 versions,
                 args.resume_incomplete,
+                run_identities[prediction_path],
             )
             if result.get("run_fingerprint"):
                 active_run_fingerprints.add(result["run_fingerprint"])
