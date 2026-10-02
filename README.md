@@ -117,3 +117,7 @@ Use $protein-eval-skill to evaluate <evaluation-directory>. The native structure
 ```
 
 The skill audits before execution and asks for unresolved biological roles, assemblies, or chain mappings rather than guessing them.
+
+Each executed batch also writes `results/method_summary.md` and
+`results/method_summary.json`. The final Codex reply includes separate Folding
+and Docking summary tables generated from those files.

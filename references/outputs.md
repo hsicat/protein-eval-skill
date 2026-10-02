@@ -29,6 +29,22 @@ them to only one DockQ value.
 The CSV exposes pooled all-residue chirality as the primary result and also retains
 separate DAA and LAA counts and accuracies.
 
+After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
+
+- `results/method_summary.json`: machine-readable method-level aggregations.
+- `results/method_summary.md`: Folding and Docking Markdown tables that must be
+  included in the final user reply.
+
+The Folding table reports median target self-aligned backbone RMSD, median
+binder self-aligned backbone RMSD, mean lDDT, and residue-pooled chirality
+violations. Target self-aligned backbone RMSD is sourced from
+`target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
+joint all-target fit. The Docking table reports mean DockQ, median
+target-aligned binder backbone RMSD, median per-interface iRMSD, and mean iLDDT.
+Prediction-level scores are deduplicated by prediction path before aggregation;
+binder RMSDs use one value per annotated binder group, and iRMSD uses one value
+per OpenStructure interface. Explicitly skipped predictions are excluded.
+
 ## Metric names
 
 - `openstructure.lddt`: global all-atom lDDT.

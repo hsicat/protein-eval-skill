@@ -944,6 +944,29 @@ def main() -> int:
                 active_run_fingerprints.add(result["run_fingerprint"])
         output = regenerate_batch_csv(evaluation_dir, active_run_fingerprints)
         print(f"Batch summary: {output}")
+        metric_summary_script = Path(__file__).with_name("summarize_batch_metrics.py")
+        metric_summary_json = evaluation_dir / "results" / "method_summary.json"
+        metric_summary_markdown = evaluation_dir / "results" / "method_summary.md"
+        metric_summary_run = subprocess.run(
+            [
+                sys.executable,
+                str(metric_summary_script),
+                str(output),
+                "--json-output",
+                str(metric_summary_json),
+                "--markdown-output",
+                str(metric_summary_markdown),
+            ],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if metric_summary_run.returncode:
+            raise RuntimeError(
+                "Method summary generation failed: "
+                + (metric_summary_run.stderr.strip() or metric_summary_run.stdout.strip())
+            )
+        print(f"Method summary: {metric_summary_markdown}")
     except Exception as exc:
         print(f"Error: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
