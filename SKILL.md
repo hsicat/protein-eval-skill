@@ -9,8 +9,8 @@ Evaluate only after biological roles, the exact reference assembly/prepared stru
 
 ## Before evaluation
 
-1. Inspect the repository's current evaluation scripts, especially `tools/evaluation.py` and `tools/chirality_angles_all_residues.py`; do not assume they are unchanged.
-2. Verify `conda run -n ost212 ost --version` reports OpenStructure 2.12.0 and inspect `ost compare-structures --help`. Verify the chirality CLI in `urop`.
+1. Inspect the repository's current evaluation scripts, especially `tools/evaluation.py` when present, and the bundled `scripts/chirality_angles_all_residues.py` and `scripts/chirality_angles.py`; do not assume evaluation-repository scripts are unchanged.
+2. Verify `conda run -n ost212 ost --version` reports OpenStructure 2.12.0 and inspect `ost compare-structures --help`. Verify the bundled chirality CLI in `urop`.
    If either environment is absent, use `environment-urop.yml` and
    `environment-ost212.yml` from the skill root to prepare it after obtaining
    the user's permission to install packages.
@@ -28,9 +28,12 @@ Run the orchestrator in `urop`, passing the repository's inspected chirality scr
 ```bash
 conda run -n urop python <skill-dir>/scripts/batch_evaluate.py \
   <evaluation-dir> \
-  --chirality-script <repo-root>/tools/chirality_angles_all_residues.py \
   --execute
 ```
+
+The runner uses the chirality scripts bundled in `<skill-dir>/scripts/` by
+default. Pass `--chirality-script <path>` only to test an explicitly inspected
+replacement; its adjacent `chirality_angles.py` must be importable.
 
 The orchestrator invokes OpenStructure in `ost212`. It supplies `-c` pairs in reference-structure chain order and adds `--min-pep-length 1` when an annotated binder chain has fewer than six observed residues. Review very-short-chain alignments and flag mismatches rather than trusting them automatically.
 
@@ -59,7 +62,7 @@ mapped backbone atoms, and reports RMSD on the smaller chain. It may numerically
 match a target-aligned binder-backbone RMSD for a simple two-chain complex, but
 it is not a substitute for the explicitly grouped custom metric.
 
-Chirality uses the inspected `chirality_angles_all_residues.py` with detailed output. The primary accuracy is pooled over every eligible D- and L-amino-acid residue in the explicitly annotated chirality chains. Preserve separate DAA and LAA summaries, per-residue classifications, correct count, eligible count, and skipped/unassessable count. Unavailable values stay unavailable, never zero-filled.
+Chirality uses the bundled `scripts/chirality_angles_all_residues.py` with detailed output. The primary accuracy is pooled over every eligible D- and L-amino-acid residue in the explicitly annotated chirality chains. Preserve separate DAA and LAA summaries, per-residue classifications, correct count, eligible count, and skipped/unassessable count. Unavailable values stay unavailable, never zero-filled.
 
 Read [references/outputs.md](references/outputs.md) when interpreting, validating, or reporting results.
 

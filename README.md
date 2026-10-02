@@ -29,13 +29,13 @@ The skill becomes available as `$protein-eval-skill` on the next Codex turn.
 
 - Conda environment `urop` with Python, NumPy, and Gemmi.
 - Conda environment `ost212` with OpenStructure 2.12.0.
-- The evaluation repository's `tools/chirality_angles_all_residues.py` and
-  adjacent `tools/chirality_angles.py`.
 - An evaluation directory with persistent biological-role and chain-mapping
   annotations as described in `references/annotations.md`.
 
 The environment names are currently fixed in the runner. The chirality script
-is supplied at execution time with `--chirality-script`.
+and its companion module are bundled under `scripts/` and installed with the
+skill. The runner uses the bundled script by default; `--chirality-script` is
+available only when an explicitly inspected replacement is needed.
 
 ## Expected evaluation directory structure
 
@@ -68,9 +68,6 @@ project/
 |                           `-- chirality/
 |-- GT/
 |   `-- SAMPLE_ID.cif                   Exact reference structure or assembly
-`-- tools/
-    |-- chirality_angles_all_residues.py
-    `-- chirality_angles.py
 ```
 
 `annotations/samples.json` maps each discovered prediction to its reference,

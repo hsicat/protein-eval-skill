@@ -39,7 +39,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--chirality-script",
         type=Path,
-        help="Path to tools/chirality_angles_all_residues.py (required with --execute)",
+        help=(
+            "Optional override for the bundled chirality_angles_all_residues.py; "
+            "the bundled script is used by default"
+        ),
     )
     parser.add_argument("--execute", action="store_true", help="Run tools after a clean audit")
     parser.add_argument(
@@ -895,12 +898,15 @@ def main() -> int:
     if report["status"] != "READY":
         print("Audit is blocked; no evaluation commands were run.", file=sys.stderr)
         return 2
-    if not args.chirality_script or not args.chirality_script.is_file():
-        print("--chirality-script must name the inspected repository script", file=sys.stderr)
+    chirality_script = (
+        args.chirality_script or Path(__file__).with_name("chirality_angles_all_residues.py")
+    ).resolve()
+    if not chirality_script.is_file():
+        print(f"Chirality script is missing: {chirality_script}", file=sys.stderr)
         return 2
     custom_script = Path(__file__).with_name("target_aligned_binder_rmsd.py")
     try:
-        versions = tool_versions(args.chirality_script.resolve(), custom_script)
+        versions = tool_versions(chirality_script, custom_script)
         records = prediction_records(annotations)
         audit_by_prediction = {item["prediction"]: item for item in report["predictions"]}
         batch_manifest, run_identities = write_batch_manifest(
@@ -928,7 +934,7 @@ def main() -> int:
                 prediction_path,
                 prediction,
                 audit_by_prediction[prediction_path],
-                args.chirality_script.resolve(),
+                chirality_script,
                 custom_script,
                 versions,
                 args.resume_incomplete,

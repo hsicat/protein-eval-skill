@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -9,6 +10,24 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import batch_evaluate
+
+
+class BundledChiralityTest(unittest.TestCase):
+    def test_bundled_chirality_cli_and_companion_are_installed_together(self) -> None:
+        scripts_dir = Path(batch_evaluate.__file__).resolve().parent
+        cli = scripts_dir / "chirality_angles_all_residues.py"
+        companion = scripts_dir / "chirality_angles.py"
+
+        self.assertTrue(cli.is_file())
+        self.assertTrue(companion.is_file())
+        result = subprocess.run(
+            [sys.executable, str(cli), "--help"],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("--chain", result.stdout)
 
 
 class CommandLogRetentionTest(unittest.TestCase):
