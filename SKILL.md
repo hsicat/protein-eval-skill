@@ -31,9 +31,13 @@ conda run -n urop python <skill-dir>/scripts/batch_evaluate.py \
   --execute
 ```
 
-The docking classification defaults to strict `target-aligned binder backbone
-RMSD < 2 Å` and `average DockQ > 0.23`. Override them for a batch with
-`--binder-rmsd-threshold-angstrom <value>` and `--dockq-threshold <value>`.
+The RMSD classifications default to strict `< 2 Å` for target self-aligned,
+binder self-aligned, and target-aligned binder backbone RMSDs. DockQ defaults
+to strict `> 0.23`. Override them for a batch with
+`--target-self-aligned-rmsd-threshold-angstrom <value>`,
+`--binder-self-aligned-rmsd-threshold-angstrom <value>`,
+`--binder-rmsd-threshold-angstrom <value>`, and
+`--dockq-threshold <value>`.
 The thresholds are fingerprinted batch/report settings and therefore remain
 traceable without forcing the underlying structure scores to be recomputed.
 
@@ -71,8 +75,9 @@ it is not a substitute for the explicitly grouped custom metric.
 Chirality uses the bundled `scripts/chirality_angles_all_residues.py` with detailed output. The primary accuracy is pooled over every eligible D- and L-amino-acid residue in the explicitly annotated chirality chains. Preserve separate DAA and LAA summaries, per-residue classifications, correct count, eligible count, and skipped/unassessable count. Unavailable values stay unavailable, never zero-filled.
 
 For every available score, independently classify the average OpenStructure
-DockQ with a strict `>` comparison and each annotated binder group's
-target-aligned backbone RMSD with a strict `<` comparison. A value exactly at
+DockQ with a strict `>` comparison. Use strict `<` comparisons for the target
+self-aligned backbone RMSD, each annotated binder group's self-aligned backbone
+RMSD, and each binder group's target-aligned backbone RMSD. A value exactly at
 the cutoff does not pass. Keep unavailable scores unavailable rather than
 counting them as failures.
 
@@ -84,8 +89,9 @@ After every executed batch, read `results/method_summary.md` and reproduce both
 of its Markdown tables in the final reply. Do not report only a prose conclusion.
 The required charts are:
 
-- **Folding:** target self-aligned backbone RMSD, binder self-aligned backbone
-  RMSD, mean lDDT, and chirality violations.
+- **Folding:** target self-aligned backbone RMSD and threshold success, binder
+  self-aligned backbone RMSD and threshold success, mean lDDT, and chirality
+  violations.
 - **Docking:** mean DockQ, DockQ threshold success, target-aligned binder
   backbone RMSD, binder-RMSD threshold success, iRMSD, and mean iLDDT.
 
@@ -96,16 +102,17 @@ residues among assessable residues. Report unassessable chirality residues
 separately. Exclude explicitly skipped predictions and show the number of
 predictions included for each method. Link `results/method_summary.md`,
 `results/method_summary.json`, and `results/batch_summary.csv` in the reply.
-Threshold success rates use only available values in their denominators. DockQ
-is counted once per prediction; binder RMSD is counted once per annotated
-binder group. State the two cutoffs beside the reported rates.
+Threshold success rates use only available values in their denominators. Target
+self-aligned RMSD and DockQ are counted once per prediction; both binder RMSDs
+are counted once per annotated binder group. State all four cutoffs beside the
+reported rates.
 
 ## Boundaries
 
 - Polymer peptide/protein binders always use `ost compare-structures`, never `compare-ligand-structures`.
 - If a non-polymer ligand is present, ask which ligand instances to evaluate before adding a separate `compare-ligand-structures` branch. Keep lDDT-PLI and pocket-aligned ligand RMSD separate from polymer metrics. The bundled runner intentionally does not execute this branch.
-- Keep DockQ and binder-RMSD threshold results independent; do not silently
-  combine them into a joint docking-success label.
+- Keep all threshold results independent; do not silently combine them into a
+  joint folding- or docking-success label.
 - Do not call OpenStructure per-interface `lrmsd` an RMSD for an entire multichain binder against an entire multichain target.
 - Do not score interfaces involving context chains. Treat any such interface reported by OpenStructure as a warning requiring review.
 - Do not overwrite successful results. Identical fingerprints reuse their run; changed inputs, annotations, settings, scripts, or versions receive a new run directory.

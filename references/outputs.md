@@ -31,8 +31,9 @@ present as JSON in the CSV and as structured data in each summary; never collaps
 them to only one DockQ value.
 The CSV exposes pooled all-residue chirality as the primary result and also retains
 separate DAA and LAA counts and accuracies. It also includes the applicable
-DockQ and target-aligned binder-backbone RMSD cutoffs and nullable Boolean
-pass/fail fields for both tests.
+target self-aligned, binder self-aligned, and target-aligned binder-backbone
+RMSD cutoffs plus the DockQ cutoff, with nullable Boolean pass/fail fields for
+all four tests.
 
 After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
 
@@ -44,15 +45,16 @@ The Folding table reports median target self-aligned backbone RMSD, median
 binder self-aligned backbone RMSD, mean lDDT, and residue-pooled chirality
 violations. Target self-aligned backbone RMSD is sourced from
 `target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
-joint all-target fit. The Docking table reports mean DockQ, median
+joint all-target fit. It also reports independent success proportions for the
+two folding RMSDs. The Docking table reports mean DockQ, median
 target-aligned binder backbone RMSD, median per-interface iRMSD, mean iLDDT,
 and independent success proportions for average DockQ and binder RMSD.
 Prediction-level scores are deduplicated by prediction path before aggregation;
 binder RMSDs use one value per annotated binder group, and iRMSD uses one value
 per OpenStructure interface. DockQ success is counted once per prediction and
-binder-RMSD success once per annotated binder group. Unavailable scores are
-excluded from the corresponding denominator. Explicitly skipped predictions
-are excluded.
+target self-aligned RMSD success once per prediction. Each binder-RMSD success
+is counted once per annotated binder group. Unavailable scores are excluded
+from the corresponding denominator. Explicitly skipped predictions are excluded.
 
 ## Metric names
 
@@ -64,6 +66,8 @@ are excluded.
   RMSD is measured on the smaller chain using mapped backbone atoms. This is not
   the custom grouped-binder metric.
 - `target_backbone_fit_rmsd_angstrom`: target RMSD after the joint all-target N/CA/C/O fit.
+- `target_self_aligned_backbone_rmsd_below_threshold`: nullable Boolean from
+  the strict target-folding RMSD cutoff, which defaults to `< 2 Å`.
 - `target_aligned_binder_ca_rmsd_angstrom`: mapped binder CA displacement after the target fit, without binder refitting.
 - `target_aligned_binder_backbone_rmsd_angstrom`: mapped binder N/CA/C/O displacement after the target fit, without binder refitting.
 - `target_aligned_binder_backbone_rmsd_below_threshold`: nullable Boolean from
@@ -74,6 +78,8 @@ are excluded.
   that binder group on its CA atoms.
 - `binder_self_aligned_backbone_rmsd_angstrom`: N/CA/C/O RMSD after independently
   fitting that binder group on its N/CA/C/O atoms.
+- `binder_self_aligned_backbone_rmsd_below_threshold`: nullable Boolean from
+  the strict binder-folding RMSD cutoff, which defaults to `< 2 Å`.
 
 Missing residues or atoms are excluded only through the recorded aligned intersection. Always report used/possible atom pairs, coverage, and the omission list alongside a custom RMSD. If the target fit has fewer than three non-collinear atom pairs or a binder measurement has no atom pairs, that metric is unavailable with a reason.
 
@@ -88,7 +94,7 @@ existing structure scores.
 
 The fingerprint includes reference and prediction file hashes, complete sample/prediction annotations, settings, inspected script hashes, and tool versions. An existing successful fingerprint is reused. A changed fingerprint creates another run and preserves the earlier result. An incomplete fingerprint is not resumed unless the operator reviews it and passes `--resume-incomplete`.
 
-The batch fingerprint covers the complete annotation document, docking
-classification cutoffs, shared tool versions, and the ordered planned/skipped
-prediction records. A changed batch creates a new directory below
-`results/batches/`; historical batch manifests remain available.
+The batch fingerprint covers the complete annotation document, folding and
+docking classification cutoffs, shared tool versions, and the ordered
+planned/skipped prediction records. A changed batch creates a new directory
+below `results/batches/`; historical batch manifests remain available.

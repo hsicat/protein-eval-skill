@@ -171,6 +171,8 @@ class BatchManifestTest(unittest.TestCase):
                 versions,
                 binder_rmsd_threshold_angstrom=1.5,
                 dockq_threshold=0.3,
+                target_self_aligned_rmsd_threshold_angstrom=1.25,
+                binder_self_aligned_rmsd_threshold_angstrom=1.75,
             )
             self.assertNotEqual(changed_path, manifest_path)
             self.assertEqual(
@@ -184,6 +186,15 @@ class BatchManifestTest(unittest.TestCase):
                 },
             )
             changed_manifest = batch_evaluate.load_json(changed_path)
+            self.assertEqual(
+                changed_manifest["inputs"]["folding_threshold_evaluation"],
+                {
+                    "target_self_aligned_backbone_rmsd_threshold_angstrom": 1.25,
+                    "target_self_aligned_backbone_rmsd_operator": "<",
+                    "binder_self_aligned_backbone_rmsd_threshold_angstrom": 1.75,
+                    "binder_self_aligned_backbone_rmsd_operator": "<",
+                },
+            )
             self.assertEqual(
                 changed_manifest["inputs"]["docking_threshold_evaluation"],
                 {

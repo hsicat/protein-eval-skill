@@ -15,6 +15,8 @@ from typing import Any, Callable
 
 DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM = 2.0
 DEFAULT_DOCKQ_THRESHOLD = 0.23
+DEFAULT_TARGET_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM = 2.0
+DEFAULT_BINDER_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM = 2.0
 
 
 def positive_finite_float(value: str) -> float:
@@ -50,6 +52,22 @@ def parse_args() -> argparse.Namespace:
         help=(
             "Strict lower cutoff; otherwise infer it from the CSV or use "
             f"{DEFAULT_DOCKQ_THRESHOLD:g}"
+        ),
+    )
+    parser.add_argument(
+        "--target-self-aligned-rmsd-threshold-angstrom",
+        type=positive_finite_float,
+        help=(
+            "Strict upper cutoff; otherwise infer it from the CSV or use "
+            f"{DEFAULT_TARGET_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM:g} Angstrom"
+        ),
+    )
+    parser.add_argument(
+        "--binder-self-aligned-rmsd-threshold-angstrom",
+        type=positive_finite_float,
+        help=(
+            "Strict upper cutoff; otherwise infer it from the CSV or use "
+            f"{DEFAULT_BINDER_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM:g} Angstrom"
         ),
     )
     return parser.parse_args()
@@ -123,6 +141,8 @@ def summarize(
     source: Path,
     binder_rmsd_threshold_angstrom: float | None = None,
     dockq_threshold: float | None = None,
+    target_self_aligned_rmsd_threshold_angstrom: float | None = None,
+    binder_self_aligned_rmsd_threshold_angstrom: float | None = None,
 ) -> dict[str, Any]:
     eligible = [row for row in rows if row.get("status") != "SKIPPED"]
     binder_rmsd_threshold_angstrom = resolve_threshold(
@@ -136,6 +156,18 @@ def summarize(
         "ost_dockq_ave_threshold",
         dockq_threshold,
         DEFAULT_DOCKQ_THRESHOLD,
+    )
+    target_self_aligned_rmsd_threshold_angstrom = resolve_threshold(
+        eligible,
+        "target_self_aligned_backbone_rmsd_threshold_angstrom",
+        target_self_aligned_rmsd_threshold_angstrom,
+        DEFAULT_TARGET_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM,
+    )
+    binder_self_aligned_rmsd_threshold_angstrom = resolve_threshold(
+        eligible,
+        "binder_self_aligned_backbone_rmsd_threshold_angstrom",
+        binder_self_aligned_rmsd_threshold_angstrom,
+        DEFAULT_BINDER_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM,
     )
     by_method: dict[str, list[dict[str, str]]] = {}
     for row in eligible:
@@ -209,9 +241,33 @@ def summarize(
                     "target_self_aligned_backbone_rmsd_angstrom_median": aggregate(
                         target_fold, statistics.median
                     ),
+                    "target_self_aligned_backbone_rmsd_below_threshold": {
+                        "threshold_angstrom": (
+                            target_self_aligned_rmsd_threshold_angstrom
+                        ),
+                        "operator": "<",
+                        **success_rate(
+                            target_fold,
+                            lambda value: (
+                                value < target_self_aligned_rmsd_threshold_angstrom
+                            ),
+                        ),
+                    },
                     "binder_self_aligned_backbone_rmsd_angstrom_median": aggregate(
                         binder_fold, statistics.median
                     ),
+                    "binder_self_aligned_backbone_rmsd_below_threshold": {
+                        "threshold_angstrom": (
+                            binder_self_aligned_rmsd_threshold_angstrom
+                        ),
+                        "operator": "<",
+                        **success_rate(
+                            binder_fold,
+                            lambda value: (
+                                value < binder_self_aligned_rmsd_threshold_angstrom
+                            ),
+                        ),
+                    },
                     "lddt_mean": aggregate(lddt, statistics.mean),
                     "chirality_violation": {
                         "n_violations": chirality_violations,
@@ -249,8 +305,18 @@ def summarize(
         )
 
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "source_batch_csv": str(source.resolve()),
+        "folding_success_thresholds": {
+            "target_self_aligned_backbone_rmsd_angstrom": {
+                "operator": "<",
+                "value": target_self_aligned_rmsd_threshold_angstrom,
+            },
+            "binder_self_aligned_backbone_rmsd_angstrom": {
+                "operator": "<",
+                "value": binder_self_aligned_rmsd_threshold_angstrom,
+            },
+        },
         "docking_success_thresholds": {
             "target_aligned_binder_backbone_rmsd_angstrom": {
                 "operator": "<",
@@ -262,6 +328,11 @@ def summarize(
             "prediction_level_scores": "Deduplicated by prediction path before aggregation",
             "rmsd": "Median across available prediction, binder-group, or interface values",
             "bounded_scores": "Arithmetic mean across available prediction values",
+            "folding_success": (
+                "Independent strict-threshold success proportions; target RMSD is "
+                "counted per prediction, binder RMSD per binder group, and unavailable "
+                "values are excluded from each denominator"
+            ),
             "docking_success": (
                 "Independent strict-threshold success proportions; unavailable values are "
                 "excluded from each denominator"
@@ -289,6 +360,13 @@ def format_success(value: dict[str, Any]) -> str:
 
 
 def markdown(report: dict[str, Any]) -> str:
+    folding_thresholds = report["folding_success_thresholds"]
+    target_folding_threshold = folding_thresholds[
+        "target_self_aligned_backbone_rmsd_angstrom"
+    ]["value"]
+    binder_folding_threshold = folding_thresholds[
+        "binder_self_aligned_backbone_rmsd_angstrom"
+    ]["value"]
     thresholds = report["docking_success_thresholds"]
     rmsd_threshold = thresholds["target_aligned_binder_backbone_rmsd_angstrom"]["value"]
     dockq_threshold = thresholds["dockq_ave"]["value"]
@@ -297,10 +375,15 @@ def markdown(report: dict[str, Any]) -> str:
         "",
         "## Folding",
         "",
+        f"Strict success criteria: target self-aligned backbone RMSD < "
+        f"{target_folding_threshold:g} Å; binder self-aligned backbone RMSD < "
+        f"{binder_folding_threshold:g} Å. Unavailable values are excluded from "
+        "each denominator.",
+        "",
         "| Method | Predictions | Target self-aligned backbone RMSD, median (Å) | "
-        "Binder self-aligned backbone RMSD, median (Å) | Mean lDDT | "
-        "Chirality violations |",
-        "|---|---:|---:|---:|---:|---:|",
+        "Target RMSD success | Binder self-aligned backbone RMSD, median (Å) | "
+        "Binder RMSD success | Mean lDDT | Chirality violations |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for item in report["methods"]:
         folding = item["folding"]
@@ -312,14 +395,21 @@ def markdown(report: dict[str, Any]) -> str:
         if violation["n_unassessable"]:
             violation_text += f"; {violation['n_unassessable']} unassessable"
         lines.append(
-            "| {method} | {n} | {target} | {binder} | {lddt} | {violation} |".format(
+            "| {method} | {n} | {target} | {target_success} | {binder} | "
+            "{binder_success} | {lddt} | {violation} |".format(
                 method=item["method"],
                 n=item["n_predictions"],
                 target=format_number(
                     folding["target_self_aligned_backbone_rmsd_angstrom_median"]["value"]
                 ),
+                target_success=format_success(
+                    folding["target_self_aligned_backbone_rmsd_below_threshold"]
+                ),
                 binder=format_number(
                     folding["binder_self_aligned_backbone_rmsd_angstrom_median"]["value"]
+                ),
+                binder_success=format_success(
+                    folding["binder_self_aligned_backbone_rmsd_below_threshold"]
                 ),
                 lddt=format_number(folding["lddt_mean"]["value"]),
                 violation=violation_text,
@@ -366,6 +456,8 @@ def markdown(report: dict[str, Any]) -> str:
         [
             "",
             "RMSDs are medians; lDDT, DockQ, and iLDDT are arithmetic means. "
+            "Target and binder self-aligned backbone RMSD successes are evaluated "
+            "independently with strict inequalities. "
             "DockQ and target-aligned binder backbone RMSD successes are evaluated "
             "independently with strict inequalities. "
             "Chirality violation is residue-pooled over assessable residues, with "
@@ -391,6 +483,8 @@ def main() -> int:
             args.batch_csv,
             args.binder_rmsd_threshold_angstrom,
             args.dockq_threshold,
+            args.target_self_aligned_rmsd_threshold_angstrom,
+            args.binder_self_aligned_rmsd_threshold_angstrom,
         )
     write_text(args.json_output, json.dumps(report, indent=2, allow_nan=False) + "\n")
     write_text(args.markdown_output, markdown(report))
