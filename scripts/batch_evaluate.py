@@ -12,6 +12,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -26,6 +27,22 @@ from target_aligned_binder_rmsd import chain_residues
 
 
 STRUCTURE_SUFFIXES = {".cif", ".mmcif", ".pdb"}
+DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM = 2.0
+DEFAULT_DOCKQ_THRESHOLD = 0.23
+
+
+def positive_finite_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number) or number <= 0:
+        raise argparse.ArgumentTypeError("must be a finite number greater than zero")
+    return number
+
+
+def dockq_threshold_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number) or not 0 <= number <= 1:
+        raise argparse.ArgumentTypeError("must be a finite number between zero and one")
+    return number
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,6 +69,24 @@ def parse_args() -> argparse.Namespace:
         "--resume-incomplete",
         action="store_true",
         help="Allow tools to be rerun in an existing non-successful content-addressed run",
+    )
+    parser.add_argument(
+        "--binder-rmsd-threshold-angstrom",
+        type=positive_finite_float,
+        default=DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM,
+        help=(
+            "Strict upper cutoff for target-aligned binder backbone RMSD "
+            f"(default: {DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM:g} Angstrom)"
+        ),
+    )
+    parser.add_argument(
+        "--dockq-threshold",
+        type=dockq_threshold_float,
+        default=DEFAULT_DOCKQ_THRESHOLD,
+        help=(
+            "Strict lower cutoff for average DockQ "
+            f"(default: {DEFAULT_DOCKQ_THRESHOLD:g})"
+        ),
     )
     return parser.parse_args()
 
@@ -462,6 +497,48 @@ def chirality_summary(path: Path, exit_code: int) -> dict[str, Any]:
     }
 
 
+def finite_float(value: Any) -> float | None:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    return number if math.isfinite(number) else None
+
+
+def evaluate_docking_thresholds(
+    parsed_ost: dict[str, Any],
+    target_aligned: dict[str, Any],
+    binder_rmsd_threshold_angstrom: float,
+    dockq_threshold: float,
+) -> dict[str, Any]:
+    """Classify available docking metrics using strict user-facing cutoffs."""
+    dockq = finite_float(parsed_ost.get("dockq_ave"))
+    binders: list[dict[str, Any]] = []
+    for binder in target_aligned.get("binders", []):
+        measurement = binder.get("target_aligned_binder_backbone_rmsd_angstrom", {})
+        rmsd = finite_float(measurement.get("rmsd_angstrom"))
+        binders.append(
+            {
+                "id": binder.get("id"),
+                "target_aligned_binder_backbone_rmsd_angstrom": rmsd,
+                "target_aligned_binder_backbone_rmsd_below_threshold": (
+                    rmsd < binder_rmsd_threshold_angstrom if rmsd is not None else None
+                ),
+            }
+        )
+    return {
+        "target_aligned_binder_backbone_rmsd_threshold_angstrom": (
+            binder_rmsd_threshold_angstrom
+        ),
+        "target_aligned_binder_backbone_rmsd_operator": "<",
+        "dockq_ave_threshold": dockq_threshold,
+        "dockq_ave_operator": ">",
+        "dockq_ave": dockq,
+        "dockq_ave_above_threshold": dockq > dockq_threshold if dockq is not None else None,
+        "binders": binders,
+    }
+
+
 def prediction_run_identity(
     evaluation_dir: Path,
     sample_id: str,
@@ -527,6 +604,8 @@ def write_batch_manifest(
     report: dict[str, Any],
     records: dict[str, tuple[str, dict[str, Any], dict[str, Any]]],
     versions: dict[str, Any],
+    binder_rmsd_threshold_angstrom: float = DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM,
+    dockq_threshold: float = DEFAULT_DOCKQ_THRESHOLD,
 ) -> tuple[Path, dict[str, dict[str, Any]]]:
     prediction_runs: list[dict[str, Any]] = []
     run_identities: dict[str, dict[str, Any]] = {}
@@ -570,6 +649,14 @@ def write_batch_manifest(
 
     batch_inputs = {
         "evaluation_dir": str(evaluation_dir.resolve()),
+        "docking_threshold_evaluation": {
+            "target_aligned_binder_backbone_rmsd_threshold_angstrom": (
+                binder_rmsd_threshold_angstrom
+            ),
+            "target_aligned_binder_backbone_rmsd_operator": "<",
+            "dockq_ave_threshold": dockq_threshold,
+            "dockq_ave_operator": ">",
+        },
         "annotations": {
             "path": str(annotation_path.resolve()),
             "sha256": sha256(annotation_path),
@@ -708,7 +795,6 @@ def run_one(
     self_aligned = custom.get("self_aligned") or {
         "status": "UNAVAILABLE", "reason": custom.get("reason", "No self-aligned result")
     }
-
     chirality_dir = run_dir / "chirality"
     predicted_chirality_chains = [mapping[chain] for chain in sample["chirality_chains"]]
     chirality_command = [
@@ -789,7 +875,10 @@ def run_one(
 
 
 def regenerate_batch_csv(
-    evaluation_dir: Path, active_run_fingerprints: set[str] | None = None
+    evaluation_dir: Path,
+    active_run_fingerprints: set[str] | None = None,
+    binder_rmsd_threshold_angstrom: float = DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM,
+    dockq_threshold: float = DEFAULT_DOCKQ_THRESHOLD,
 ) -> Path:
     rows: list[dict[str, Any]] = []
     results_dir = evaluation_dir / "results"
@@ -804,6 +893,15 @@ def regenerate_batch_csv(
         target_binders = {item["id"]: item for item in target_aligned.get("binders", [])}
         self_aligned = summary.get("binder_self_aligned_rmsd", {})
         self_binders = {item["id"]: item for item in self_aligned.get("binders", [])}
+        threshold_evaluation = evaluate_docking_thresholds(
+            summary.get("openstructure", {}),
+            target_aligned,
+            binder_rmsd_threshold_angstrom,
+            dockq_threshold,
+        )
+        threshold_binders = {
+            item["id"]: item for item in threshold_evaluation.get("binders", [])
+        }
         binder_defs = summary.get("binders") or [{"id": "", "chains": []}]
         for binder_def in binder_defs:
             target_binder = target_binders.get(binder_def["id"], {})
@@ -814,6 +912,7 @@ def regenerate_batch_csv(
             self_binder = self_binders.get(binder_def["id"], {})
             self_ca = self_binder.get("binder_self_aligned_ca_rmsd_angstrom", {})
             self_backbone = self_binder.get("binder_self_aligned_backbone_rmsd_angstrom", {})
+            threshold_binder = threshold_binders.get(binder_def["id"], {})
             ost = summary.get("openstructure", {})
             chirality = summary.get("chirality", {})
             primary = chirality.get("primary") or {}
@@ -838,6 +937,12 @@ def regenerate_batch_csv(
                     "ost_lddt": ost.get("lddt"),
                     "ost_ilddt": ost.get("ilddt"),
                     "ost_dockq_ave": ost.get("dockq_ave"),
+                    "ost_dockq_ave_threshold": threshold_evaluation.get(
+                        "dockq_ave_threshold"
+                    ),
+                    "ost_dockq_ave_above_threshold": threshold_evaluation.get(
+                        "dockq_ave_above_threshold"
+                    ),
                     "ost_dockq_wave": ost.get("dockq_wave"),
                     "ost_dockq_ave_full": ost.get("dockq_ave_full"),
                     "ost_dockq_wave_full": ost.get("dockq_wave_full"),
@@ -848,6 +953,16 @@ def regenerate_batch_csv(
                     "target_aligned_binder_ca_rmsd_angstrom": target_ca.get("rmsd_angstrom"),
                     "target_aligned_binder_backbone_rmsd_angstrom": target_backbone.get(
                         "rmsd_angstrom"
+                    ),
+                    "target_aligned_binder_backbone_rmsd_threshold_angstrom": (
+                        threshold_evaluation.get(
+                            "target_aligned_binder_backbone_rmsd_threshold_angstrom"
+                        )
+                    ),
+                    "target_aligned_binder_backbone_rmsd_below_threshold": (
+                        threshold_binder.get(
+                            "target_aligned_binder_backbone_rmsd_below_threshold"
+                        )
                     ),
                     "binder_self_aligned_ca_rmsd_angstrom": self_ca.get("rmsd_angstrom"),
                     "binder_self_aligned_backbone_rmsd_angstrom": self_backbone.get(
@@ -916,6 +1031,8 @@ def main() -> int:
             report,
             records,
             versions,
+            args.binder_rmsd_threshold_angstrom,
+            args.dockq_threshold,
         )
         print(f"Batch manifest: {batch_manifest}")
         active_run_fingerprints: set[str] = set()
@@ -942,7 +1059,12 @@ def main() -> int:
             )
             if result.get("run_fingerprint"):
                 active_run_fingerprints.add(result["run_fingerprint"])
-        output = regenerate_batch_csv(evaluation_dir, active_run_fingerprints)
+        output = regenerate_batch_csv(
+            evaluation_dir,
+            active_run_fingerprints,
+            args.binder_rmsd_threshold_angstrom,
+            args.dockq_threshold,
+        )
         print(f"Batch summary: {output}")
         metric_summary_script = Path(__file__).with_name("summarize_batch_metrics.py")
         metric_summary_json = evaluation_dir / "results" / "method_summary.json"
@@ -956,6 +1078,10 @@ def main() -> int:
                 str(metric_summary_json),
                 "--markdown-output",
                 str(metric_summary_markdown),
+                "--binder-rmsd-threshold-angstrom",
+                str(args.binder_rmsd_threshold_angstrom),
+                "--dockq-threshold",
+                str(args.dockq_threshold),
             ],
             text=True,
             capture_output=True,

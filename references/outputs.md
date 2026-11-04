@@ -19,7 +19,10 @@ Each run contains:
 - `ost_scores.json`: untouched OpenStructure JSON.
 - `custom_rmsd_config.json` and `binder_rmsd.json`.
 - `chirality/`: the chirality tool's readable report, simple CSV, detailed CSV, and raw summary JSON.
-- `summary.json`: parsed per-prediction summary retaining local lDDT, mappings, alignments, residue inconsistencies, cleanup/stereochemical diagnostics, per-interface identities and scores, DockQ averages/full averages, custom RMSDs, chirality summaries, statuses, warnings, and unavailable reasons.
+- `summary.json`: parsed per-prediction summary retaining local lDDT, mappings,
+  alignments, residue inconsistencies, cleanup/stereochemical diagnostics,
+  per-interface identities and scores, DockQ averages/full averages, custom
+  RMSDs, chirality summaries, statuses, warnings, and unavailable reasons.
 
 `results/batch_summary.csv` has one row per prediction/binder for the fingerprints
 selected by the latest batch execution, plus explicit skipped rows. Historical
@@ -27,7 +30,9 @@ content-addressed runs remain on disk. Per-interface OpenStructure results remai
 present as JSON in the CSV and as structured data in each summary; never collapse
 them to only one DockQ value.
 The CSV exposes pooled all-residue chirality as the primary result and also retains
-separate DAA and LAA counts and accuracies.
+separate DAA and LAA counts and accuracies. It also includes the applicable
+DockQ and target-aligned binder-backbone RMSD cutoffs and nullable Boolean
+pass/fail fields for both tests.
 
 After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
 
@@ -40,10 +45,14 @@ binder self-aligned backbone RMSD, mean lDDT, and residue-pooled chirality
 violations. Target self-aligned backbone RMSD is sourced from
 `target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
 joint all-target fit. The Docking table reports mean DockQ, median
-target-aligned binder backbone RMSD, median per-interface iRMSD, and mean iLDDT.
+target-aligned binder backbone RMSD, median per-interface iRMSD, mean iLDDT,
+and independent success proportions for average DockQ and binder RMSD.
 Prediction-level scores are deduplicated by prediction path before aggregation;
 binder RMSDs use one value per annotated binder group, and iRMSD uses one value
-per OpenStructure interface. Explicitly skipped predictions are excluded.
+per OpenStructure interface. DockQ success is counted once per prediction and
+binder-RMSD success once per annotated binder group. Unavailable scores are
+excluded from the corresponding denominator. Explicitly skipped predictions
+are excluded.
 
 ## Metric names
 
@@ -57,6 +66,10 @@ per OpenStructure interface. Explicitly skipped predictions are excluded.
 - `target_backbone_fit_rmsd_angstrom`: target RMSD after the joint all-target N/CA/C/O fit.
 - `target_aligned_binder_ca_rmsd_angstrom`: mapped binder CA displacement after the target fit, without binder refitting.
 - `target_aligned_binder_backbone_rmsd_angstrom`: mapped binder N/CA/C/O displacement after the target fit, without binder refitting.
+- `target_aligned_binder_backbone_rmsd_below_threshold`: nullable Boolean from
+  the strict RMSD cutoff, which defaults to `< 2 Å`.
+- `ost_dockq_ave_above_threshold`: nullable Boolean from the strict average
+  DockQ cutoff, which defaults to `> 0.23`.
 - `binder_self_aligned_ca_rmsd_angstrom`: CA RMSD after independently fitting
   that binder group on its CA atoms.
 - `binder_self_aligned_backbone_rmsd_angstrom`: N/CA/C/O RMSD after independently
@@ -64,11 +77,18 @@ per OpenStructure interface. Explicitly skipped predictions are excluded.
 
 Missing residues or atoms are excluded only through the recorded aligned intersection. Always report used/possible atom pairs, coverage, and the omission list alongside a custom RMSD. If the target fit has fewer than three non-collinear atom pairs or a binder measurement has no atom pairs, that metric is unavailable with a reason.
 
+A score exactly equal to its cutoff is a failure because both comparisons are
+strict. A missing or non-finite score is unavailable, not a failure. Custom
+cutoffs supplied to the batch runner are stored in the batch fingerprint and
+manifest, CSV, and method-level summary. They are intentionally excluded from
+prediction-run fingerprints so changing only a reporting cutoff can reuse the
+existing structure scores.
+
 ## Reruns
 
 The fingerprint includes reference and prediction file hashes, complete sample/prediction annotations, settings, inspected script hashes, and tool versions. An existing successful fingerprint is reused. A changed fingerprint creates another run and preserves the earlier result. An incomplete fingerprint is not resumed unless the operator reviews it and passes `--resume-incomplete`.
 
-The batch fingerprint covers the complete annotation document, shared tool
-versions, and the ordered planned/skipped prediction records. A changed batch
-creates a new directory below `results/batches/`; historical batch manifests
-remain available.
+The batch fingerprint covers the complete annotation document, docking
+classification cutoffs, shared tool versions, and the ordered planned/skipped
+prediction records. A changed batch creates a new directory below
+`results/batches/`; historical batch manifests remain available.

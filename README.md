@@ -7,7 +7,8 @@ target-aligned and self-aligned binder RMSDs, and residue chirality metrics.
 ## Features
 - Evaluating protein structure predictions in batch with the following metrics
   - **Folding**: Target Backbone RMSD, Ligand Backbone RMSD, mean lDDT
-  - **Docking**: DockQ, Target-aligned Ligand Backbone RMSD, iLDDT
+  - **Docking**: DockQ, Target-aligned Ligand Backbone RMSD, iLDDT, and
+    independent threshold success rates
 - Create the chain mapping between prediction and native structure and annotating target chain(s) and binder chain(s) automatically.
 - Support multi-chain target and binder. Target alignment is done with all annotated target chains.
 
@@ -120,4 +121,8 @@ The skill audits before execution and asks for unresolved biological roles, asse
 
 Each executed batch also writes `results/method_summary.md` and
 `results/method_summary.json`. The final Codex reply includes separate Folding
-and Docking summary tables generated from those files.
+and Docking summary tables generated from those files. By default, the Docking
+table reports the proportions satisfying strict `DockQ > 0.23` and
+`target-aligned binder backbone RMSD < 2 Å` criteria. Use
+`--dockq-threshold` and `--binder-rmsd-threshold-angstrom` to change those
+fingerprinted cutoffs for a batch.

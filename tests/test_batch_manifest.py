@@ -162,6 +162,38 @@ class BatchManifestTest(unittest.TestCase):
             self.assertEqual(set(reused_identities), set(discovered_predictions))
             self.assertEqual(list(evaluation_dir.rglob("run_manifest.json")), [manifest_path])
 
+            changed_path, changed_identities = batch_evaluate.write_batch_manifest(
+                evaluation_dir,
+                annotation_path,
+                annotations,
+                report,
+                records,
+                versions,
+                binder_rmsd_threshold_angstrom=1.5,
+                dockq_threshold=0.3,
+            )
+            self.assertNotEqual(changed_path, manifest_path)
+            self.assertEqual(
+                {
+                    path: identity["fingerprint"]
+                    for path, identity in changed_identities.items()
+                },
+                {
+                    path: identity["fingerprint"]
+                    for path, identity in identities.items()
+                },
+            )
+            changed_manifest = batch_evaluate.load_json(changed_path)
+            self.assertEqual(
+                changed_manifest["inputs"]["docking_threshold_evaluation"],
+                {
+                    "target_aligned_binder_backbone_rmsd_threshold_angstrom": 1.5,
+                    "target_aligned_binder_backbone_rmsd_operator": "<",
+                    "dockq_ave_threshold": 0.3,
+                    "dockq_ave_operator": ">",
+                },
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
