@@ -47,24 +47,35 @@ After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
   included in the final user reply.
 
 The Folding table reports median target self-aligned backbone RMSD, median
-binder self-aligned backbone RMSD, mean target-only and binder-only lDDT, and residue-pooled chirality
-violations. Target self-aligned backbone RMSD is sourced from
+per-prediction mean binder self-aligned backbone RMSD, mean target-only and
+binder-only lDDT, and residue-pooled chirality violations. Target self-aligned
+backbone RMSD is sourced from
 `target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
 joint all-target fit. It also reports independent success proportions for the
 two folding RMSDs. Binder-only lDDT is averaged across eligible binder groups
 once within a prediction. The Docking table reports mean target-binder DockQ,
-median target-aligned binder backbone RMSD, median target-binder per-interface
-iRMSD, mean macro target-binder iLDDT, and independent DockQ and binder RMSD
-success rates. A supplemental table retains mean full-subset lDDT,
+median per-prediction mean target-aligned binder backbone RMSD, median
+per-prediction mean target-binder iRMSD, mean macro target-binder iLDDT, and
+independent DockQ and binder RMSD success rates. A supplemental table retains
+mean full-subset lDDT,
 target-binder DockQ-wave, and micro target-binder iLDDT.
-Prediction-level scores are deduplicated by prediction path before aggregation;
-binder RMSDs use one value per annotated binder group, and iRMSD uses one value
-per eligible target-binder interface. DockQ success is first classified per
-target-binder interface, then averaged within each prediction and across
+Prediction-level scores are deduplicated by prediction path before aggregation.
+Each binder-group RMSD and target-binder interface iRMSD remains available in
+the per-prediction outputs. Within each prediction, eligible binder-group or
+interface RMSDs are averaged once; the method headline is the median of those
+per-prediction means. The earlier group- and interface-pooled medians are
+retained under `method_summary.json.methods[*].supplemental_pooled`.
+DockQ success is first classified per target-binder interface, then averaged
+within each prediction and across
 predictions. Each prediction has equal weight in that dataset mean. Target
-self-aligned RMSD success is counted once per prediction. Each binder-RMSD success
-is counted once per annotated binder group. Unavailable scores are excluded
-from the corresponding denominator. Explicitly skipped predictions are excluded.
+self-aligned RMSD success is counted once per prediction. Each binder-group RMSD
+success is classified separately, averaged to a pass fraction within its
+prediction, then averaged across predictions; the original group-pooled rate
+is supplemental. Unavailable scores are excluded from the corresponding
+denominator; a prediction with no available value for one metric is omitted
+only from that metric. Explicitly skipped predictions are excluded. Chirality
+violation continues to pool assessable residues across the dataset, with no
+complex-equal averaging.
 
 ## Metric names
 

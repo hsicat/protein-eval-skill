@@ -187,7 +187,8 @@ class MethodSummaryThresholdTest(unittest.TestCase):
         method = report["methods"][0]
         self.assertEqual(method["docking"]["dockq_above_threshold"]["success_rate_pct"], 75.0)
         self.assertAlmostEqual(method["docking"]["dockq_mean"]["value"], 0.575)
-        self.assertEqual(method["docking"]["irmsd_angstrom_median"]["value"], 3.0)
+        self.assertEqual(method["docking"]["irmsd_angstrom_median"]["value"], 3.5)
+        self.assertEqual(method["supplemental_pooled"]["irmsd_angstrom_median"]["value"], 3.0)
         self.assertAlmostEqual(method["docking"]["ilddt_macro_mean"]["value"], 0.8)
         self.assertAlmostEqual(method["folding"]["target_only_lddt_mean"]["value"], 0.9)
         self.assertAlmostEqual(method["folding"]["binder_only_lddt_mean"]["value"], 0.7)
@@ -196,7 +197,7 @@ class MethodSummaryThresholdTest(unittest.TestCase):
         self.assertIn("75.000% (2 complexes; 2/3 interfaces)", rendered)
         self.assertIn("Supplemental metrics", rendered)
 
-    def test_rates_use_prediction_and_binder_group_denominators(self) -> None:
+    def test_rates_use_prediction_denominators_with_group_fractions(self) -> None:
         rows = [
             {
                 "status": "SUCCESS",
@@ -257,8 +258,10 @@ class MethodSummaryThresholdTest(unittest.TestCase):
             {
                 "threshold_angstrom": 2.0,
                 "operator": "<",
-                "n_success": 1,
-                "n_available": 2,
+                "unit": "mean of per-complex available binder-group success fractions",
+                "n_available": 1,
+                "n_success_groups": 1,
+                "n_available_groups": 2,
                 "success_rate_pct": 50.0,
             },
         )
@@ -280,11 +283,66 @@ class MethodSummaryThresholdTest(unittest.TestCase):
             {
                 "threshold_angstrom": 2.0,
                 "operator": "<",
-                "n_success": 1,
-                "n_available": 2,
+                "unit": "mean of per-complex available binder-group success fractions",
+                "n_available": 1,
+                "n_success_groups": 1,
+                "n_available_groups": 2,
                 "success_rate_pct": 50.0,
             },
         )
+
+    def test_complex_weighting_changes_rmsds_but_not_chirality_pooling(self) -> None:
+        rows = []
+        for path, group_values, interface_values, chirality in (
+            ("predicted/method/a.cif", [1.0, 1.0, 9.0], [1.0, 1.0, 9.0], (1, 2)),
+            ("predicted/method/b.cif", [5.0], [5.0], (99, 100)),
+        ):
+            for index, value in enumerate(group_values):
+                rows.append({
+                    "status": "SUCCESS",
+                    "prediction_path": path,
+                    "binder_id": f"binder_{index}",
+                    "binder_self_aligned_backbone_rmsd_angstrom": str(value),
+                    "target_aligned_binder_backbone_rmsd_angstrom": str(value),
+                    "target_binder_dockq_per_interface_json": json.dumps(
+                        [{"irmsd": score} for score in interface_values]
+                    ),
+                    "chirality_all_correct_count": str(chirality[0]),
+                    "chirality_all_eligible_count": str(chirality[1]),
+                    "chirality_all_skipped_count": "0",
+                })
+
+        report = summarize_batch_metrics.summarize(rows, Path("batch.csv"))
+        method = report["methods"][0]
+        folding = method["folding"]
+        docking = method["docking"]
+        pooled = method["supplemental_pooled"]
+
+        for section, key in (
+            (folding, "binder_self_aligned_backbone_rmsd_angstrom_median"),
+            (docking, "target_aligned_binder_backbone_rmsd_angstrom_median"),
+            (docking, "irmsd_angstrom_median"),
+        ):
+            self.assertAlmostEqual(section[key]["value"], 13 / 3)
+            self.assertEqual(section[key]["n"], 2)
+            self.assertEqual(pooled[key]["value"], 3.0)
+            self.assertEqual(pooled[key]["n"], 4)
+
+        for section, key in (
+            (folding, "binder_self_aligned_backbone_rmsd_below_threshold"),
+            (docking, "target_aligned_binder_backbone_rmsd_below_threshold"),
+        ):
+            self.assertAlmostEqual(section[key]["success_rate_pct"], 100 / 3)
+            self.assertEqual(section[key]["n_available"], 2)
+            self.assertEqual(section[key]["n_success_groups"], 2)
+            self.assertEqual(section[key]["n_available_groups"], 4)
+
+        self.assertEqual(folding["chirality_violation"]["n_violations"], 2)
+        self.assertEqual(folding["chirality_violation"]["n_assessable"], 102)
+        self.assertAlmostEqual(folding["chirality_violation"]["violation_rate_pct"], 200 / 102)
+        rendered = summarize_batch_metrics.markdown(report)
+        self.assertIn("median of complex means", rendered)
+        self.assertIn("33.333% (2 complexes; 2/4 groups)", rendered)
 
 
 if __name__ == "__main__":

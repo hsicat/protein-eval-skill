@@ -109,6 +109,43 @@ def success_rate(values: list[float], predicate: Callable[[float], bool]) -> dic
     }
 
 
+def complex_group_values(
+    by_prediction: dict[str, list[dict[str, str]]], column: str, threshold: float
+) -> tuple[list[float], list[float], list[float]]:
+    """Return complex means, complex pass fractions, and original pooled values."""
+    complex_means: list[float] = []
+    complex_pass_fractions: list[float] = []
+    pooled_values: list[float] = []
+    for rows in by_prediction.values():
+        values = [
+            value for row in rows
+            if (value := finite_float(row.get(column))) is not None
+        ]
+        pooled_values.extend(values)
+        if values:
+            complex_means.append(statistics.mean(values))
+            complex_pass_fractions.append(
+                sum(value < threshold for value in values) / len(values)
+            )
+    return complex_means, complex_pass_fractions, pooled_values
+
+
+def complex_fraction_success(
+    fractions: list[float], pooled_values: list[float], threshold: float
+) -> dict[str, Any]:
+    return {
+        "threshold_angstrom": threshold,
+        "operator": "<",
+        "unit": "mean of per-complex available binder-group success fractions",
+        "n_available": len(fractions),
+        "n_success_groups": sum(value < threshold for value in pooled_values),
+        "n_available_groups": len(pooled_values),
+        "success_rate_pct": (
+            100.0 * statistics.mean(fractions) if fractions else None
+        ),
+    }
+
+
 def resolve_threshold(
     rows: list[dict[str, str]],
     column: str,
@@ -187,12 +224,11 @@ def summarize(
             for row in prediction_rows
             if (value := finite_float(row.get("target_backbone_fit_rmsd_angstrom"))) is not None
         ]
-        binder_fold = [
-            value
-            for row in method_rows
-            if (value := finite_float(row.get("binder_self_aligned_backbone_rmsd_angstrom")))
-            is not None
-        ]
+        binder_fold, binder_fold_success, binder_fold_pooled = complex_group_values(
+            by_prediction,
+            "binder_self_aligned_backbone_rmsd_angstrom",
+            binder_self_aligned_rmsd_threshold_angstrom,
+        )
         global_lddt = [
             value
             for row in prediction_rows
@@ -236,16 +272,13 @@ def summarize(
             integer(row.get("target_binder_dockq_interface_available_count"))
             for row in prediction_rows
         )
-        target_aligned_binder = [
-            value
-            for row in method_rows
-            if (
-                value := finite_float(
-                    row.get("target_aligned_binder_backbone_rmsd_angstrom")
-                )
+        target_aligned_binder, target_aligned_success, target_aligned_pooled = (
+            complex_group_values(
+                by_prediction,
+                "target_aligned_binder_backbone_rmsd_angstrom",
+                binder_rmsd_threshold_angstrom,
             )
-            is not None
-        ]
+        )
         ilddt_macro = [
             value
             for row in prediction_rows
@@ -256,11 +289,16 @@ def summarize(
             if (value := finite_float(row.get("target_binder_ilddt_micro"))) is not None
         ]
         irmsd: list[float] = []
+        irmsd_pooled: list[float] = []
         for row in prediction_rows:
+            interface_values: list[float] = []
             for interface in load_interfaces(row.get("target_binder_dockq_per_interface_json", "")):
                 value = finite_float(interface.get("irmsd"))
                 if value is not None:
-                    irmsd.append(value)
+                    interface_values.append(value)
+            irmsd_pooled.extend(interface_values)
+            if interface_values:
+                irmsd.append(statistics.mean(interface_values))
 
         methods.append(
             {
@@ -286,18 +324,11 @@ def summarize(
                     "binder_self_aligned_backbone_rmsd_angstrom_median": aggregate(
                         binder_fold, statistics.median
                     ),
-                    "binder_self_aligned_backbone_rmsd_below_threshold": {
-                        "threshold_angstrom": (
-                            binder_self_aligned_rmsd_threshold_angstrom
-                        ),
-                        "operator": "<",
-                        **success_rate(
-                            binder_fold,
-                            lambda value: (
-                                value < binder_self_aligned_rmsd_threshold_angstrom
-                            ),
-                        ),
-                    },
+                    "binder_self_aligned_backbone_rmsd_below_threshold": complex_fraction_success(
+                        binder_fold_success,
+                        binder_fold_pooled,
+                        binder_self_aligned_rmsd_threshold_angstrom,
+                    ),
                     "target_only_lddt_mean": aggregate(target_lddt, statistics.mean),
                     "binder_only_lddt_mean": aggregate(binder_lddt, statistics.mean),
                     "global_scored_subset_lddt_mean": aggregate(global_lddt, statistics.mean),
@@ -330,23 +361,45 @@ def summarize(
                     "target_aligned_binder_backbone_rmsd_angstrom_median": aggregate(
                         target_aligned_binder, statistics.median
                     ),
+                    "target_aligned_binder_backbone_rmsd_below_threshold": complex_fraction_success(
+                        target_aligned_success,
+                        target_aligned_pooled,
+                        binder_rmsd_threshold_angstrom,
+                    ),
+                    "irmsd_angstrom_median": aggregate(irmsd, statistics.median),
+                    "ilddt_macro_mean": aggregate(ilddt_macro, statistics.mean),
+                    "ilddt_micro_mean": aggregate(ilddt_micro, statistics.mean),
+                },
+                "supplemental_pooled": {
+                    "binder_self_aligned_backbone_rmsd_angstrom_median": aggregate(
+                        binder_fold_pooled, statistics.median
+                    ),
+                    "binder_self_aligned_backbone_rmsd_below_threshold": {
+                        "threshold_angstrom": binder_self_aligned_rmsd_threshold_angstrom,
+                        "operator": "<",
+                        **success_rate(
+                            binder_fold_pooled,
+                            lambda value: value < binder_self_aligned_rmsd_threshold_angstrom,
+                        ),
+                    },
+                    "target_aligned_binder_backbone_rmsd_angstrom_median": aggregate(
+                        target_aligned_pooled, statistics.median
+                    ),
                     "target_aligned_binder_backbone_rmsd_below_threshold": {
                         "threshold_angstrom": binder_rmsd_threshold_angstrom,
                         "operator": "<",
                         **success_rate(
-                            target_aligned_binder,
+                            target_aligned_pooled,
                             lambda value: value < binder_rmsd_threshold_angstrom,
                         ),
                     },
-                    "irmsd_angstrom_median": aggregate(irmsd, statistics.median),
-                    "ilddt_macro_mean": aggregate(ilddt_macro, statistics.mean),
-                    "ilddt_micro_mean": aggregate(ilddt_micro, statistics.mean),
+                    "irmsd_angstrom_median": aggregate(irmsd_pooled, statistics.median),
                 },
             }
         )
 
     return {
-        "schema_version": 4,
+        "schema_version": 5,
         "source_batch_csv": str(source.resolve()),
         "folding_success_thresholds": {
             "target_self_aligned_backbone_rmsd_angstrom": {
@@ -367,17 +420,22 @@ def summarize(
         },
         "aggregation": {
             "prediction_level_scores": "Deduplicated by prediction path before aggregation",
-            "rmsd": "Median across available prediction, binder-group, or interface values",
+            "rmsd": (
+                "Median across available prediction values; binder-group and "
+                "target-binder-interface RMSDs are first averaged within each prediction"
+            ),
             "bounded_scores": "Arithmetic mean across available prediction values",
             "folding_success": (
                 "Independent strict-threshold success proportions; target RMSD is "
-                "counted per prediction, binder RMSD per binder group, and unavailable "
-                "values are excluded from each denominator"
+                "counted per prediction, binder-group RMSD is classified per group "
+                "then averaged within and across predictions, and unavailable values "
+                "are excluded from each denominator"
             ),
             "docking_success": (
                 "DockQ threshold is applied per target-binder interface, then the "
                 "success fraction is averaged within each complex and across "
-                "available predictions; RMSD thresholds remain independent"
+                "available predictions; binder RMSD threshold success uses the "
+                "same group-then-prediction hierarchy independently"
             ),
             "within_complex": (
                 "Binder-only lDDT and target-binder iLDDT macro are equal means "
@@ -416,6 +474,16 @@ def format_dockq_success(value: dict[str, Any]) -> str:
     )
 
 
+def format_binder_success(value: dict[str, Any]) -> str:
+    if not value["n_available"]:
+        return "NA"
+    return (
+        f"{format_number(value['success_rate_pct'])}% "
+        f"({value['n_available']} complexes; "
+        f"{value['n_success_groups']}/{value['n_available_groups']} groups)"
+    )
+
+
 def markdown(report: dict[str, Any]) -> str:
     folding_thresholds = report["folding_success_thresholds"]
     target_folding_threshold = folding_thresholds[
@@ -438,7 +506,7 @@ def markdown(report: dict[str, Any]) -> str:
         "each denominator.",
         "",
         "| Method | Predictions | Target self-aligned backbone RMSD, median (Å) | "
-        "Target RMSD success | Binder self-aligned backbone RMSD, median (Å) | "
+        "Target RMSD success | Binder self-aligned backbone RMSD, median of complex means (Å) | "
         "Binder RMSD success | Mean target-only lDDT | Mean binder-only lDDT | Chirality violations |",
         "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
@@ -465,7 +533,7 @@ def markdown(report: dict[str, Any]) -> str:
                 binder=format_number(
                     folding["binder_self_aligned_backbone_rmsd_angstrom_median"]["value"]
                 ),
-                binder_success=format_success(
+                binder_success=format_binder_success(
                     folding["binder_self_aligned_backbone_rmsd_below_threshold"]
                 ),
                 target_lddt=format_number(folding["target_only_lddt_mean"]["value"]),
@@ -484,7 +552,7 @@ def markdown(report: dict[str, Any]) -> str:
             "each denominator.",
             "",
             "| Method | Predictions | Mean target–binder DockQ | Interface DockQ success | Target-aligned binder "
-            "backbone RMSD, median (Å) | RMSD success | Target–binder iRMSD, median (Å) | Mean target–binder iLDDT (macro) |",
+            "backbone RMSD, median of complex means (Å) | RMSD success | Target–binder iRMSD, median of complex means (Å) | Mean target–binder iLDDT (macro) |",
             "|---|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
@@ -500,7 +568,7 @@ def markdown(report: dict[str, Any]) -> str:
                 binder=format_number(
                     docking["target_aligned_binder_backbone_rmsd_angstrom_median"]["value"]
                 ),
-                binder_success=format_success(
+                binder_success=format_binder_success(
                     docking[
                         "target_aligned_binder_backbone_rmsd_below_threshold"
                     ]
@@ -513,14 +581,16 @@ def markdown(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "RMSDs are medians; lDDT, DockQ, and iLDDT are arithmetic means across "
-            "the same prediction or binder-group units as before. DockQ success "
+            "RMSDs are medians across predictions; binder and interface RMSDs "
+            "first average available groups or interfaces within each prediction. "
+            "lDDT, DockQ, and iLDDT are arithmetic means across predictions. DockQ success "
             "first applies its cutoff to each target–binder interface, then "
             "averages interface success within each complex and across predictions. "
-            "Target and binder self-aligned backbone RMSD successes are evaluated "
-            "independently with strict inequalities. "
-            "DockQ and target-aligned binder backbone RMSD successes are evaluated "
-            "independently with strict inequalities. "
+            "Binder RMSD success applies a strict cutoff to each available group, "
+            "then averages group pass fractions within and across predictions. "
+            "The parenthetical pooled group counts need not divide to the "
+            "reported complex-balanced percentage. "
+            "All threshold classifications are independent. "
             "Chirality violation is residue-pooled over assessable residues, with "
             "unassessable residues shown separately. Skipped predictions are excluded.",
             "",

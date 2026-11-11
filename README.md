@@ -127,13 +127,13 @@ Each executed batch also writes `results/method_summary.md` and
 `results/method_summary.json`. The final Codex reply includes Folding,
 Docking, and supplemental summary tables generated from those files. By
 default, the Docking table reports the mean per-complex fraction of
-target-binder interfaces satisfying strict `DockQ > 0.23` and the proportion
-satisfying
-`target-aligned binder backbone RMSD < 2 Å` criteria. Use
+target-binder interfaces satisfying strict `DockQ > 0.23` and the mean
+per-complex fraction of binder groups satisfying
+`target-aligned binder backbone RMSD < 2 Å`. Use
 `--dockq-threshold` and `--binder-rmsd-threshold-angstrom` to change those
 fingerprinted cutoffs for a batch. The Folding table likewise reports strict
 `target self-aligned backbone RMSD < 2 Å` and
-`binder self-aligned backbone RMSD < 2 Å` proportions. Change these with
+`binder self-aligned backbone RMSD < 2 Å` per-complex fractions. Change these with
 `--target-self-aligned-rmsd-threshold-angstrom` and
 `--binder-self-aligned-rmsd-threshold-angstrom`.
 
@@ -141,3 +141,10 @@ The role-scoped scoring update is documented in
 [`VERSION_UPDATE_2026-11-11.md`](VERSION_UPDATE_2026-11-11.md). It changes
 within-complex metric definitions while retaining the previous dataset-level
 means, medians, and residue-pooled chirality aggregation.
+
+The dataset aggregation update is documented in
+[`VERSION_UPDATE_2026-11-11_v0.7.0.md`](VERSION_UPDATE_2026-11-11_v0.7.0.md).
+For binder RMSD and target-binder iRMSD, the method-level median now uses one
+mean per prediction. Binder RMSD threshold success is likewise averaged by
+prediction. Chirality remains residue-pooled; the seven primary manuscript
+figure metrics remain under `protein-eval-graph`.
