@@ -6,11 +6,13 @@ target-aligned and self-aligned binder RMSDs, and residue chirality metrics.
 
 ## Features
 - Evaluating protein structure predictions in batch with the following metrics
-  - **Folding**: Target Backbone RMSD, Ligand Backbone RMSD, mean lDDT, and
-    independent RMSD threshold success rates
-  - **Docking**: DockQ, Target-aligned Ligand Backbone RMSD, iLDDT, and
-    independent threshold success rates
-- Create the chain mapping between prediction and native structure and annotating target chain(s) and binder chain(s) automatically.
+  - **Folding**: Target and binder self-aligned backbone RMSD, separate
+    target-only and binder-only all-atom lDDT, chirality, and independent
+    RMSD threshold success rates
+  - **Docking**: Target-binder DockQ and per-interface success, target-aligned
+    binder backbone RMSD, target-binder iRMSD and iLDDT
+- Auditing explicit biological-role annotations and reference-to-prediction
+  chain mappings before evaluation.
 - Support multi-chain target and binder. Target alignment is done with all annotated target chains.
 
 
@@ -20,7 +22,7 @@ Install the standalone repository with Codex's skill installer:
 
 ```bash
 python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo hsicatowoUST/protein-eval-skill \
+  --repo hsicat/protein-eval-skill \
   --path . \
   --name protein-eval-skill
 ```
@@ -66,6 +68,7 @@ project/
 |                       `-- <fingerprint>/
 |                           |-- summary.json
 |                           |-- ost_scores.json
+|                           |-- role_metrics.json
 |                           |-- binder_rmsd.json
 |                           `-- chirality/
 |-- GT/
@@ -121,9 +124,11 @@ Use $protein-eval-skill to evaluate <evaluation-directory>. The native structure
 The skill audits before execution and asks for unresolved biological roles, assemblies, or chain mappings rather than guessing them.
 
 Each executed batch also writes `results/method_summary.md` and
-`results/method_summary.json`. The final Codex reply includes separate Folding
-and Docking summary tables generated from those files. By default, the Docking
-table reports the proportions satisfying strict `DockQ > 0.23` and
+`results/method_summary.json`. The final Codex reply includes Folding,
+Docking, and supplemental summary tables generated from those files. By
+default, the Docking table reports the mean per-complex fraction of
+target-binder interfaces satisfying strict `DockQ > 0.23` and the proportion
+satisfying
 `target-aligned binder backbone RMSD < 2 Å` criteria. Use
 `--dockq-threshold` and `--binder-rmsd-threshold-angstrom` to change those
 fingerprinted cutoffs for a batch. The Folding table likewise reports strict
@@ -131,3 +136,8 @@ fingerprinted cutoffs for a batch. The Folding table likewise reports strict
 `binder self-aligned backbone RMSD < 2 Å` proportions. Change these with
 `--target-self-aligned-rmsd-threshold-angstrom` and
 `--binder-self-aligned-rmsd-threshold-angstrom`.
+
+The role-scoped scoring update is documented in
+[`VERSION_UPDATE_2026-11-11.md`](VERSION_UPDATE_2026-11-11.md). It changes
+within-complex metric definitions while retaining the previous dataset-level
+means, medians, and residue-pooled chirality aggregation.

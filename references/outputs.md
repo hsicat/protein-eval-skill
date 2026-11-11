@@ -17,11 +17,15 @@ Each run contains:
   `<tool>.stdout.txt` and `<tool>.stderr.txt`, including empty files; successful
   commands retain only a nonempty stderr file and discard stdout.
 - `ost_scores.json`: untouched OpenStructure JSON.
+- `role_metrics_config.json` and `role_metrics.json`: annotated-role
+  OpenStructure lDDT and target-binder iLDDT results, including per-pair
+  distance-test counts. The role-specific target-binder DockQ subset is stored
+  in `summary.json` under `role_metrics.target_binder_dockq`.
 - `custom_rmsd_config.json` and `binder_rmsd.json`.
 - `chirality/`: the chirality tool's readable report, simple CSV, detailed CSV, and raw summary JSON.
 - `summary.json`: parsed per-prediction summary retaining local lDDT, mappings,
   alignments, residue inconsistencies, cleanup/stereochemical diagnostics,
-  per-interface identities and scores, DockQ averages/full averages, custom
+  per-interface identities and scores, raw and role-scoped DockQ, custom
   RMSDs, chirality summaries, statuses, warnings, and unavailable reasons.
 
 `results/batch_summary.csv` has one row per prediction/binder for the fingerprints
@@ -32,8 +36,9 @@ them to only one DockQ value.
 The CSV exposes pooled all-residue chirality as the primary result and also retains
 separate DAA and LAA counts and accuracies. It also includes the applicable
 target self-aligned, binder self-aligned, and target-aligned binder-backbone
-RMSD cutoffs plus the DockQ cutoff, with nullable Boolean pass/fail fields for
-all four tests.
+RMSD cutoffs plus the per-interface DockQ cutoff. Its DockQ success field is a
+nullable fraction per prediction; the older raw `ost_dockq_ave_above_threshold`
+Boolean is retained only as a diagnostic.
 
 After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
 
@@ -42,17 +47,22 @@ After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
   included in the final user reply.
 
 The Folding table reports median target self-aligned backbone RMSD, median
-binder self-aligned backbone RMSD, mean lDDT, and residue-pooled chirality
+binder self-aligned backbone RMSD, mean target-only and binder-only lDDT, and residue-pooled chirality
 violations. Target self-aligned backbone RMSD is sourced from
 `target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
 joint all-target fit. It also reports independent success proportions for the
-two folding RMSDs. The Docking table reports mean DockQ, median
-target-aligned binder backbone RMSD, median per-interface iRMSD, mean iLDDT,
-and independent success proportions for average DockQ and binder RMSD.
+two folding RMSDs. Binder-only lDDT is averaged across eligible binder groups
+once within a prediction. The Docking table reports mean target-binder DockQ,
+median target-aligned binder backbone RMSD, median target-binder per-interface
+iRMSD, mean macro target-binder iLDDT, and independent DockQ and binder RMSD
+success rates. A supplemental table retains mean full-subset lDDT,
+target-binder DockQ-wave, and micro target-binder iLDDT.
 Prediction-level scores are deduplicated by prediction path before aggregation;
 binder RMSDs use one value per annotated binder group, and iRMSD uses one value
-per OpenStructure interface. DockQ success is counted once per prediction and
-target self-aligned RMSD success once per prediction. Each binder-RMSD success
+per eligible target-binder interface. DockQ success is first classified per
+target-binder interface, then averaged within each prediction and across
+predictions. Each prediction has equal weight in that dataset mean. Target
+self-aligned RMSD success is counted once per prediction. Each binder-RMSD success
 is counted once per annotated binder group. Unavailable scores are excluded
 from the corresponding denominator. Explicitly skipped predictions are excluded.
 
@@ -60,6 +70,18 @@ from the corresponding denominator. Explicitly skipped predictions are excluded.
 
 - `openstructure.lddt`: global all-atom lDDT.
 - `openstructure.ilddt`: global all-atom lDDT restricted to inter-chain contacts.
+- `role_metrics.target_only_lddt`: all-atom lDDT on all annotated target chains.
+- `role_metrics.binder_only_lddt[*].lddt`: all-atom lDDT on one annotated
+  binder group; eligible groups are averaged once per prediction for the method
+  summary.
+- `role_metrics.target_binder_dockq.per_interface`: only native interfaces
+  crossing annotated target and binder chains, with original DockQ components.
+  `mean` is the equal per-interface mean; `wave` uses native-contact counts.
+- `role_metrics.target_binder_ilddt.per_chain_pair`: pairwise OpenStructure
+  inter-chain lDDT and exact expected/conserved distance-test counts. `macro`
+  is the equal mean of eligible pair scores, and `micro` is the ratio of pooled
+  conserved to expected tests within that prediction. Pairs with zero expected
+  tests are excluded from both means and reported with `ilddt: null`.
 - `openstructure.local_lddt`: reference-residue keyed all-atom local lDDT.
 - `openstructure.per_interface[*].lrmsd`: OpenStructure's DockQ ligand RMSD for
   one chain-pair interface. The larger chain is treated as receptor and fitted;
@@ -72,8 +94,10 @@ from the corresponding denominator. Explicitly skipped predictions are excluded.
 - `target_aligned_binder_backbone_rmsd_angstrom`: mapped binder N/CA/C/O displacement after the target fit, without binder refitting.
 - `target_aligned_binder_backbone_rmsd_below_threshold`: nullable Boolean from
   the strict RMSD cutoff, which defaults to `< 2 Å`.
-- `ost_dockq_ave_above_threshold`: nullable Boolean from the strict average
-  DockQ cutoff, which defaults to `> 0.23`.
+- `target_binder_dockq_success_fraction`: fraction of scored target-binder
+  interfaces passing strict `DockQ > 0.23`; null when none can be scored.
+- `ost_dockq_ave_above_threshold`: legacy diagnostic Boolean using the raw
+  all-scored-chain average; it is not the headline DockQ success field.
 - `binder_self_aligned_ca_rmsd_angstrom`: CA RMSD after independently fitting
   that binder group on its CA atoms.
 - `binder_self_aligned_backbone_rmsd_angstrom`: N/CA/C/O RMSD after independently

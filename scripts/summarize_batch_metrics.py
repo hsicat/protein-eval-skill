@@ -36,6 +36,7 @@ def dockq_threshold_float(value: str) -> float:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("batch_csv", type=Path)
+    parser.add_argument("--method-name", help="Use one method label for all rows, e.g. paths organized by seed")
     parser.add_argument("--json-output", type=Path, required=True)
     parser.add_argument("--markdown-output", type=Path, required=True)
     parser.add_argument(
@@ -143,6 +144,7 @@ def summarize(
     dockq_threshold: float | None = None,
     target_self_aligned_rmsd_threshold_angstrom: float | None = None,
     binder_self_aligned_rmsd_threshold_angstrom: float | None = None,
+    method_name: str | None = None,
 ) -> dict[str, Any]:
     eligible = [row for row in rows if row.get("status") != "SKIPPED"]
     binder_rmsd_threshold_angstrom = resolve_threshold(
@@ -153,7 +155,7 @@ def summarize(
     )
     dockq_threshold = resolve_threshold(
         eligible,
-        "ost_dockq_ave_threshold",
+        "target_binder_dockq_threshold",
         dockq_threshold,
         DEFAULT_DOCKQ_THRESHOLD,
     )
@@ -171,7 +173,7 @@ def summarize(
     )
     by_method: dict[str, list[dict[str, str]]] = {}
     for row in eligible:
-        by_method.setdefault(method_from_prediction(row.get("prediction_path", "")), []).append(row)
+        by_method.setdefault(method_name or method_from_prediction(row.get("prediction_path", "")), []).append(row)
 
     methods: list[dict[str, Any]] = []
     for method, method_rows in sorted(by_method.items()):
@@ -191,10 +193,18 @@ def summarize(
             if (value := finite_float(row.get("binder_self_aligned_backbone_rmsd_angstrom")))
             is not None
         ]
-        lddt = [
+        global_lddt = [
             value
             for row in prediction_rows
             if (value := finite_float(row.get("ost_lddt"))) is not None
+        ]
+        target_lddt = [
+            value for row in prediction_rows
+            if (value := finite_float(row.get("target_only_lddt"))) is not None
+        ]
+        binder_lddt = [
+            value for row in prediction_rows
+            if (value := finite_float(row.get("binder_only_lddt_complex_mean"))) is not None
         ]
 
         chirality_sites = sum(integer(row.get("chirality_all_eligible_count")) for row in prediction_rows)
@@ -208,8 +218,24 @@ def summarize(
         dockq = [
             value
             for row in prediction_rows
-            if (value := finite_float(row.get("ost_dockq_ave"))) is not None
+            if (value := finite_float(row.get("target_binder_dockq_mean"))) is not None
         ]
+        dockq_wave = [
+            value for row in prediction_rows
+            if (value := finite_float(row.get("target_binder_dockq_wave"))) is not None
+        ]
+        dockq_success_fractions = [
+            value for row in prediction_rows
+            if (value := finite_float(row.get("target_binder_dockq_success_fraction"))) is not None
+        ]
+        dockq_interface_successes = sum(
+            integer(row.get("target_binder_dockq_interface_success_count"))
+            for row in prediction_rows
+        )
+        dockq_interface_available = sum(
+            integer(row.get("target_binder_dockq_interface_available_count"))
+            for row in prediction_rows
+        )
         target_aligned_binder = [
             value
             for row in method_rows
@@ -220,14 +246,18 @@ def summarize(
             )
             is not None
         ]
-        ilddt = [
+        ilddt_macro = [
             value
             for row in prediction_rows
-            if (value := finite_float(row.get("ost_ilddt"))) is not None
+            if (value := finite_float(row.get("target_binder_ilddt_macro"))) is not None
+        ]
+        ilddt_micro = [
+            value for row in prediction_rows
+            if (value := finite_float(row.get("target_binder_ilddt_micro"))) is not None
         ]
         irmsd: list[float] = []
         for row in prediction_rows:
-            for interface in load_interfaces(row.get("ost_per_interface_json", "")):
+            for interface in load_interfaces(row.get("target_binder_dockq_per_interface_json", "")):
                 value = finite_float(interface.get("irmsd"))
                 if value is not None:
                     irmsd.append(value)
@@ -268,7 +298,9 @@ def summarize(
                             ),
                         ),
                     },
-                    "lddt_mean": aggregate(lddt, statistics.mean),
+                    "target_only_lddt_mean": aggregate(target_lddt, statistics.mean),
+                    "binder_only_lddt_mean": aggregate(binder_lddt, statistics.mean),
+                    "global_scored_subset_lddt_mean": aggregate(global_lddt, statistics.mean),
                     "chirality_violation": {
                         "n_violations": chirality_violations,
                         "n_assessable": chirality_assessable,
@@ -282,10 +314,18 @@ def summarize(
                 },
                 "docking": {
                     "dockq_mean": aggregate(dockq, statistics.mean),
+                    "dockq_wave_mean": aggregate(dockq_wave, statistics.mean),
                     "dockq_above_threshold": {
                         "threshold": dockq_threshold,
                         "operator": ">",
-                        **success_rate(dockq, lambda value: value > dockq_threshold),
+                        "unit": "mean of per-complex target-binder interface success fractions",
+                        "n_available": len(dockq_success_fractions),
+                        "n_success_interfaces": dockq_interface_successes,
+                        "n_available_interfaces": dockq_interface_available,
+                        "success_rate_pct": (
+                            100.0 * statistics.mean(dockq_success_fractions)
+                            if dockq_success_fractions else None
+                        ),
                     },
                     "target_aligned_binder_backbone_rmsd_angstrom_median": aggregate(
                         target_aligned_binder, statistics.median
@@ -299,13 +339,14 @@ def summarize(
                         ),
                     },
                     "irmsd_angstrom_median": aggregate(irmsd, statistics.median),
-                    "ilddt_mean": aggregate(ilddt, statistics.mean),
+                    "ilddt_macro_mean": aggregate(ilddt_macro, statistics.mean),
+                    "ilddt_micro_mean": aggregate(ilddt_micro, statistics.mean),
                 },
             }
         )
 
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "source_batch_csv": str(source.resolve()),
         "folding_success_thresholds": {
             "target_self_aligned_backbone_rmsd_angstrom": {
@@ -322,7 +363,7 @@ def summarize(
                 "operator": "<",
                 "value": binder_rmsd_threshold_angstrom,
             },
-            "dockq_ave": {"operator": ">", "value": dockq_threshold},
+            "target_binder_interface_dockq": {"operator": ">", "value": dockq_threshold},
         },
         "aggregation": {
             "prediction_level_scores": "Deduplicated by prediction path before aggregation",
@@ -334,8 +375,14 @@ def summarize(
                 "values are excluded from each denominator"
             ),
             "docking_success": (
-                "Independent strict-threshold success proportions; unavailable values are "
-                "excluded from each denominator"
+                "DockQ threshold is applied per target-binder interface, then the "
+                "success fraction is averaged within each complex and across "
+                "available predictions; RMSD thresholds remain independent"
+            ),
+            "within_complex": (
+                "Binder-only lDDT and target-binder iLDDT macro are equal means "
+                "of eligible binder groups and chain-pair interfaces respectively; "
+                "iLDDT micro pools distance tests only within each prediction"
             ),
             "chirality_violation": (
                 "Residue-pooled (inverted + below-threshold) / assessable residues; "
@@ -359,6 +406,16 @@ def format_success(value: dict[str, Any]) -> str:
     )
 
 
+def format_dockq_success(value: dict[str, Any]) -> str:
+    if not value["n_available"]:
+        return "NA"
+    return (
+        f"{format_number(value['success_rate_pct'])}% "
+        f"({value['n_available']} complexes; "
+        f"{value['n_success_interfaces']}/{value['n_available_interfaces']} interfaces)"
+    )
+
+
 def markdown(report: dict[str, Any]) -> str:
     folding_thresholds = report["folding_success_thresholds"]
     target_folding_threshold = folding_thresholds[
@@ -369,7 +426,7 @@ def markdown(report: dict[str, Any]) -> str:
     ]["value"]
     thresholds = report["docking_success_thresholds"]
     rmsd_threshold = thresholds["target_aligned_binder_backbone_rmsd_angstrom"]["value"]
-    dockq_threshold = thresholds["dockq_ave"]["value"]
+    dockq_threshold = thresholds["target_binder_interface_dockq"]["value"]
     lines = [
         "# Batch metric summary",
         "",
@@ -382,8 +439,8 @@ def markdown(report: dict[str, Any]) -> str:
         "",
         "| Method | Predictions | Target self-aligned backbone RMSD, median (Å) | "
         "Target RMSD success | Binder self-aligned backbone RMSD, median (Å) | "
-        "Binder RMSD success | Mean lDDT | Chirality violations |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|",
+        "Binder RMSD success | Mean target-only lDDT | Mean binder-only lDDT | Chirality violations |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for item in report["methods"]:
         folding = item["folding"]
@@ -396,7 +453,7 @@ def markdown(report: dict[str, Any]) -> str:
             violation_text += f"; {violation['n_unassessable']} unassessable"
         lines.append(
             "| {method} | {n} | {target} | {target_success} | {binder} | "
-            "{binder_success} | {lddt} | {violation} |".format(
+            "{binder_success} | {target_lddt} | {binder_lddt} | {violation} |".format(
                 method=item["method"],
                 n=item["n_predictions"],
                 target=format_number(
@@ -411,7 +468,8 @@ def markdown(report: dict[str, Any]) -> str:
                 binder_success=format_success(
                     folding["binder_self_aligned_backbone_rmsd_below_threshold"]
                 ),
-                lddt=format_number(folding["lddt_mean"]["value"]),
+                target_lddt=format_number(folding["target_only_lddt_mean"]["value"]),
+                binder_lddt=format_number(folding["binder_only_lddt_mean"]["value"]),
                 violation=violation_text,
             )
         )
@@ -425,8 +483,8 @@ def markdown(report: dict[str, Any]) -> str:
             f"backbone RMSD < {rmsd_threshold:g} Å. Unavailable values are excluded from "
             "each denominator.",
             "",
-            "| Method | Predictions | Mean DockQ | DockQ success | Target-aligned binder "
-            "backbone RMSD, median (Å) | RMSD success | iRMSD, median (Å) | Mean iLDDT |",
+            "| Method | Predictions | Mean target–binder DockQ | Interface DockQ success | Target-aligned binder "
+            "backbone RMSD, median (Å) | RMSD success | Target–binder iRMSD, median (Å) | Mean target–binder iLDDT (macro) |",
             "|---|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
@@ -438,7 +496,7 @@ def markdown(report: dict[str, Any]) -> str:
                 method=item["method"],
                 n=item["n_predictions"],
                 dockq=format_number(docking["dockq_mean"]["value"]),
-                dockq_success=format_success(docking["dockq_above_threshold"]),
+                dockq_success=format_dockq_success(docking["dockq_above_threshold"]),
                 binder=format_number(
                     docking["target_aligned_binder_backbone_rmsd_angstrom_median"]["value"]
                 ),
@@ -448,14 +506,17 @@ def markdown(report: dict[str, Any]) -> str:
                     ]
                 ),
                 irmsd=format_number(docking["irmsd_angstrom_median"]["value"]),
-                ilddt=format_number(docking["ilddt_mean"]["value"]),
+                ilddt=format_number(docking["ilddt_macro_mean"]["value"]),
             )
         )
 
     lines.extend(
         [
             "",
-            "RMSDs are medians; lDDT, DockQ, and iLDDT are arithmetic means. "
+            "RMSDs are medians; lDDT, DockQ, and iLDDT are arithmetic means across "
+            "the same prediction or binder-group units as before. DockQ success "
+            "first applies its cutoff to each target–binder interface, then "
+            "averages interface success within each complex and across predictions. "
             "Target and binder self-aligned backbone RMSD successes are evaluated "
             "independently with strict inequalities. "
             "DockQ and target-aligned binder backbone RMSD successes are evaluated "
@@ -463,8 +524,24 @@ def markdown(report: dict[str, Any]) -> str:
             "Chirality violation is residue-pooled over assessable residues, with "
             "unassessable residues shown separately. Skipped predictions are excluded.",
             "",
+            "## Supplemental metrics",
+            "",
+            "| Method | Mean global scored-subset lDDT | Mean target–binder DockQ-wave | Mean target–binder iLDDT (micro) |",
+            "|---|---:|---:|---:|",
         ]
     )
+    for item in report["methods"]:
+        folding = item["folding"]
+        docking = item["docking"]
+        lines.append(
+            "| {method} | {lddt} | {wave} | {micro} |".format(
+                method=item["method"],
+                lddt=format_number(folding["global_scored_subset_lddt_mean"]["value"]),
+                wave=format_number(docking["dockq_wave_mean"]["value"]),
+                micro=format_number(docking["ilddt_micro_mean"]["value"]),
+            )
+        )
+    lines.append("")
     return "\n".join(lines)
 
 
@@ -485,6 +562,7 @@ def main() -> int:
             args.dockq_threshold,
             args.target_self_aligned_rmsd_threshold_angstrom,
             args.binder_self_aligned_rmsd_threshold_angstrom,
+            args.method_name,
         )
     write_text(args.json_output, json.dumps(report, indent=2, allow_nan=False) + "\n")
     write_text(args.markdown_output, markdown(report))

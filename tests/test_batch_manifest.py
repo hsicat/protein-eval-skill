@@ -200,8 +200,8 @@ class BatchManifestTest(unittest.TestCase):
                 {
                     "target_aligned_binder_backbone_rmsd_threshold_angstrom": 1.5,
                     "target_aligned_binder_backbone_rmsd_operator": "<",
-                    "dockq_ave_threshold": 0.3,
-                    "dockq_ave_operator": ">",
+                    "target_binder_interface_dockq_threshold": 0.3,
+                    "target_binder_interface_dockq_operator": ">",
                 },
             )
 

@@ -50,6 +50,7 @@ def dockq_threshold_float(value: str) -> float:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("evaluation_dir", type=Path)
+    parser.add_argument("--method-name", help="Use one method label when prediction paths are grouped by seed")
     parser.add_argument(
         "--annotations",
         type=Path,
@@ -86,7 +87,7 @@ def parse_args() -> argparse.Namespace:
         type=dockq_threshold_float,
         default=DEFAULT_DOCKQ_THRESHOLD,
         help=(
-            "Strict lower cutoff for average DockQ "
+            "Strict lower cutoff for each target-binder interface DockQ "
             f"(default: {DEFAULT_DOCKQ_THRESHOLD:g})"
         ),
     )
@@ -405,7 +406,7 @@ def command_version(command: list[str]) -> str:
     return text
 
 
-def tool_versions(chirality_script: Path, custom_script: Path) -> dict[str, Any]:
+def tool_versions(chirality_script: Path, custom_script: Path, role_script: Path) -> dict[str, Any]:
     batch_script = Path(__file__).resolve()
     return {
         "openstructure": command_version(["conda", "run", "-n", "ost212", "ost", "--version"]),
@@ -416,6 +417,8 @@ def tool_versions(chirality_script: Path, custom_script: Path) -> dict[str, Any]
         "chirality_script_sha256": sha256(chirality_script),
         "custom_rmsd_script": str(custom_script.resolve()),
         "custom_rmsd_script_sha256": sha256(custom_script),
+        "role_metrics_script": str(role_script.resolve()),
+        "role_metrics_script_sha256": sha256(role_script),
         "batch_script": str(batch_script),
         "batch_script_sha256": sha256(batch_script),
     }
@@ -495,6 +498,59 @@ def ost_summary(raw: dict[str, Any], scored_reference_chains: set[str]) -> dict[
     }
 
 
+def target_binder_dockq_metrics(
+    parsed_ost: dict[str, Any], target_chains: list[str], binders: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Retain only annotated target-binder native chain-pair interfaces."""
+    targets = set(target_chains)
+    binder_chains = {chain for binder in binders for chain in binder["chains"]}
+
+    def is_target_binder(pair: list[str]) -> bool:
+        if len(pair) < 2:
+            return False
+        first, second = pair[:2]
+        return (first in targets and second in binder_chains) or (
+            second in targets and first in binder_chains
+        )
+
+    native = [
+        pair for pair in parsed_ost.get("dockq_reference_interfaces", [])
+        if is_target_binder(pair)
+    ]
+    selected = [
+        interface for interface in parsed_ost.get("per_interface", [])
+        if is_target_binder(interface.get("identity", []))
+    ]
+    scores = [
+        score for interface in selected
+        if (score := finite_float(interface.get("dockq"))) is not None
+    ]
+    weighted = [
+        (score, contacts)
+        for interface in selected
+        if (score := finite_float(interface.get("dockq"))) is not None
+        and (contacts := finite_float(interface.get("nnat"))) is not None
+        and contacts > 0
+    ]
+    native_pairs = {tuple(sorted(pair[:2])) for pair in native}
+    scored_pairs = {tuple(sorted(item["identity"][:2])) for item in selected}
+    return {
+        "per_interface": selected,
+        "n_reference_interfaces": len(native),
+        "n_scored_interfaces": len(scores),
+        "unmapped_reference_interfaces": [
+            pair for pair in native if tuple(sorted(pair[:2])) not in scored_pairs
+        ],
+        "mean": sum(scores) / len(scores) if scores else None,
+        "wave": (
+            sum(score * contacts for score, contacts in weighted)
+            / sum(contacts for _, contacts in weighted)
+            if len(weighted) == len(scores) and weighted else None
+        ),
+        "native_pairs": [list(pair) for pair in sorted(native_pairs)],
+    }
+
+
 def chirality_summary(path: Path, exit_code: int) -> dict[str, Any]:
     if not path.is_file():
         return {"status": "UNAVAILABLE", "reason": f"Tool exited {exit_code} without summary JSON"}
@@ -530,9 +586,16 @@ def evaluate_docking_thresholds(
     target_aligned: dict[str, Any],
     binder_rmsd_threshold_angstrom: float,
     dockq_threshold: float,
+    role_metrics: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Classify available docking metrics using strict user-facing cutoffs."""
     dockq = finite_float(parsed_ost.get("dockq_ave"))
+    role_dockq = (role_metrics or {}).get("target_binder_dockq", {})
+    interface_scores = [
+        score for interface in role_dockq.get("per_interface", [])
+        if (score := finite_float(interface.get("dockq"))) is not None
+    ]
+    interface_successes = sum(score > dockq_threshold for score in interface_scores)
     binders: list[dict[str, Any]] = []
     for binder in target_aligned.get("binders", []):
         measurement = binder.get("target_aligned_binder_backbone_rmsd_angstrom", {})
@@ -555,6 +618,11 @@ def evaluate_docking_thresholds(
         "dockq_ave_operator": ">",
         "dockq_ave": dockq,
         "dockq_ave_above_threshold": dockq > dockq_threshold if dockq is not None else None,
+        "target_binder_dockq_interface_success_count": interface_successes,
+        "target_binder_dockq_interface_available_count": len(interface_scores),
+        "target_binder_dockq_success_fraction": (
+            interface_successes / len(interface_scores) if interface_scores else None
+        ),
         "binders": binders,
     }
 
@@ -622,6 +690,14 @@ def prediction_run_identity(
             "ilddt": True,
             "dockq": True,
             "min_pep_length": min_pep_length,
+        },
+        "role_metrics": {
+            "target_only_lddt": True,
+            "binder_group_lddt": True,
+            "target_binder_ilddt_per_chain_pair": True,
+            "target_binder_ilddt_micro": "distance-test weighted",
+            "target_binder_ilddt_macro": "equal eligible chain-pair mean",
+            "dockq_scope": "annotated target-binder native interfaces only",
         },
         "custom_rmsd": {
             "alignment_atoms": ["N", "CA", "C", "O"],
@@ -734,8 +810,8 @@ def write_batch_manifest(
                 binder_rmsd_threshold_angstrom
             ),
             "target_aligned_binder_backbone_rmsd_operator": "<",
-            "dockq_ave_threshold": dockq_threshold,
-            "dockq_ave_operator": ">",
+            "target_binder_interface_dockq_threshold": dockq_threshold,
+            "target_binder_interface_dockq_operator": ">",
         },
         "annotations": {
             "path": str(annotation_path.resolve()),
@@ -775,6 +851,7 @@ def run_one(
     audit_item: dict[str, Any],
     chirality_script: Path,
     custom_script: Path,
+    role_script: Path,
     versions: dict[str, Any],
     resume_incomplete: bool,
     run_identity: dict[str, Any],
@@ -849,6 +926,30 @@ def run_one(
     }
     parsed_ost = ost_summary(raw_ost, scored_reference_chains)
 
+    role_config = {
+        "reference": str(reference_subset),
+        "model": str(model_subset),
+        "chain_mapping": mapping,
+        "target_chains": sample["target_chains"],
+        "binders": sample["binders"],
+        "min_pep_length": min_pep_length,
+    }
+    role_config_path = run_dir / "role_metrics_config.json"
+    write_json(role_config_path, role_config)
+    role_output_path = run_dir / "role_metrics.json"
+    role_command = [
+        "conda", "run", "-n", "ost212", "python", str(role_script),
+        "--config", str(role_config_path), "--output", str(role_output_path),
+    ]
+    role_run = run_command(role_command, run_dir, "role_metrics", command_log)
+    role_metrics = load_json(role_output_path) if role_output_path.is_file() else {
+        "status": "UNAVAILABLE",
+        "reason": f"No role metric JSON; exit code {role_run.returncode}",
+    }
+    role_metrics["target_binder_dockq"] = target_binder_dockq_metrics(
+        parsed_ost, sample["target_chains"], sample["binders"]
+    )
+
     custom_config = {
         "reference": str(reference_subset),
         "model": str(model_subset),
@@ -907,12 +1008,24 @@ def run_one(
             warnings.append("Questionable very-short-chain match: " + ", ".join(questionable))
 
     statuses = [parsed_ost.get("status"), custom.get("status"), chirality.get("status")]
-    status = "SUCCESS" if statuses == ["SUCCESS", "SUCCESS", "SUCCESS"] else "PARTIAL"
+    status = "SUCCESS" if statuses == ["SUCCESS", "SUCCESS", "SUCCESS"] and role_run.returncode == 0 else "PARTIAL"
     if parsed_ost.get("status") != "SUCCESS":
         status = "FAILURE"
     unavailable_metrics = [
         {"metric": "nonpolymer_ligand", "reason": "Not requested/confirmed for this batch"}
     ]
+    if role_run.returncode:
+        unavailable_metrics.append(
+            {"metric": "role_metrics", "reason": role_metrics.get("reason", "Role scoring failed")}
+        )
+    if role_metrics["target_binder_dockq"]["mean"] is None:
+        unavailable_metrics.append(
+            {"metric": "target_binder_dockq", "reason": "No mapped native target-binder DockQ interface"}
+        )
+    if role_metrics.get("target_binder_ilddt", {}).get("macro") is None:
+        unavailable_metrics.append(
+            {"metric": "target_binder_ilddt", "reason": "No eligible native target-binder distance tests"}
+        )
     for section_name, section in (
         ("target_aligned_binder_rmsd", target_aligned),
         ("binder_self_aligned_rmsd", self_aligned),
@@ -927,7 +1040,7 @@ def run_one(
                         }
                     )
     summary = {
-        "schema_version": 2,
+        "schema_version": 3,
         "status": status,
         "sample_id": sample_id,
         "prediction_path": prediction_path,
@@ -944,6 +1057,7 @@ def run_one(
         "run_dir": str(run_dir.resolve()),
         "warnings": warnings,
         "openstructure": parsed_ost,
+        "role_metrics": role_metrics,
         "target_aligned_binder_rmsd": target_aligned,
         "binder_self_aligned_rmsd": self_aligned,
         "rmsd_residue_correspondence": custom.get("residue_correspondence"),
@@ -994,11 +1108,27 @@ def regenerate_batch_csv(
             target_aligned,
             binder_rmsd_threshold_angstrom,
             dockq_threshold,
+            summary.get("role_metrics", {}),
         )
         threshold_binders = {
             item["id"]: item for item in threshold_evaluation.get("binders", [])
         }
         binder_defs = summary.get("binders") or [{"id": "", "chains": []}]
+        role_metrics = summary.get("role_metrics", {})
+        binder_lddt_by_id = {
+            item["binder_id"]: item.get("lddt")
+            for item in role_metrics.get("binder_only_lddt", [])
+        }
+        binder_lddt_values = [
+            score for raw_value in binder_lddt_by_id.values()
+            if (score := finite_float(raw_value)) is not None
+        ]
+        binder_lddt_complex_mean = (
+            sum(binder_lddt_values) / len(binder_lddt_values)
+            if binder_lddt_values else None
+        )
+        role_dockq = role_metrics.get("target_binder_dockq", {})
+        role_ilddt = role_metrics.get("target_binder_ilddt", {})
         for binder_def in binder_defs:
             target_binder = target_binders.get(binder_def["id"], {})
             target_ca = target_binder.get("target_aligned_binder_ca_rmsd_angstrom", {})
@@ -1035,6 +1165,29 @@ def regenerate_batch_csv(
                     "binder_reference_chains": "+".join(binder_def["chains"]),
                     "ost_lddt": ost.get("lddt"),
                     "ost_ilddt": ost.get("ilddt"),
+                    "target_only_lddt": role_metrics.get("target_only_lddt"),
+                    "binder_only_lddt": binder_lddt_by_id.get(binder_def["id"]),
+                    "binder_only_lddt_complex_mean": binder_lddt_complex_mean,
+                    "target_binder_ilddt_macro": role_ilddt.get("macro"),
+                    "target_binder_ilddt_micro": role_ilddt.get("micro"),
+                    "target_binder_ilddt_pairs_json": json.dumps(
+                        role_ilddt.get("per_chain_pair", []), separators=(",", ":")
+                    ),
+                    "target_binder_dockq_mean": role_dockq.get("mean"),
+                    "target_binder_dockq_wave": role_dockq.get("wave"),
+                    "target_binder_dockq_per_interface_json": json.dumps(
+                        role_dockq.get("per_interface", []), separators=(",", ":")
+                    ),
+                    "target_binder_dockq_success_fraction": threshold_evaluation.get(
+                        "target_binder_dockq_success_fraction"
+                    ),
+                    "target_binder_dockq_threshold": dockq_threshold,
+                    "target_binder_dockq_interface_success_count": threshold_evaluation.get(
+                        "target_binder_dockq_interface_success_count"
+                    ),
+                    "target_binder_dockq_interface_available_count": threshold_evaluation.get(
+                        "target_binder_dockq_interface_available_count"
+                    ),
                     "ost_dockq_ave": ost.get("dockq_ave"),
                     "ost_dockq_ave_threshold": threshold_evaluation.get(
                         "dockq_ave_threshold"
@@ -1139,8 +1292,9 @@ def main() -> int:
         print(f"Chirality script is missing: {chirality_script}", file=sys.stderr)
         return 2
     custom_script = Path(__file__).with_name("target_aligned_binder_rmsd.py")
+    role_script = Path(__file__).with_name("role_metrics.py")
     try:
-        versions = tool_versions(chirality_script, custom_script)
+        versions = tool_versions(chirality_script, custom_script, role_script)
         records = prediction_records(annotations)
         audit_by_prediction = {item["prediction"]: item for item in report["predictions"]}
         batch_manifest, run_identities = write_batch_manifest(
@@ -1174,6 +1328,7 @@ def main() -> int:
                 audit_by_prediction[prediction_path],
                 chirality_script,
                 custom_script,
+                role_script,
                 versions,
                 args.resume_incomplete,
                 run_identities[prediction_path],
@@ -1197,6 +1352,7 @@ def main() -> int:
                 sys.executable,
                 str(metric_summary_script),
                 str(output),
+                *(["--method-name", args.method_name] if args.method_name else []),
                 "--json-output",
                 str(metric_summary_json),
                 "--markdown-output",

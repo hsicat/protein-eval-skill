@@ -41,6 +41,11 @@ to strict `> 0.23`. Override them for a batch with
 The thresholds are fingerprinted batch/report settings and therefore remain
 traceable without forcing the underlying structure scores to be recomputed.
 
+For a single-method evaluation directory whose `predicted/` subdirectories
+are seed names (such as AF3 baseline or AF3 steering), pass
+`--method-name af3_baseline` or `--method-name af3_steering` so the
+method summary combines all seeds under the actual method name.
+
 The runner uses the chirality scripts bundled in `<skill-dir>/scripts/` by
 default. Pass `--chirality-script <path>` only to test an explicitly inspected
 replacement; its adjacent `chirality_angles.py` must be importable.
@@ -54,7 +59,17 @@ The customized RMSDs are distinct from OpenStructure per-interface `lrmsd`:
 - Establish residue correspondence from OpenStructure's validated, direction-preserving pairwise alignments.
 - Use the aligned atom intersection. Fit predicted target to reference target once, across all annotated target chains together, with backbone `N`, `CA`, `C`, and `O` atoms and an unweighted Kabsch fit. Do not reject outliers.
 - Require at least three non-collinear matched target atom pairs. Report the target backbone fit RMSD on those same atoms.
-- Apply that transform to each annotated multichain binder group without fitting the binder again.
+- Apply that transform to each annotated binder group without fitting the binder again.
+- When sequence-identical binder chains are independent copies occupying distinct
+  target pockets, annotate one single-chain binder group per copy. Measure each
+  copy's target-aligned RMSD using the same target fit, and fit each copy
+  independently for binder self-aligned RMSD. Preserve the validated one-to-one
+  chain mapping. For example, in binder_target_5's 1PCG and 7LL8 use separate
+  C and D groups; in 4GLN use separate A and D groups. A binder whose chains
+  jointly form one functional unit remains one multichain binder group.
+- Report the binder group count and aggregate scores consistently across methods;
+  if the headline statistic is per structure, explicitly combine copy scores
+  once per structure rather than counting a two-copy structure twice.
 - Report both `target_aligned_binder_ca_rmsd_angstrom` and `target_aligned_binder_backbone_rmsd_angstrom` (`N`, `CA`, `C`, `O`), including atom/residue coverage and omissions.
 - Never reverse residue correspondence to improve a score; a directionally reversed pose must remain penalized.
 - Separately fit each annotated binder group to itself, independently for CA and
@@ -72,10 +87,36 @@ mapped backbone atoms, and reports RMSD on the smaller chain. It may numerically
 match a target-aligned binder-backbone RMSD for a simple two-chain complex, but
 it is not a substitute for the explicitly grouped custom metric.
 
+For folding, additionally compute all-atom lDDT on all annotated target
+chains alone and on each annotated binder group alone. The target-only score
+includes target-target contacts; a multichain binder group's score includes
+its internal contacts. Average eligible binder-group lDDTs once within each
+prediction for the method-level folding headline. Keep the original full
+target-plus-binder lDDT as a supplemental diagnostic.
+
+For docking, use only native interfaces between an annotated target chain and
+an annotated binder chain. Retain the unfiltered OpenStructure output as a
+diagnostic. Report per-interface DockQ, the equal mean of eligible target-binder
+DockQs within a prediction, and their native-contact-weighted DockQ-wave.
+Apply the strict DockQ cutoff to each target-binder interface first; the
+prediction's success value is the fraction of eligible interfaces that pass.
+Average those fractions across available predictions. Filter iRMSD to those
+same target-binder interfaces without changing its existing dataset-level
+median across available interface values.
+
+Compute target-binder iLDDT separately for each target-chain/binder-chain
+pair with native inter-chain distance tests. The macro value is the equal mean
+of eligible pair scores within a prediction; the micro value pools conserved
+and expected OpenStructure distance tests across those pairs within that
+prediction. Use macro for the docking headline and retain micro, pair scores,
+and the original global inter-chain iLDDT as diagnostics. Pairs with no native
+distance tests are unavailable, not zero. Read [references/outputs.md](references/outputs.md)
+for exact fields and aggregation units.
+
 Chirality uses the bundled `scripts/chirality_angles_all_residues.py` with detailed output. The primary accuracy is pooled over every eligible D- and L-amino-acid residue in the explicitly annotated chirality chains. Preserve separate DAA and LAA summaries, per-residue classifications, correct count, eligible count, and skipped/unassessable count. Unavailable values stay unavailable, never zero-filled.
 
-For every available score, independently classify the average OpenStructure
-DockQ with a strict `>` comparison. Use strict `<` comparisons for the target
+For every available target-binder interface DockQ, independently classify it
+with a strict `>` comparison. Use strict `<` comparisons for the target
 self-aligned backbone RMSD, each annotated binder group's self-aligned backbone
 RMSD, and each binder group's target-aligned backbone RMSD. A value exactly at
 the cutoff does not pass. Keep unavailable scores unavailable rather than
@@ -85,15 +126,18 @@ Read [references/outputs.md](references/outputs.md) when interpreting, validatin
 
 ## Report the completed batch
 
-After every executed batch, read `results/method_summary.md` and reproduce both
-of its Markdown tables in the final reply. Do not report only a prose conclusion.
+After every executed batch, read `results/method_summary.md` and reproduce all
+three Markdown tables in the final reply. Do not report only a prose conclusion.
 The required charts are:
 
 - **Folding:** target self-aligned backbone RMSD and threshold success, binder
-  self-aligned backbone RMSD and threshold success, mean lDDT, and chirality
-  violations.
-- **Docking:** mean DockQ, DockQ threshold success, target-aligned binder
-  backbone RMSD, binder-RMSD threshold success, iRMSD, and mean iLDDT.
+  self-aligned backbone RMSD and threshold success, target-only and binder-only
+  mean lDDT, and chirality violations.
+- **Docking:** mean target-binder DockQ, complex-balanced interface DockQ
+  success, target-aligned binder backbone RMSD and threshold success,
+  target-binder iRMSD, and mean target-binder macro iLDDT.
+- **Supplemental:** original global lDDT, target-binder DockQ-wave, and
+  target-binder micro iLDDT.
 
 Use the deterministic aggregation generated by `scripts/summarize_batch_metrics.py`:
 RMSDs are medians, bounded scores are arithmetic means, and chirality violation
@@ -103,9 +147,11 @@ separately. Exclude explicitly skipped predictions and show the number of
 predictions included for each method. Link `results/method_summary.md`,
 `results/method_summary.json`, and `results/batch_summary.csv` in the reply.
 Threshold success rates use only available values in their denominators. Target
-self-aligned RMSD and DockQ are counted once per prediction; both binder RMSDs
-are counted once per annotated binder group. State all four cutoffs beside the
-reported rates.
+self-aligned RMSD is counted once per prediction; both binder RMSDs are counted
+once per annotated binder group. DockQ success is an equal mean of the
+per-prediction target-binder interface success fractions. State all four cutoffs
+beside the reported rates. The dataset-level RMSD medians, bounded-score means,
+and residue-pooled chirality aggregation remain unchanged.
 
 ## Boundaries
 
