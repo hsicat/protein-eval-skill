@@ -129,13 +129,20 @@ Docking, and supplemental summary tables generated from those files. By
 default, the Docking table reports the mean per-complex fraction of
 target-binder interfaces satisfying strict `DockQ > 0.23` and the mean
 per-complex fraction of binder groups satisfying
-`target-aligned binder backbone RMSD < 2 Å`. Use
+`L-RMSD < 2 Å`. Use
 `--dockq-threshold` and `--binder-rmsd-threshold-angstrom` to change those
 fingerprinted cutoffs for a batch. The Folding table likewise reports strict
 `target self-aligned backbone RMSD < 2 Å` and
 `binder self-aligned backbone RMSD < 2 Å` per-complex fractions. Change these with
 `--target-self-aligned-rmsd-threshold-angstrom` and
 `--binder-self-aligned-rmsd-threshold-angstrom`.
+
+Figures and tables label `target_aligned_binder_backbone_rmsd_angstrom` as
+**L-RMSD** (formerly “target-aligned binder backbone RMSD” or “Binder pose RMSD”).
+It is binder N/CA/C/O RMSD after jointly fitting all annotated target chains on
+their N/CA/C/O atoms, without refitting the binder. The calculation, stored
+fields, CLI options, and aggregation are unchanged; the success column is
+**L-RMSD success**. Self-aligned RMSDs retain their existing names.
 
 The role-scoped scoring update is documented in
 [`VERSION_UPDATE_2026-11-11.md`](VERSION_UPDATE_2026-11-11.md). It changes

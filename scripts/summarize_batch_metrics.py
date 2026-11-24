@@ -547,12 +547,15 @@ def markdown(report: dict[str, Any]) -> str:
             "",
             "## Docking",
             "",
-            f"Strict success criteria: DockQ > {dockq_threshold:g}; target-aligned binder "
-            f"backbone RMSD < {rmsd_threshold:g} Å. Unavailable values are excluded from "
+            f"Strict success criteria: DockQ > {dockq_threshold:g}; "
+            f"L-RMSD < {rmsd_threshold:g} Å. Unavailable values are excluded from "
             "each denominator.",
             "",
-            "| Method | Predictions | Mean target–binder DockQ | Interface DockQ success | Target-aligned binder "
-            "backbone RMSD, median of complex means (Å) | RMSD success | Target–binder iRMSD, median of complex means (Å) | Mean target–binder iLDDT (macro) |",
+            "L-RMSD is binder backbone (N/CA/C/O) RMSD after jointly fitting all "
+            "annotated target chains on their backbone atoms, without refitting the binder.",
+            "",
+            "| Method | Predictions | Mean target–binder DockQ | Interface DockQ success | "
+            "L-RMSD, median of complex means (Å) | L-RMSD success | Target–binder iRMSD, median of complex means (Å) | Mean target–binder iLDDT (macro) |",
             "|---|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
@@ -586,8 +589,9 @@ def markdown(report: dict[str, Any]) -> str:
             "lDDT, DockQ, and iLDDT are arithmetic means across predictions. DockQ success "
             "first applies its cutoff to each target–binder interface, then "
             "averages interface success within each complex and across predictions. "
-            "Binder RMSD success applies a strict cutoff to each available group, "
-            "then averages group pass fractions within and across predictions. "
+            "Binder self-aligned RMSD success and L-RMSD success apply their strict "
+            "cutoffs to each available group, "
+            "then average group pass fractions within and across predictions. "
             "The parenthetical pooled group counts need not divide to the "
             "reported complex-balanced percentage. "
             "All threshold classifications are independent. "

@@ -54,9 +54,9 @@ backbone RMSD is sourced from
 joint all-target fit. It also reports independent success proportions for the
 two folding RMSDs. Binder-only lDDT is averaged across eligible binder groups
 once within a prediction. The Docking table reports mean target-binder DockQ,
-median per-prediction mean target-aligned binder backbone RMSD, median
+median per-prediction mean L-RMSD, median
 per-prediction mean target-binder iRMSD, mean macro target-binder iLDDT, and
-independent DockQ and binder RMSD success rates. A supplemental table retains
+independent DockQ and L-RMSD success rates. A supplemental table retains
 mean full-subset lDDT,
 target-binder DockQ-wave, and micro target-binder iLDDT.
 Prediction-level scores are deduplicated by prediction path before aggregation.
@@ -78,6 +78,14 @@ violation continues to pool assessable residues across the dataset, with no
 complex-equal averaging.
 
 ## Metric names
+
+Use **L-RMSD** as the figure/table display name for
+`target_aligned_binder_backbone_rmsd_angstrom`, formerly “target-aligned binder
+backbone RMSD” or “Binder pose RMSD”. Measure binder N/CA/C/O displacement after
+a joint N/CA/C/O fit of all annotated target chains, without refitting the binder.
+Use **L-RMSD success** for its threshold rate and **L-RMSD (Å)** on axes.
+Keep stored field names, calculations, aggregation, and cutoffs unchanged.
+Keep CA-only, self-aligned, and OpenStructure per-interface `lrmsd` results distinct.
 
 - `openstructure.lddt`: global all-atom lDDT.
 - `openstructure.ilddt`: global all-atom lDDT restricted to inter-chain contacts.
@@ -102,7 +110,7 @@ complex-equal averaging.
 - `target_self_aligned_backbone_rmsd_below_threshold`: nullable Boolean from
   the strict target-folding RMSD cutoff, which defaults to `< 2 Å`.
 - `target_aligned_binder_ca_rmsd_angstrom`: mapped binder CA displacement after the target fit, without binder refitting.
-- `target_aligned_binder_backbone_rmsd_angstrom`: mapped binder N/CA/C/O displacement after the target fit, without binder refitting.
+- `target_aligned_binder_backbone_rmsd_angstrom`: **L-RMSD**; mapped binder N/CA/C/O displacement after the target fit, without binder refitting.
 - `target_aligned_binder_backbone_rmsd_below_threshold`: nullable Boolean from
   the strict RMSD cutoff, which defaults to `< 2 Å`.
 - `target_binder_dockq_success_fraction`: fraction of scored target-binder

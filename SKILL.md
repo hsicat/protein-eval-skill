@@ -31,8 +31,8 @@ conda run -n urop python <skill-dir>/scripts/batch_evaluate.py \
   --execute
 ```
 
-The RMSD classifications default to strict `< 2 Å` for target self-aligned,
-binder self-aligned, and target-aligned binder backbone RMSDs. DockQ defaults
+The RMSD classifications default to strict `< 2 Å` for target self-aligned
+backbone RMSD, binder self-aligned backbone RMSD, and L-RMSD. DockQ defaults
 to strict `> 0.23`. Override them for a batch with
 `--target-self-aligned-rmsd-threshold-angstrom <value>`,
 `--binder-self-aligned-rmsd-threshold-angstrom <value>`,
@@ -53,6 +53,15 @@ replacement; its adjacent `chirality_angles.py` must be importable.
 The orchestrator invokes OpenStructure in `ost212`. It supplies `-c` pairs in reference-structure chain order and adds `--min-pep-length 1` when an annotated binder chain has fewer than six observed residues. Review very-short-chain alignments and flag mismatches rather than trusting them automatically.
 
 ## Fixed metric definitions
+
+Use **L-RMSD** in figures, tables, axes, panel titles, captions, and threshold-success
+labels for `target_aligned_binder_backbone_rmsd_angstrom`. Treat
+“target-aligned binder backbone RMSD” and “Binder pose RMSD” as legacy aliases.
+Define L-RMSD as binder backbone (`N`, `CA`, `C`, `O`) RMSD after jointly fitting
+all annotated target chains on their backbone atoms, without refitting the
+binder. Preserve the calculation, mappings, grouping, aggregation, thresholds,
+CLI options, and stored JSON/CSV field names. Keep target/binder self-aligned
+RMSDs and the CA-only diagnostic under their own names.
 
 The customized RMSDs are distinct from OpenStructure per-interface `lrmsd`:
 
@@ -135,7 +144,7 @@ The required charts are:
   self-aligned backbone RMSD and threshold success, target-only and binder-only
   mean lDDT, and chirality violations.
 - **Docking:** mean target-binder DockQ, complex-balanced interface DockQ
-  success, target-aligned binder backbone RMSD and threshold success,
+  success, L-RMSD and L-RMSD success,
   target-binder iRMSD, and mean target-binder macro iLDDT.
 - **Supplemental:** original global lDDT, target-binder DockQ-wave, and
   target-binder micro iLDDT.
@@ -162,8 +171,8 @@ and success results, and interface-pooled iRMSD, remain in
 
 For manuscript figures or tables, use `protein-eval-graph` and preserve its
 seven selected primary metric categories: target and binder self-aligned
-backbone RMSD, global lDDT, D-Cα chirality correctness, target-aligned binder
-backbone RMSD, DockQ, and interface lDDT. Interface RMSD is optional. Verify
+backbone RMSD, global lDDT, D-Cα chirality correctness, L-RMSD,
+DockQ, and interface lDDT. Interface RMSD is optional. Verify
 that plotted lDDT, DockQ, and chirality fields match the figure's stated
 definitions; this skill's additional diagnostic metrics do not add primary
 figure panels automatically.
