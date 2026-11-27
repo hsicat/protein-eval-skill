@@ -103,8 +103,8 @@ def summarize(rows):
         n_sites=n, n_assessable=nv, n_unassessable=n - nv, n_pass=passed,
         n_inverted=sum(r["status"] == "inverted" for r in rows),
         n_below_threshold=sum(r["status"] == "below_threshold" for r in rows),
-        # This conservative rate retains invalid sites in the denominator.
-        chirality_correct_rate_pct=100 * passed / n if n else None,
+        chirality_correct_rate_pct=100 * passed / nv if nv else None,
+        all_selected_correct_rate_pct=100 * passed / n if n else None,
         assessable_correct_rate_pct=100 * passed / nv if nv else None,
         coverage_pct=100 * nv / n if n else None,
         total_chirality_loss_rad=loss_sum if complete else None,
@@ -115,7 +115,8 @@ def summarize(rows):
     )
 
 
-def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=None):
+def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=None,
+             chain_id_type="auth"):
     import gemmi
     structure = gemmi.read_structure(str(path))
     if not len(structure):
@@ -123,15 +124,25 @@ def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=Non
     rows, excluded = [], []
     for model_index, model in enumerate(structure, start=1):
         model_rows, found = [], set()
-        present_chains = {chain.name for chain in model}
-        if chains and not set(chains).issubset(present_chains):
-            raise ValueError(f"Model {model_index}: unknown chains {set(chains) - present_chains}")
-        for chain in model:
-            if chains and chain.name not in chains:
-                continue
+        chain_owners = {}
+        for index, chain in enumerate(model):
             for residue in chain:
+                if gemmi.find_tabulated_residue(residue.name).is_amino_acid():
+                    chain_id = chain.name if chain_id_type == "auth" else residue.subchain
+                    if chain_id:
+                        chain_owners.setdefault(chain_id, set()).add((index, residue.subchain))
+        for chain_id in chains or []:
+            owners = chain_owners.get(chain_id, set())
+            if len(owners) != 1:
+                problem = "ambiguous" if owners else "unknown"
+                raise ValueError(f"Model {model_index}: {problem} {chain_id_type} chain {chain_id!r}")
+        for chain in model:
+            for residue in chain:
+                chain_id = chain.name if chain_id_type == "auth" else residue.subchain
+                if chains and chain_id not in chains:
+                    continue
                 code = residue.name.strip().upper()
-                key = (chain.name, str(residue.seqid))
+                key = (chain_id, str(residue.seqid))
                 if sites is not None:
                     if key not in sites:
                         continue
@@ -143,7 +154,7 @@ def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=Non
                     if code not in DAA_TO_LAA and not (include_laa and code in LAA):
                         if code not in LAA and code not in {"GLY", "HOH", "WAT", "DOD"}:
                             if any(a.name.strip() == "CA" for a in residue):
-                                excluded.append(dict(model=model_index, chain=chain.name,
+                                excluded.append(dict(model=model_index, chain=chain_id,
                                                      residue_id=str(residue.seqid), residue_name=code,
                                                      reason="unsupported residue with CA; not scored"))
                         continue
@@ -151,7 +162,7 @@ def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=Non
                         raise ValueError(f"Ambiguous repeated residue identity {key} in model {model_index}.")
                 found.add(key)
                 order, target_r, dl = target_spec(target)
-                row = dict(model=model_index, chain=chain.name, residue_id=str(residue.seqid),
+                row = dict(model=model_index, chain=chain_id, residue_id=str(residue.seqid),
                            label_seq_id=residue.label_seq, residue_name=code, target_ccd=target,
                            target_dl=dl, center="CA", target_rs="R" if target_r else "S",
                            atom_order=",".join(order), threshold_deg=threshold_deg,
@@ -184,12 +195,14 @@ def evaluate(path, threshold_deg=15.0, include_laa=False, chains=None, sites=Non
         algorithm="CIP-ordered signed improper atan2; target R:+phi, S:-phi",
         center="CA only", threshold_deg=threshold_deg,
         target_source="explicit --site" if sites is not None else "structure CCD residue names",
-        selection=dict(include_laa=include_laa, chains=chains),
-        accuracy_definition="pass / all selected sites; pass requires oriented angle >= threshold",
+        selection=dict(include_laa=include_laa, chains=chains, chain_id_type=chain_id_type),
+        accuracy_definition="pass / assessable sites; pass requires oriented angle >= threshold",
         loss_definition="sum or mean of max(0, radians(threshold) - oriented_angle_rad)",
-        invalid_policy="invalid sites retained in accuracy denominator; full loss null if any invalid",
+        invalid_policy="invalid sites reported separately; full loss null if any invalid",
         pooled_note="Each model-residue pair counts once; models also summarized separately.",
         pooled=grouped(rows),
+        by_chain={chain: grouped([r for r in rows if r["chain"] == chain])
+                  for chain in sorted(set(chains or []) | {r["chain"] for r in rows})},
         models=[dict(model=i, **grouped([r for r in rows if r["model"] == i]))
                 for i in range(1, len(structure) + 1)],
         excluded_unsupported_residues=excluded,
@@ -224,17 +237,20 @@ def simple_output(rows, report):
               "Values are rounded; pass/fail uses full precision.", ""]
     def summary_lines(groups):
         result = []
-        for group in ("DAA", "LAA"):
+        for group in ("all_selected", "DAA", "LAA"):
             s = groups[group]
             if s["n_sites"]:
-                result.append(f"{group} chirality accuracy: {s['chirality_correct_rate_pct']:.1f}% "
-                              f"({s['n_pass']}/{s['n_sites']} pass)")
+                rate = s["chirality_correct_rate_pct"]
+                shown_rate = "N/A" if rate is None else f"{rate:.1f}%"
+                label = "All (D+L)" if group == "all_selected" else group
+                result.append(f"{label} chirality accuracy: {shown_rate} "
+                              f"({s['n_pass']}/{s['n_assessable']} assessable sites passed)")
         s = groups["all_selected"]
         loss = s["total_chirality_loss_rad"]
         shown = "N/A" if loss is None else f"{loss:.5f} rad"
         result.append(f"Total chirality loss (sum): {shown}")
         if s["n_unassessable"]:
-            result.append(f"Cannot assess: {s['n_unassessable']} site(s), counted as not passing; "
+            result.append(f"Cannot assess: {s['n_unassessable']} site(s); "
                           "total loss is unavailable.")
         return result
     if multiple:
@@ -262,9 +278,10 @@ def main(argv=None):
     parser.add_argument("--include-laa", action="store_true", help="Also score the 19 standard L amino acids.")
     parser.add_argument("--detailed", action="store_true",
                         help="Also write full diagnostics to detailed_per_residue.csv and summary.json.")
-    parser.add_argument("--chain", action="append", help="Restrict to author chain ID; repeatable.")
+    parser.add_argument("--chain", action="append", help="Restrict to a chain ID; repeatable.")
+    parser.add_argument("--chain-id-type", choices=("auth", "label"), default="auth")
     parser.add_argument("--site", action="append", metavar="CHAIN:RESID:CCD",
-                        help="Explicit target site (author IDs, e.g. B:20:DAL or B:20:ALA); repeatable.")
+                        help="Explicit target site (e.g. B:20:DAL or B:20:ALA); repeatable.")
     args = parser.parse_args(argv)
     try:
         if not math.isfinite(args.threshold_deg) or not 0 < args.threshold_deg < 90:
@@ -287,7 +304,8 @@ def main(argv=None):
         out = args.out_dir or Path.cwd() / (args.structure.stem + "_chirality_angles")
         if out.exists():
             raise ValueError(f"Output directory already exists: {out}; choose a new --out-dir.")
-        rows, report = evaluate(args.structure, args.threshold_deg, args.include_laa, args.chain, sites)
+        rows, report = evaluate(args.structure, args.threshold_deg, args.include_laa,
+                                args.chain, sites, args.chain_id_type)
         out.mkdir(parents=True, exist_ok=False)
         headers, table, readable = simple_output(rows, report)
         with (out / "per_residue.csv").open("w", encoding="utf-8", newline="") as handle:

@@ -17,10 +17,15 @@ Each run contains:
   `<tool>.stdout.txt` and `<tool>.stderr.txt`, including empty files; successful
   commands retain only a nonempty stderr file and discard stdout.
 - `ost_scores.json`: untouched OpenStructure JSON.
+- `ost_scores_no_stereochecks.json`: untouched OpenStructure JSON for global
+  all-atom lDDT, local lDDT, and global iLDDT with the checks disabled.
 - `role_metrics_config.json` and `role_metrics.json`: annotated-role
   OpenStructure lDDT and target-binder iLDDT results, including per-pair
   distance-test counts. The role-specific target-binder DockQ subset is stored
   in `summary.json` under `role_metrics.target_binder_dockq`.
+- `role_metrics_no_stereochecks.json`: target-only and binder-group all-atom
+  lDDT, target–binder chain-pair iLDDT with distance-test counts, and the
+  macro and micro iLDDT results with checks disabled.
 - `custom_rmsd_config.json` and `binder_rmsd.json`.
 - `chirality/`: the chirality tool's readable report, simple CSV, detailed CSV, and raw summary JSON.
 - `summary.json`: parsed per-prediction summary retaining local lDDT, mappings,
@@ -28,13 +33,18 @@ Each run contains:
   per-interface identities and scores, raw and role-scoped DockQ, custom
   RMSDs, chirality summaries, statuses, warnings, and unavailable reasons.
 
-`results/batch_summary.csv` has one row per prediction/binder for the fingerprints
-selected by the latest batch execution, plus explicit skipped rows. Historical
+`results/batch_summary.csv` has one row per prediction/binder from the active
+execution's explicit result list, plus rows for predictions skipped in that
+execution. Historical
 content-addressed runs remain on disk. Per-interface OpenStructure results remain
 present as JSON in the CSV and as structured data in each summary; never collapse
 them to only one DockQ value.
-The CSV exposes pooled all-residue chirality as the primary result and also retains
-separate DAA and LAA counts and accuracies. It also includes the applicable
+The CSV exposes pooled All (D+L) chirality as the primary result and retains
+separate DAA and LAA counts and accuracies. For each group, `*_eligible_count`
+includes unassessable sites, `*_skipped_count` records those sites, and
+`*_accuracy_pct` divides `*_correct_count` by `*_assessable_count`. Zero
+assessable sites yields NA. The chirality summary JSON includes chain-wise
+counts. It also includes the applicable
 target self-aligned, binder self-aligned, and target-aligned binder-backbone
 RMSD cutoffs plus the per-interface DockQ cutoff. Its DockQ success field is a
 nullable fraction per prediction; the older raw `ost_dockq_ave_above_threshold`
@@ -44,11 +54,14 @@ After the CSV is written, `scripts/summarize_batch_metrics.py` produces:
 
 - `results/method_summary.json`: machine-readable method-level aggregations.
 - `results/method_summary.md`: Folding and Docking Markdown tables that must be
-  included in the final user reply.
+  included in the final user reply, along with the Supplemental table.
 
 The Folding table reports median target self-aligned backbone RMSD, median
 per-prediction mean binder self-aligned backbone RMSD, mean target-only and
-binder-only lDDT, and residue-pooled chirality violations. Target self-aligned
+binder-only lDDT, and pooled All (D+L), D-only and L-only chirality accuracy.
+Accuracy is passed / assessable, pooling site counts across included
+complex–seed predictions. The JSON also retains pooled violations and
+unassessable counts. Target self-aligned
 backbone RMSD is sourced from
 `target_backbone_fit_rmsd_angstrom`: the target N/CA/C/O residual after the
 joint all-target fit. It also reports independent success proportions for the
@@ -76,6 +89,16 @@ denominator; a prediction with no available value for one metric is omitted
 only from that metric. Explicitly skipped predictions are excluded. Chirality
 violation continues to pool assessable residues across the dataset, with no
 complex-equal averaging.
+
+The existing lDDT and iLDDT fields use OpenStructure's default stereochemistry
+checks. The disabled-mode scores are stored under
+`summary.json.openstructure_no_stereochecks` and
+`summary.json.role_metrics_no_stereochecks`, with the same inner score names.
+In the CSV and method JSON, append `_no_stereochecks` to the original score
+field name (before `_json` for the chain-pair list). Available data and
+pair eligibility are evaluated independently in each mode. The tables label
+both modes and show NA for missing disabled-mode scores in older results.
+Disabling stereochemistry checks preserves OpenStructure's standard input cleanup.
 
 ## Metric names
 
@@ -114,7 +137,8 @@ Keep CA-only, self-aligned, and OpenStructure per-interface `lrmsd` results dist
 - `target_aligned_binder_backbone_rmsd_below_threshold`: nullable Boolean from
   the strict RMSD cutoff, which defaults to `< 2 Å`.
 - `target_binder_dockq_success_fraction`: fraction of scored target-binder
-  interfaces passing strict `DockQ > 0.23`; null when none can be scored.
+  interfaces passing the batch cutoff, which defaults to strict `DockQ > 0.23`.
+  It is null when no interfaces can be scored.
 - `ost_dockq_ave_above_threshold`: legacy diagnostic Boolean using the raw
   all-scored-chain average; it is not the headline DockQ success field.
 - `binder_self_aligned_ca_rmsd_angstrom`: CA RMSD after independently fitting
@@ -124,7 +148,13 @@ Keep CA-only, self-aligned, and OpenStructure per-interface `lrmsd` results dist
 - `binder_self_aligned_backbone_rmsd_below_threshold`: nullable Boolean from
   the strict binder-folding RMSD cutoff, which defaults to `< 2 Å`.
 
-Missing residues or atoms are excluded only through the recorded aligned intersection. Always report used/possible atom pairs, coverage, and the omission list alongside a custom RMSD. If the target fit has fewer than three non-collinear atom pairs or a binder measurement has no atom pairs, that metric is unavailable with a reason.
+The reference-residue coverage denominator is the number of observed
+reference residues in the selected chains. Atom-pair coverage uses the
+possible atom pairs within the matched residues as its denominator. The
+correspondence diagnostics list unmatched reference residues, and each
+measurement lists omitted atoms. A fit needs at least three non-collinear
+atom pairs. A measurement without matched atom pairs is unavailable. Binder
+self-aligned results can remain available when the target fit fails.
 
 A score exactly equal to its cutoff is a failure because both comparisons are
 strict. A missing or non-finite score is unavailable, not a failure. Custom
@@ -133,9 +163,22 @@ manifest, CSV, and method-level summary. They are intentionally excluded from
 prediction-run fingerprints so changing only a reporting cutoff can reuse the
 existing structure scores.
 
+To change only the DockQ cutoff when summarizing an existing CSV, pass
+`--dockq-threshold` to `scripts/summarize_batch_metrics.py`. It recalculates
+each prediction's pass fraction from its saved target–binder interface scores.
+For older CSVs with counts alone, it uses those counts at the saved cutoff
+(or the historical default of 0.23 if the CSV omits the cutoff). Success at a
+different cutoff is unavailable for predictions without interface scores.
+
 ## Reruns
 
-The fingerprint includes reference and prediction file hashes, complete sample/prediction annotations, settings, inspected script hashes, and tool versions. An existing successful fingerprint is reused. A changed fingerprint creates another run and preserves the earlier result. An incomplete fingerprint is not resumed unless the operator reviews it and passes `--resume-incomplete`.
+The fingerprint includes input hashes, complete annotations, scoring settings,
+tool versions, and script hashes for both the chirality wrapper and its
+`chirality_angles.py` companion. Matching successful results can be reused.
+Changed fingerprints create separate runs. `--resume-incomplete` creates a
+fresh directory under the original run's `attempts/` for each retry.
+The CSV's `summary_path` identifies the actual attempt or reused result.
+An empty discovery blocks the batch before any summaries are generated.
 
 The batch fingerprint covers the complete annotation document, folding and
 docking classification cutoffs, shared tool versions, and the ordered

@@ -3,7 +3,7 @@
 
 The full-complex compare-structures output remains the source of chain mapping
 and DockQ components. This script scores role-specific lDDT and pairwise
-target-binder iLDDT using the same OpenStructure Scorer defaults.
+target-binder iLDDT with the selected OpenStructure stereochemistry mode.
 """
 
 from __future__ import annotations
@@ -28,22 +28,30 @@ def selected(entity: Any, chains: list[str]) -> Any:
 
 
 def scorer_for(
-    reference: Any, model: Any, mapping: dict[str, str], min_pep_length: int
+    reference: Any, model: Any, mapping: dict[str, str], min_pep_length: int,
+    no_stereochecks: bool = False,
 ) -> Scorer:
     return Scorer(
         selected(model, list(mapping.values())),
         selected(reference, list(mapping)),
         custom_mapping=mapping,
         min_pep_length=min_pep_length,
+        lddt_no_stereochecks=no_stereochecks,
     )
 
 
 def pair_distance_counts(scorer: Scorer) -> tuple[int, int]:
     """Use the exact inputs of Scorer._compute_ilddt, retaining its counts."""
-    model_chains = {chain.GetName() for chain in scorer.stereochecked_model.chains}
+    if scorer.lddt_no_stereochecks:
+        model = scorer.model
+        scoring_alignments = scorer.aln
+    else:
+        model = scorer.stereochecked_model
+        scoring_alignments = scorer.stereochecked_aln
+    model_chains = {chain.GetName() for chain in model.chains}
     alignments = {
         alignment.GetSequence(1).GetName(): alignment
-        for alignment in scorer.stereochecked_aln
+        for alignment in scoring_alignments
         if alignment.GetSequence(1).GetName() in model_chains
     }
     mapping = {
@@ -54,10 +62,11 @@ def pair_distance_counts(scorer: Scorer) -> tuple[int, int]:
         if model_chain in alignments
     }
     score, _, expected, conserved, *_ = scorer.lddt_scorer.lDDT(
-        scorer.stereochecked_model,
+        model,
         chain_mapping=mapping,
         residue_mapping=alignments,
         check_resnames=False,
+        add_mdl_contacts=scorer.lddt_add_mdl_contacts,
         no_intrachain=True,
         return_dist_test=True,
     )
@@ -71,7 +80,7 @@ def pair_distance_counts(scorer: Scorer) -> tuple[int, int]:
     return expected, conserved
 
 
-def compute(config: dict[str, Any]) -> dict[str, Any]:
+def compute(config: dict[str, Any], *, no_stereochecks: bool = False) -> dict[str, Any]:
     reference = io.LoadMMCIF(config["reference"])
     model = io.LoadMMCIF(config["model"])
     mapping = config["chain_mapping"]
@@ -80,13 +89,16 @@ def compute(config: dict[str, Any]) -> dict[str, Any]:
     min_pep_length = config["min_pep_length"]
 
     target_scorer = scorer_for(
-        reference, model, {chain: mapping[chain] for chain in targets}, min_pep_length
+        reference, model, {chain: mapping[chain] for chain in targets},
+        min_pep_length, no_stereochecks,
     )
     target_lddt = target_scorer.lddt
     binder_lddt: list[dict[str, Any]] = []
     for binder in binders:
         group_mapping = {chain: mapping[chain] for chain in binder["chains"]}
-        group_scorer = scorer_for(reference, model, group_mapping, min_pep_length)
+        group_scorer = scorer_for(
+            reference, model, group_mapping, min_pep_length, no_stereochecks
+        )
         binder_lddt.append(
             {
                 "binder_id": binder["id"],
@@ -104,7 +116,7 @@ def compute(config: dict[str, Any]) -> dict[str, Any]:
                     binder_chain: mapping[binder_chain],
                 }
                 pair_scorer = scorer_for(
-                    reference, model, pair_mapping, min_pep_length
+                    reference, model, pair_mapping, min_pep_length, no_stereochecks
                 )
                 expected, conserved = pair_distance_counts(pair_scorer)
                 pairs.append(
@@ -122,6 +134,7 @@ def compute(config: dict[str, Any]) -> dict[str, Any]:
     return {
         "schema_version": 1,
         "status": "SUCCESS",
+        "stereochecks": not no_stereochecks,
         "target_only_lddt": target_lddt,
         "binder_only_lddt": binder_lddt,
         "target_binder_ilddt": {
@@ -142,9 +155,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--no-stereochecks", action="store_true")
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
-    result = compute(config)
+    result = compute(config, no_stereochecks=args.no_stereochecks)
     args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return 0
 

@@ -1,0 +1,2797 @@
+{
+  "schema_version": 1,
+  "samples": {
+    "1AN1": {
+      "reference": "references/GT/1AN1.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "1ER8": {
+      "reference": "references/GT/1ER8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "1PCG": {
+      "reference": "references/GT/1PCG.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.92, target fit RMSD 0.742389 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed17/_cif/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.9, target fit RMSD 0.774002 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/_cif/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.913, target fit RMSD 0.817877 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed256/_cif/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.917, target fit RMSD 0.764322 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed387/_cif/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "F",
+            "D": "E"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.915, target fit RMSD 0.728295 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "1ZEA": {
+      "reference": "references/GT/1ZEA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "2HGT": {
+      "reference": "references/GT/2HGT.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C_D",
+          "chains": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "2WPH": {
+      "reference": "references/GT/2WPH.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "2WPI": {
+      "reference": "references/GT/2WPI.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "3AX5": {
+      "reference": "references/GT/3AX5.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "3FHV": {
+      "reference": "references/GT/3FHV.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.897, target fit RMSD 2.159729 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed17/_cif/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.889, target fit RMSD 1.397852 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/_cif/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.888, target fit RMSD 2.186005 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed256/_cif/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.886, target fit RMSD 2.144020 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed387/_cif/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.902, target fit RMSD 2.273119 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "3IWY": {
+      "reference": "references/GT/3IWY.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "4GLN": {
+      "reference": "references/GT/4GLN.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "4JAA": {
+      "reference": "references/GT/4JAA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "4X0W": {
+      "reference": "references/GT/4X0W.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "6KBE": {
+      "reference": "references/GT/6KBE.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "6Q77": {
+      "reference": "references/GT/6Q77.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "6RK9": {
+      "reference": "references/GT/6RK9.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7B4U": {
+      "reference": "references/GT/7B4U.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "D"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7F4F": {
+      "reference": "references/GT/7F4F.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7F4H": {
+      "reference": "references/GT/7F4H.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_G",
+          "chains": [
+            "G"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "G"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7F55": {
+      "reference": "references/GT/7F55.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7F55_ccd_full_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7F55_ccd_full_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7F55_ccd_full_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7F55_ccd_full_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7F55_ccd_full_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7LL8": {
+      "reference": "references/GT/7LL8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.257, target fit RMSD 1.121242 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed17/_cif/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.285, target fit RMSD 1.108301 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/_cif/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.304, target fit RMSD 0.944880 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed256/_cif/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.286, target fit RMSD 1.027843 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed387/_cif/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 10: DockQ 0.266, target fit RMSD 1.025684 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "7P0A": {
+      "reference": "references/GT/7P0A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7P0T": {
+      "reference": "references/GT/7P0T.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7PIU": {
+      "reference": "references/GT/7PIU.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7S1M": {
+      "reference": "references/GT/7S1M.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB biological assembly verified against GT/gt_manifest.json"
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7U9K": {
+      "reference": "references/GT/7U9K.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.48, target fit RMSD 1.381087 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed17/_cif/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.512, target fit RMSD 1.527787 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/_cif/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.47, target fit RMSD 1.648917 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed256/_cif/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.506, target fit RMSD 1.489903 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed387/_cif/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.46, target fit RMSD 1.552019 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "7Y24": {
+      "reference": "references/GT/7Y24.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7Y26": {
+      "reference": "references/GT/7Y26.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7YH8": {
+      "reference": "references/GT/7YH8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8GQP": {
+      "reference": "references/GT/8GQP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8I95": {
+      "reference": "references/GT/8I95.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8I9A": {
+      "reference": "references/GT/8I9A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8X8N": {
+      "reference": "references/GT/8X8N.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB biological assembly verified against GT/gt_manifest.json"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8XZF": {
+      "reference": "references/GT/8XZF.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9F00": {
+      "reference": "references/GT/9F00.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9F01": {
+      "reference": "references/GT/9F01.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_H",
+          "chains": [
+            "H"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9UMJ": {
+      "reference": "references/GT/9UMJ.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9UMX": {
+      "reference": "references/GT/9UMX.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9YDP": {
+      "reference": "references/GT/9YDP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/_cif/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed17/_cif/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed2026/_cif/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed256/_cif/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/seed387/_cif/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    }
+  }
+}

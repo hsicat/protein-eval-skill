@@ -125,15 +125,19 @@ The skill audits before execution and asks for unresolved biological roles, asse
 
 Each executed batch also writes `results/method_summary.md` and
 `results/method_summary.json`. The final Codex reply includes Folding,
-Docking, and supplemental summary tables generated from those files. By
-default, the Docking table reports the mean per-complex fraction of
+Docking, and supplemental summary tables generated from those files. Folding
+reports pooled All (D+L), D-only, and L-only chirality accuracy at the
+inclusive 15° cutoff. Use `--chirality-scope whole-example` to score all
+annotated target and binder chains together. The default uses
+`chirality_chains` from the annotations. By
+default, the Docking table reports the mean per-prediction fraction of
 target-binder interfaces satisfying strict `DockQ > 0.23` and the mean
-per-complex fraction of binder groups satisfying
+per-prediction fraction of binder groups satisfying
 `L-RMSD < 2 Å`. Use
 `--dockq-threshold` and `--binder-rmsd-threshold-angstrom` to change those
 fingerprinted cutoffs for a batch. The Folding table likewise reports strict
 `target self-aligned backbone RMSD < 2 Å` and
-`binder self-aligned backbone RMSD < 2 Å` per-complex fractions. Change these with
+`binder self-aligned backbone RMSD < 2 Å` success rates. Change these with
 `--target-self-aligned-rmsd-threshold-angstrom` and
 `--binder-self-aligned-rmsd-threshold-angstrom`.
 

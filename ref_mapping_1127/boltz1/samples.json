@@ -1,0 +1,2797 @@
+{
+  "schema_version": 1,
+  "samples": {
+    "1AN1": {
+      "reference": "references/GT/1AN1.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/1AN1_ccd/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/1AN1_ccd/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/1AN1_ccd/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/1AN1_ccd/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/1AN1_ccd/1AN1_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "1ER8": {
+      "reference": "references/GT/1ER8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/1ER8_ccd/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/1ER8_ccd/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/1ER8_ccd/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/1ER8_ccd/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/1ER8_ccd/1ER8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "E",
+            "B": "I"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "1PCG": {
+      "reference": "references/GT/1PCG.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/1PCG_ccd/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.901, target fit RMSD 0.795851 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/01/1PCG_ccd/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.909, target fit RMSD 0.722066 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/02/1PCG_ccd/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "F",
+            "D": "E"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.907, target fit RMSD 0.745970 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/03/1PCG_ccd/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "E",
+            "D": "F"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.908, target fit RMSD 0.760029 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/04/1PCG_ccd/1PCG_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "F",
+            "D": "E"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.897, target fit RMSD 0.851740 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "1ZEA": {
+      "reference": "references/GT/1ZEA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/1ZEA_ccd/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/1ZEA_ccd/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/1ZEA_ccd/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/1ZEA_ccd/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/1ZEA_ccd/1ZEA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "L",
+            "B": "H",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "2HGT": {
+      "reference": "references/GT/2HGT.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C_D",
+          "chains": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/2HGT_ccd/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/2HGT_ccd/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/2HGT_ccd/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/2HGT_ccd/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/2HGT_ccd/2HGT_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "2WPH": {
+      "reference": "references/GT/2WPH.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/2WPH_ccd/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/2WPH_ccd/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/2WPH_ccd/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/2WPH_ccd/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/2WPH_ccd/2WPH_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "2WPI": {
+      "reference": "references/GT/2WPI.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/2WPI_ccd/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/2WPI_ccd/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/2WPI_ccd/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/2WPI_ccd/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/2WPI_ccd/2WPI_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "3AX5": {
+      "reference": "references/GT/3AX5.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/3AX5_ccd/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/3AX5_ccd/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/3AX5_ccd/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/3AX5_ccd/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/3AX5_ccd/3AX5_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "3FHV": {
+      "reference": "references/GT/3FHV.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/3FHV_ccd/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.074, target fit RMSD 10.403353 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/01/3FHV_ccd/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.058, target fit RMSD 15.998864 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/02/3FHV_ccd/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.117, target fit RMSD 10.901840 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/03/3FHV_ccd/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.051, target fit RMSD 15.966013 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/04/3FHV_ccd/3FHV_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.106, target fit RMSD 14.386306 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "3IWY": {
+      "reference": "references/GT/3IWY.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/3IWY_ccd/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/3IWY_ccd/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/3IWY_ccd/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/3IWY_ccd/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/3IWY_ccd/3IWY_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "C": "A"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "4GLN": {
+      "reference": "references/GT/4GLN.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/4GLN_ccd/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/4GLN_ccd/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/4GLN_ccd/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/4GLN_ccd/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/4GLN_ccd/4GLN_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "E",
+            "C": "F",
+            "D": "H"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "4JAA": {
+      "reference": "references/GT/4JAA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/4JAA_ccd/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/4JAA_ccd/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/4JAA_ccd/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/4JAA_ccd/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/4JAA_ccd/4JAA_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "S"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "4X0W": {
+      "reference": "references/GT/4X0W.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/4X0W_ccd/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/4X0W_ccd/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/4X0W_ccd/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/4X0W_ccd/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/4X0W_ccd/4X0W_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "6KBE": {
+      "reference": "references/GT/6KBE.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/6KBE_ccd/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/6KBE_ccd/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/6KBE_ccd/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/6KBE_ccd/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/6KBE_ccd/6KBE_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "6Q77": {
+      "reference": "references/GT/6Q77.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/6Q77_ccd/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/6Q77_ccd/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/6Q77_ccd/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/6Q77_ccd/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/6Q77_ccd/6Q77_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "6RK9": {
+      "reference": "references/GT/6RK9.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/6RK9_ccd/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Current prediction contains only target A and binder C; matching reference label IDs and sequences resolve the former extra-chain deferral."
+        },
+        "predicted/01/6RK9_ccd/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Current prediction contains only target A and binder C; matching reference label IDs and sequences resolve the former extra-chain deferral."
+        },
+        "predicted/02/6RK9_ccd/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Current prediction contains only target A and binder C; matching reference label IDs and sequences resolve the former extra-chain deferral."
+        },
+        "predicted/03/6RK9_ccd/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Current prediction contains only target A and binder C; matching reference label IDs and sequences resolve the former extra-chain deferral."
+        },
+        "predicted/04/6RK9_ccd/6RK9_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Current prediction contains only target A and binder C; matching reference label IDs and sequences resolve the former extra-chain deferral."
+        }
+      }
+    },
+    "7B4U": {
+      "reference": "references/GT/7B4U.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "D"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7B4U_ccd/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7B4U_ccd/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7B4U_ccd/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7B4U_ccd/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7B4U_ccd/7B4U_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7F4F": {
+      "reference": "references/GT/7F4F.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7F4F_ccd/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7F4F annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/01/7F4F_ccd/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7F4F annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/02/7F4F_ccd/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7F4F annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/03/7F4F_ccd/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7F4F annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/04/7F4F_ccd/7F4F_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7F4F annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7F4H": {
+      "reference": "references/GT/7F4H.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_G",
+          "chains": [
+            "G"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "G"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7F4H_ccd/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7F4H_ccd/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7F4H_ccd/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7F4H_ccd/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7F4H_ccd/7F4H_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7F55": {
+      "reference": "references/GT/7F55.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7F55_ccd/7F55_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7F55_ccd/7F55_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7F55_ccd/7F55_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7F55_ccd/7F55_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7F55_ccd/7F55_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7LL8": {
+      "reference": "references/GT/7LL8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7LL8_ccd/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 10: DockQ 0.277, target fit RMSD 0.935370 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/01/7LL8_ccd/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.257, target fit RMSD 0.634032 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/02/7LL8_ccd/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.247, target fit RMSD 0.770650 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/03/7LL8_ccd/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 10: DockQ 0.249, target fit RMSD 0.688079 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/04/7LL8_ccd/7LL8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 10: DockQ 0.286, target fit RMSD 0.821415 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "7P0A": {
+      "reference": "references/GT/7P0A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7P0A_ccd/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7P0A_ccd/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7P0A_ccd/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7P0A_ccd/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7P0A_ccd/7P0A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7P0T": {
+      "reference": "references/GT/7P0T.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7P0T_ccd/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7P0T_ccd/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7P0T_ccd/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7P0T_ccd/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7P0T_ccd/7P0T_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7PIU": {
+      "reference": "references/GT/7PIU.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7PIU_ccd/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7PIU_ccd/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7PIU_ccd/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7PIU_ccd/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7PIU_ccd/7PIU_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "R",
+            "B": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7S1M": {
+      "reference": "references/GT/7S1M.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB biological assembly verified against GT/gt_manifest.json"
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7S1M_ccd/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7S1M annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/01/7S1M_ccd/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7S1M annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/02/7S1M_ccd/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7S1M annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/03/7S1M_ccd/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7S1M annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/04/7S1M_ccd/7S1M_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "P",
+            "F": "R"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 7S1M annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "7U9K": {
+      "reference": "references/GT/7U9K.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7U9K_ccd/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.782, target fit RMSD 1.361730 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/01/7U9K_ccd/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.802, target fit RMSD 1.309454 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/02/7U9K_ccd/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.814, target fit RMSD 1.328699 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/03/7U9K_ccd/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.862, target fit RMSD 1.300677 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/04/7U9K_ccd/7U9K_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "AF3 equivalent-copy rule applied per prediction: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.833, target fit RMSD 1.467150 \u00c5. Candidates: annotations/equivalent_mapping_candidates/scores.json."
+        }
+      }
+    },
+    "7Y24": {
+      "reference": "references/GT/7Y24.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7Y24_ccd/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7Y24_ccd/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7Y24_ccd/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7Y24_ccd/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7Y24_ccd/7Y24_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7Y26": {
+      "reference": "references/GT/7Y26.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7Y26_ccd/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7Y26_ccd/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7Y26_ccd/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7Y26_ccd/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7Y26_ccd/7Y26_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "C",
+            "E": "E"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "7YH8": {
+      "reference": "references/GT/7YH8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/7YH8_ccd/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/7YH8_ccd/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/7YH8_ccd/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/7YH8_ccd/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/7YH8_ccd/7YH8_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "8GQP": {
+      "reference": "references/GT/8GQP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/8GQP_ccd/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/8GQP_ccd/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/8GQP_ccd/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/8GQP_ccd/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/8GQP_ccd/8GQP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "8I95": {
+      "reference": "references/GT/8I95.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/8I95_ccd/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/8I95_ccd/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/8I95_ccd/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/8I95_ccd/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/8I95_ccd/8I95_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "8I9A": {
+      "reference": "references/GT/8I9A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/8I9A_ccd/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/8I9A_ccd/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/8I9A_ccd/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/8I9A_ccd/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/8I9A_ccd/8I9A_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "C",
+            "F": "D"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "8X8N": {
+      "reference": "references/GT/8X8N.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB biological assembly verified against GT/gt_manifest.json"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/8X8N_ccd/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 8X8N annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/01/8X8N_ccd/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 8X8N annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/02/8X8N_ccd/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 8X8N annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/03/8X8N_ccd/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 8X8N annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/04/8X8N_ccd/8X8N_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "C"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 8X8N annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "8XZF": {
+      "reference": "references/GT/8XZF.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/8XZF_ccd/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/8XZF_ccd/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/8XZF_ccd/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/8XZF_ccd/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/8XZF_ccd/8XZF_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "9F00": {
+      "reference": "references/GT/9F00.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/9F00_ccd/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/01/9F00_ccd/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/02/9F00_ccd/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/03/9F00_ccd/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/04/9F00_ccd/9F00_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "C"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        }
+      }
+    },
+    "9F01": {
+      "reference": "references/GT/9F01.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_H",
+          "chains": [
+            "H"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/9F01_ccd/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/01/9F01_ccd/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/02/9F01_ccd/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/03/9F01_ccd/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        },
+        "predicted/04/9F01_ccd/9F01_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "User confirmed A is the D-modified target and chirality scope; binder chain selected by the matching input and sequence. Chain IDs use mmCIF label namespace."
+        }
+      }
+    },
+    "9UMJ": {
+      "reference": "references/GT/9UMJ.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/9UMJ_ccd/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/9UMJ_ccd/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/9UMJ_ccd/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/9UMJ_ccd/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/9UMJ_ccd/9UMJ_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "D",
+            "B": "C"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    },
+    "9UMX": {
+      "reference": "references/GT/9UMX.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/9UMX_ccd/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 9UMX annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/01/9UMX_ccd/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 9UMX annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/02/9UMX_ccd/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 9UMX annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/03/9UMX_ccd/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 9UMX annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        },
+        "predicted/04/9UMX_ccd/9UMX_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "D"
+          },
+          "mapping_notes": "Audit proposal inherited from existing 9UMX annotation; verify model label IDs and sequence. Previously user-confirmed roles and input chain identity; validated current label IDs and sequences against the exact reference assembly."
+        }
+      }
+    },
+    "9YDP": {
+      "reference": "references/GT/9YDP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; GT/gt_manifest.json SHA-256 verified"
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/00/9YDP_ccd/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/01/9YDP_ccd/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/02/9YDP_ccd/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/03/9YDP_ccd/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        },
+        "predicted/04/9YDP_ccd/9YDP_ccd_model_0.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "R",
+            "F": "P"
+          },
+          "mapping_notes": "Prior user-confirmed roles; current label IDs and sequences audited. Equivalent copies retain the input identity, including cases where a swapped copy could change scores."
+        }
+      }
+    }
+  }
+}

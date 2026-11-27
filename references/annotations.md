@@ -43,11 +43,11 @@ Store annotations at `evaluation/annotations/samples.json` unless the user choos
 
 - `reference` must identify the exact file to score. Do not replace it with an asymmetric unit or another biological assembly silently.
 - `reference_assembly.selection` is one of `biological_assembly`, `asymmetric_unit`, or `prepared_subset`. Record an ID and provenance/notes when available. Prefer a materialized exact assembly or prepared subset so every tool evaluates identical coordinates.
-- `reference_chain_id_type` and `model_chain_id_type` are `label` or `auth`. Inspect both namespaces. The mapping keys and values use these declared namespaces and must also match the IDs accepted by OpenStructure.
+- `reference_chain_id_type` and `model_chain_id_type` are `label` or `auth`. Inspect both namespaces. Mapping keys and values use the declared namespaces. The runner writes scored mmCIFs with those IDs exposed to OpenStructure.
 - `target_chains` form one alignment group.
 - Each `binders` entry is evaluated as one binder group and may contain multiple chains. Multiple binders require multiple entries.
 - `context_chains` are documented but not target or binder chains.
-- `chirality_chains` explicitly defines the biological scope of chirality scoring; do not silently default it to all chains.
+- `chirality_chains` explicitly identifies a nonempty subset of the scored reference target and binder chains. The default uses that scope. `--chirality-scope whole-example` uses all the scored target and binder chains for that run.
 - `nonpolymer_ligands` remains empty until the user explicitly identifies ligand instances for separate ligand evaluation.
 - Set `skip` to `true` only for an intentional, user-confirmed exclusion and add a
   nonempty `skip_reason`. Skipped predictions remain visible in the audit and batch
@@ -55,3 +55,7 @@ Store annotations at `evaluation/annotations/samples.json` unless the user choos
   `skip_reason` may be used when only one model file should be excluded.
 
 The same reference chain cannot occur in multiple biological roles. Chain mappings must be one-to-one for the scored chains. If symmetry-equivalent chains permit multiple score-changing mappings, document the selected mapping or ask the user.
+
+In the `binder_target_5` annotations, 1PCG and 7LL8 used separate C and D
+binder groups. 4GLN used separate A and D binder groups. These examples
+refer to the chain IDs in those prepared reference files.

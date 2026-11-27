@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score the C-alpha chirality of all standard chiral amino acids in one chain.
+"""Score the C-alpha chirality of all standard chiral amino acids in selected chains.
 
 This companion to chirality_angles.py scores both the 19 standard L amino
 acids and their 19 D-amino-acid CCD counterparts.  Glycine is omitted because
@@ -23,7 +23,8 @@ def main(argv=None):
     parser.add_argument("structure", type=Path,
                         help="PDB/mmCIF structure; all models are evaluated.")
     parser.add_argument("--chain", required=True, action="append",
-                        help="Author chain ID to score; repeat for additional chains.")
+                        help="Chain ID to score; repeat for additional chains.")
+    parser.add_argument("--chain-id-type", choices=("auth", "label"), default="auth")
     parser.add_argument("--out-dir", type=Path,
                         help="Output directory; all-residue files are added without replacing other reports.")
     parser.add_argument("--threshold-deg", type=float, default=15.0,
@@ -52,6 +53,7 @@ def main(argv=None):
             threshold_deg=args.threshold_deg,
             include_laa=True,
             chains=args.chain,
+            chain_id_type=args.chain_id_type,
         )
         report["target_source"] = "residue CCD names in requested chain(s); DAA and LAA enabled"
 

@@ -19,6 +19,7 @@ import platform
 import shlex
 import subprocess
 import sys
+import tempfile
 from typing import Any
 
 import gemmi
@@ -66,12 +67,16 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--execute", action="store_true", help="Run tools after a clean audit")
     parser.add_argument(
+        "--chirality-scope", choices=("annotated", "whole-example"), default="annotated",
+        help="Use annotated chirality chains or score all target and binder chains together",
+    )
+    parser.add_argument(
         "--audit-output", type=Path, help="Optionally save the audit JSON; it is always printed"
     )
     parser.add_argument(
         "--resume-incomplete",
         action="store_true",
-        help="Allow tools to be rerun in an existing non-successful content-addressed run",
+        help="Allow a fresh attempt for an existing incomplete run",
     )
     parser.add_argument(
         "--binder-rmsd-threshold-angstrom",
@@ -119,9 +124,16 @@ def load_json(path: Path) -> Any:
 
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(path.name + ".tmp")
-    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8")
-    os.replace(temporary, path)
+    with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, encoding="utf-8",
+                                     delete=False) as handle:
+        temporary = Path(handle.name)
+        try:
+            json.dump(value, handle, indent=2, allow_nan=False)
+            handle.write("\n")
+            handle.close()
+            os.replace(temporary, path)
+        finally:
+            temporary.unlink(missing_ok=True)
 
 
 def sha256(path: Path) -> str:
@@ -182,13 +194,25 @@ def write_polymer_subset(
                     removed_nonpolymer_count += 1
                 del chain[residue_index]
         if not len(chain):
-            model.remove_chain(chain.name)
+            del model[chain_index]
     present = set(chain_inventory_from_structure(structure, chain_id_type))
     if present != included_chains:
         raise ValueError(
             f"Subset chain mismatch for {input_path}: requested={sorted(included_chains)}, "
             f"written={sorted(present)}"
         )
+    if chain_id_type == "auth":
+        if not structure.entities:
+            structure.setup_entities()
+        auth_by_label = {}
+        for chain in model:
+            for residue in chain:
+                auth_by_label[residue.subchain] = chain.name
+                residue.subchain = chain.name
+        for entity in structure.entities:
+            entity.subchains = list(dict.fromkeys(
+                auth_by_label[label] for label in entity.subchains if label in auth_by_label
+            ))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     structure.make_mmcif_document().write_file(str(output_path))
     return {
@@ -232,6 +256,8 @@ def audit(evaluation_dir: Path, annotation_path: Path) -> tuple[dict[str, Any], 
         "warnings": [],
         "predictions": [],
     }
+    if not report["discovered_predictions"]:
+        report["errors"].append("No predictions to evaluate.")
     if not annotation_path.is_file():
         report["errors"].append(f"Annotation file is missing: {annotation_path}")
         report["status"] = "BLOCKED"
@@ -316,11 +342,14 @@ def audit(evaluation_dir: Path, annotation_path: Path) -> tuple[dict[str, Any], 
                 raise ValueError(
                     "chirality_chains must explicitly identify which reference chains are scored"
                 )
-            unknown_chirality = sorted(set(sample["chirality_chains"]) - set(ref_inventory))
-            if unknown_chirality:
-                raise ValueError(f"Chirality reference chains are absent: {unknown_chirality}")
             mapping = prediction["chain_mapping"]
             scored_chains = target_chains + [c for binder in binders for c in binder["chains"]]
+            chirality_chains = sample["chirality_chains"]
+            if not chirality_chains or len(chirality_chains) != len(set(chirality_chains)):
+                raise ValueError("chirality_chains must be nonempty and contain unique IDs")
+            unscored_chirality = sorted(set(chirality_chains) - set(scored_chains))
+            if unscored_chirality:
+                raise ValueError(f"Chirality chains outside the scored target and binder: {unscored_chirality}")
             missing_mapping = sorted(set(scored_chains + sample["chirality_chains"]) - set(mapping))
             if missing_mapping:
                 raise ValueError(f"Required reference chains lack mappings: {missing_mapping}")
@@ -415,6 +444,7 @@ def tool_versions(chirality_script: Path, custom_script: Path, role_script: Path
         "gemmi": gemmi.__version__,
         "chirality_script": str(chirality_script.resolve()),
         "chirality_script_sha256": sha256(chirality_script),
+        "chirality_companion_sha256": sha256(chirality_script.with_name("chirality_angles.py")),
         "custom_rmsd_script": str(custom_script.resolve()),
         "custom_rmsd_script_sha256": sha256(custom_script),
         "role_metrics_script": str(role_script.resolve()),
@@ -552,22 +582,26 @@ def target_binder_dockq_metrics(
 
 
 def chirality_summary(path: Path, exit_code: int) -> dict[str, Any]:
+    if exit_code not in (0, 2):
+        return {"status": "UNAVAILABLE", "reason": f"Chirality tool exited {exit_code}"}
     if not path.is_file():
         return {"status": "UNAVAILABLE", "reason": f"Tool exited {exit_code} without summary JSON"}
     raw = load_json(path)
     pooled = raw.get("pooled", {})
     all_selected = pooled.get("all_selected", {})
     status = "SUCCESS"
-    if not all_selected.get("n_sites"):
+    if not all_selected.get("n_assessable"):
         status = "UNAVAILABLE"
     elif all_selected.get("n_unassessable"):
         status = "PARTIAL"
     return {
         "status": status,
-        "primary_scope": "all eligible D- and L-amino-acid residues in annotated chirality chains",
+        "primary_scope": "all assessable D- and L-amino-acid residues in the selected chains",
+        "selection": raw.get("selection"),
         "primary": all_selected,
         "daa": pooled.get("DAA"),
         "laa": pooled.get("LAA"),
+        "by_chain": raw.get("by_chain"),
         "excluded_unsupported_residues": raw.get("excluded_unsupported_residues"),
         "tool_exit_code": exit_code,
     }
@@ -679,6 +713,7 @@ def prediction_run_identity(
     prediction: dict[str, Any],
     audit_item: dict[str, Any],
     versions: dict[str, Any],
+    chirality_scope: str = "annotated",
 ) -> dict[str, Any]:
     reference = resolved(evaluation_dir, sample["reference"])
     model = resolved(evaluation_dir, prediction_path)
@@ -692,6 +727,7 @@ def prediction_run_identity(
             "min_pep_length": min_pep_length,
         },
         "role_metrics": {
+            "lddt_and_ilddt_stereocheck_modes": ["enabled", "disabled"],
             "target_only_lddt": True,
             "binder_group_lddt": True,
             "target_binder_ilddt_per_chain_pair": True,
@@ -707,7 +743,7 @@ def prediction_run_identity(
             "binder_self_alignment_scope": "each annotated binder group independently",
             "missing_policy": "aligned atom intersection; each fit requires 3 non-collinear atom pairs",
         },
-        "chirality": {"threshold_deg": 15.0, "primary": "pooled all_selected"},
+        "chirality": {"threshold_deg": 15.0, "primary": "pooled assessable", "scope": chirality_scope},
     }
     inputs = {
         "sample_id": sample_id,
@@ -752,6 +788,7 @@ def write_batch_manifest(
     binder_self_aligned_rmsd_threshold_angstrom: float = (
         DEFAULT_BINDER_SELF_ALIGNED_RMSD_THRESHOLD_ANGSTROM
     ),
+    chirality_scope: str = "annotated",
 ) -> tuple[Path, dict[str, dict[str, Any]]]:
     prediction_runs: list[dict[str, Any]] = []
     run_identities: dict[str, dict[str, Any]] = {}
@@ -776,6 +813,7 @@ def write_batch_manifest(
             prediction,
             audit_by_prediction[prediction_path],
             versions,
+            chirality_scope,
         )
         run_identities[prediction_path] = identity
         inputs = identity["inputs"]
@@ -858,20 +896,37 @@ def run_one(
 ) -> dict[str, Any]:
     reference = resolved(evaluation_dir, sample["reference"])
     model = resolved(evaluation_dir, prediction_path)
-    mapping = prediction["chain_mapping"]
+    scored_chains = sample["target_chains"] + [
+        chain for binder in sample["binders"] for chain in binder["chains"]
+    ]
+    scored_reference_chains = set(scored_chains)
+    mapping = {chain: prediction["chain_mapping"][chain] for chain in scored_chains}
     mapping_pairs = ordered_mapping(reference, sample["reference_chain_id_type"], mapping)
     settings = run_identity["settings"]
     min_pep_length = settings["ost"]["min_pep_length"]
     fingerprint = run_identity["fingerprint"]
-    run_dir = run_identity["run_dir"]
-    existing_summary = run_dir / "summary.json"
-    if existing_summary.is_file() and load_json(existing_summary).get("status") == "SUCCESS":
-        return load_json(existing_summary)
-    if run_dir.exists() and not resume_incomplete:
-        raise RuntimeError(
-            f"Incomplete run already exists: {run_dir}; inspect it and use --resume-incomplete if safe"
-        )
-    run_dir.mkdir(parents=True, exist_ok=True)
+    run_root = run_identity["run_dir"]
+    success_path = run_root / "success.json"
+    for existing_summary in (success_path, run_root / "summary.json"):
+        if not existing_summary.is_file():
+            continue
+        cached = load_json(existing_summary)
+        if cached.get("run_fingerprint") != fingerprint:
+            raise RuntimeError(f"Run fingerprint collision: {run_root}")
+        if cached.get("status") == "SUCCESS":
+            print(f"Reused successful result: {prediction_path} ({cached['run_dir']})")
+            return cached
+    try:
+        run_root.mkdir(parents=True)
+        run_dir = run_root
+    except FileExistsError:
+        if not resume_incomplete:
+            raise RuntimeError(
+                f"Incomplete run already exists: {run_root}; use --resume-incomplete for a fresh attempt"
+            )
+        attempts = run_root / "attempts"
+        attempts.mkdir(exist_ok=True)
+        run_dir = Path(tempfile.mkdtemp(dir=attempts))
     command_log = run_dir / "commands.txt"
     command_log.write_text(
         "# Exact commands for this prediction\n"
@@ -879,10 +934,6 @@ def run_one(
         f"# annotations={annotation_path.resolve()}\n"
         f"# tool_versions={json.dumps(versions, sort_keys=True)}\n",
         encoding="utf-8",
-    )
-    scored_reference_chains = set(sample["target_chains"])
-    scored_reference_chains.update(
-        chain for binder in sample["binders"] for chain in binder["chains"]
     )
     scored_model_chains = {mapping[chain] for chain in scored_reference_chains}
     reference_subset = run_dir / "reference_scored_chains.cif"
@@ -912,19 +963,35 @@ def run_one(
         )
 
     ost_path = run_dir / "ost_scores.json"
-    ost_command = [
+    ost_base_command = [
         "conda", "run", "-n", "ost212", "ost", "compare-structures",
         "-m", str(model_subset), "-r", str(reference_subset), "-c",
         *[f"{ref}:{mdl}" for ref, mdl in mapping_pairs],
-        "--lddt", "--local-lddt", "--ilddt", "--dockq", "-o", str(ost_path),
+        "--lddt", "--local-lddt", "--ilddt",
+    ]
+    ost_command = [*ost_base_command, "--dockq", "-o", str(ost_path)]
+    ost_unchecked_path = run_dir / "ost_scores_no_stereochecks.json"
+    ost_unchecked_command = [
+        *ost_base_command, "--lddt-no-stereochecks", "-o", str(ost_unchecked_path)
     ]
     if min_pep_length == 1:
         ost_command.extend(["--min-pep-length", "1"])
+        ost_unchecked_command.extend(["--min-pep-length", "1"])
     ost_run = run_command(ost_command, run_dir, "openstructure", command_log)
     raw_ost = load_json(ost_path) if ost_path.is_file() else {
         "status": "FAILURE", "traceback": f"No output JSON; exit code {ost_run.returncode}"
     }
     parsed_ost = ost_summary(raw_ost, scored_reference_chains)
+    ost_unchecked_run = run_command(
+        ost_unchecked_command, run_dir, "openstructure_no_stereochecks", command_log
+    )
+    raw_ost_unchecked = load_json(ost_unchecked_path) if ost_unchecked_path.is_file() else {
+        "status": "FAILURE", "traceback": f"No output JSON; exit code {ost_unchecked_run.returncode}"
+    }
+    ost_unchecked = {
+        key: raw_ost_unchecked.get(key)
+        for key in ("status", "ost_version", "lddt", "local_lddt", "ilddt", "traceback")
+    }
 
     role_config = {
         "reference": str(reference_subset),
@@ -937,17 +1004,33 @@ def run_one(
     role_config_path = run_dir / "role_metrics_config.json"
     write_json(role_config_path, role_config)
     role_output_path = run_dir / "role_metrics.json"
+    role_unchecked_path = run_dir / "role_metrics_no_stereochecks.json"
     role_command = [
         "conda", "run", "-n", "ost212", "python", str(role_script),
-        "--config", str(role_config_path), "--output", str(role_output_path),
+        "--config", str(role_config_path),
     ]
-    role_run = run_command(role_command, run_dir, "role_metrics", command_log)
+    role_run = run_command(
+        [*role_command, "--output", str(role_output_path)],
+        run_dir, "role_metrics", command_log,
+    )
     role_metrics = load_json(role_output_path) if role_output_path.is_file() else {
         "status": "UNAVAILABLE",
         "reason": f"No role metric JSON; exit code {role_run.returncode}",
     }
     role_metrics["target_binder_dockq"] = target_binder_dockq_metrics(
         parsed_ost, sample["target_chains"], sample["binders"]
+    )
+    role_unchecked_run = run_command(
+        [*role_command, "--output", str(role_unchecked_path), "--no-stereochecks"],
+        run_dir, "role_metrics_no_stereochecks", command_log,
+    )
+    role_unchecked = (
+        load_json(role_unchecked_path)
+        if role_unchecked_path.is_file()
+        else {
+            "status": "UNAVAILABLE",
+            "reason": f"No role metric JSON; exit code {role_unchecked_run.returncode}",
+        }
     )
 
     custom_config = {
@@ -977,16 +1060,20 @@ def run_one(
         "status": "UNAVAILABLE", "reason": custom.get("reason", "No self-aligned result")
     }
     chirality_dir = run_dir / "chirality"
-    predicted_chirality_chains = [mapping[chain] for chain in sample["chirality_chains"]]
+    chirality_scope = settings["chirality"]["scope"]
+    chirality_chains = scored_chains if chirality_scope == "whole-example" else sample["chirality_chains"]
+    predicted_chirality_chains = [mapping[chain] for chain in chirality_chains]
     chirality_command = [
         sys.executable, str(chirality_script), str(model_subset),
         *[value for chain in predicted_chirality_chains for value in ("--chain", chain)],
+        "--chain-id-type", prediction["model_chain_id_type"],
         "--out-dir", str(chirality_dir), "--threshold-deg", "15", "--detailed",
     ]
     chirality_run = run_command(chirality_command, run_dir, "chirality", command_log)
     chirality = chirality_summary(
         chirality_dir / "all_residue_chirality_summary.json", chirality_run.returncode
     )
+    chirality["scope"] = chirality_scope
 
     warnings = list(audit_item["warnings"])
     if parsed_ost.get("chain_mapping") != mapping:
@@ -1007,8 +1094,11 @@ def run_one(
         if questionable:
             warnings.append("Questionable very-short-chain match: " + ", ".join(questionable))
 
-    statuses = [parsed_ost.get("status"), custom.get("status"), chirality.get("status")]
-    status = "SUCCESS" if statuses == ["SUCCESS", "SUCCESS", "SUCCESS"] and role_run.returncode == 0 else "PARTIAL"
+    statuses = [
+        result.get("status")
+        for result in (parsed_ost, ost_unchecked, role_metrics, role_unchecked, custom, chirality)
+    ]
+    status = "SUCCESS" if all(value == "SUCCESS" for value in statuses) else "PARTIAL"
     if parsed_ost.get("status") != "SUCCESS":
         status = "FAILURE"
     unavailable_metrics = [
@@ -1018,6 +1108,21 @@ def run_one(
         unavailable_metrics.append(
             {"metric": "role_metrics", "reason": role_metrics.get("reason", "Role scoring failed")}
         )
+    if ost_unchecked.get("status") != "SUCCESS":
+        unavailable_metrics.append({
+            "metric": "openstructure_no_stereochecks",
+            "reason": ost_unchecked["traceback"] or "OpenStructure scoring failed",
+        })
+    if role_unchecked.get("status") != "SUCCESS":
+        unavailable_metrics.append({
+            "metric": "role_metrics_no_stereochecks",
+            "reason": role_unchecked.get("reason", "Role scoring failed"),
+        })
+    elif role_unchecked.get("target_binder_ilddt", {}).get("macro") is None:
+        unavailable_metrics.append({
+            "metric": "target_binder_ilddt_no_stereochecks",
+            "reason": "No eligible native target-binder distance tests",
+        })
     if role_metrics["target_binder_dockq"]["mean"] is None:
         unavailable_metrics.append(
             {"metric": "target_binder_dockq", "reason": "No mapped native target-binder DockQ interface"}
@@ -1039,6 +1144,12 @@ def run_one(
                             "reason": metric.get("reason", "Unavailable"),
                         }
                     )
+    alignment = target_aligned.get("alignment", {})
+    if alignment.get("status") == "UNAVAILABLE":
+        unavailable_metrics.append({
+            "metric": "target_self_aligned_backbone_rmsd",
+            "reason": alignment["reason"],
+        })
     summary = {
         "schema_version": 3,
         "status": status,
@@ -1057,20 +1168,24 @@ def run_one(
         "run_dir": str(run_dir.resolve()),
         "warnings": warnings,
         "openstructure": parsed_ost,
+        "openstructure_no_stereochecks": ost_unchecked,
         "role_metrics": role_metrics,
+        "role_metrics_no_stereochecks": role_unchecked,
         "target_aligned_binder_rmsd": target_aligned,
         "binder_self_aligned_rmsd": self_aligned,
         "rmsd_residue_correspondence": custom.get("residue_correspondence"),
         "chirality": chirality,
         "unavailable_metrics": unavailable_metrics,
     }
-    write_json(existing_summary, summary)
+    write_json(run_dir / "summary.json", summary)
+    if run_dir != run_root and status == "SUCCESS":
+        write_json(success_path, summary)
     return summary
 
 
 def regenerate_batch_csv(
     evaluation_dir: Path,
-    active_run_fingerprints: set[str] | None = None,
+    active_summary_paths: list[Path],
     binder_rmsd_threshold_angstrom: float = DEFAULT_BINDER_RMSD_THRESHOLD_ANGSTROM,
     dockq_threshold: float = DEFAULT_DOCKQ_THRESHOLD,
     target_self_aligned_rmsd_threshold_angstrom: float = (
@@ -1082,13 +1197,13 @@ def regenerate_batch_csv(
 ) -> Path:
     rows: list[dict[str, Any]] = []
     results_dir = evaluation_dir / "results"
-    summary_paths = list(results_dir.glob("**/runs/*/summary.json"))
-    summary_paths.extend(results_dir.glob("**/skipped.json"))
-    for path in sorted(summary_paths):
+    seen_predictions = set()
+    for path in sorted(active_summary_paths):
         summary = load_json(path)
-        fingerprint = summary.get("run_fingerprint")
-        if fingerprint and active_run_fingerprints is not None and fingerprint not in active_run_fingerprints:
-            continue
+        prediction_path = summary["prediction_path"]
+        if prediction_path in seen_predictions:
+            raise ValueError(f"Multiple active results for prediction {prediction_path}")
+        seen_predictions.add(prediction_path)
         target_aligned = summary.get("target_aligned_binder_rmsd", {})
         target_binders = {item["id"]: item for item in target_aligned.get("binders", [])}
         self_aligned = summary.get("binder_self_aligned_rmsd", {})
@@ -1115,20 +1230,31 @@ def regenerate_batch_csv(
         }
         binder_defs = summary.get("binders") or [{"id": "", "chains": []}]
         role_metrics = summary.get("role_metrics", {})
-        binder_lddt_by_id = {
-            item["binder_id"]: item.get("lddt")
-            for item in role_metrics.get("binder_only_lddt", [])
-        }
-        binder_lddt_values = [
-            score for raw_value in binder_lddt_by_id.values()
-            if (score := finite_float(raw_value)) is not None
-        ]
-        binder_lddt_complex_mean = (
-            sum(binder_lddt_values) / len(binder_lddt_values)
-            if binder_lddt_values else None
-        )
+        lddt_fields = {}
+        binder_lddt_fields = {binder["id"]: {} for binder in binder_defs}
+        for suffix in ("", "_no_stereochecks"):
+            role = summary.get(f"role_metrics{suffix}", {})
+            ost_lddt = summary.get(f"openstructure{suffix}", {})
+            binder_scores = {
+                item["binder_id"]: finite_float(item.get("lddt"))
+                for item in role.get("binder_only_lddt", [])
+            }
+            scores = [score for score in binder_scores.values() if score is not None]
+            ilddt = role.get("target_binder_ilddt", {})
+            lddt_fields.update({
+                f"ost_lddt{suffix}": ost_lddt.get("lddt"),
+                f"ost_ilddt{suffix}": ost_lddt.get("ilddt"),
+                f"target_only_lddt{suffix}": role.get("target_only_lddt"),
+                f"binder_only_lddt_complex_mean{suffix}": sum(scores) / len(scores) if scores else None,
+                f"target_binder_ilddt_macro{suffix}": ilddt.get("macro"),
+                f"target_binder_ilddt_micro{suffix}": ilddt.get("micro"),
+                f"target_binder_ilddt_pairs{suffix}_json": json.dumps(
+                    ilddt.get("per_chain_pair", []), separators=(",", ":")
+                ),
+            })
+            for binder_id, fields in binder_lddt_fields.items():
+                fields[f"binder_only_lddt{suffix}"] = binder_scores.get(binder_id)
         role_dockq = role_metrics.get("target_binder_dockq", {})
-        role_ilddt = role_metrics.get("target_binder_ilddt", {})
         for binder_def in binder_defs:
             target_binder = target_binders.get(binder_def["id"], {})
             target_ca = target_binder.get("target_aligned_binder_ca_rmsd_angstrom", {})
@@ -1163,16 +1289,8 @@ def regenerate_batch_csv(
                     "chirality_status": chirality.get("status"),
                     "binder_id": binder_def["id"],
                     "binder_reference_chains": "+".join(binder_def["chains"]),
-                    "ost_lddt": ost.get("lddt"),
-                    "ost_ilddt": ost.get("ilddt"),
-                    "target_only_lddt": role_metrics.get("target_only_lddt"),
-                    "binder_only_lddt": binder_lddt_by_id.get(binder_def["id"]),
-                    "binder_only_lddt_complex_mean": binder_lddt_complex_mean,
-                    "target_binder_ilddt_macro": role_ilddt.get("macro"),
-                    "target_binder_ilddt_micro": role_ilddt.get("micro"),
-                    "target_binder_ilddt_pairs_json": json.dumps(
-                        role_ilddt.get("per_chain_pair", []), separators=(",", ":")
-                    ),
+                    **lddt_fields,
+                    **binder_lddt_fields[binder_def["id"]],
                     "target_binder_dockq_mean": role_dockq.get("mean"),
                     "target_binder_dockq_wave": role_dockq.get("wave"),
                     "target_binder_dockq_per_interface_json": json.dumps(
@@ -1242,16 +1360,19 @@ def regenerate_batch_csv(
                     ),
                     "chirality_all_correct_count": primary.get("n_pass"),
                     "chirality_all_eligible_count": primary.get("n_sites"),
+                    "chirality_all_assessable_count": primary.get("n_assessable"),
                     "chirality_all_skipped_count": primary.get("n_unassessable"),
-                    "chirality_all_accuracy_pct": primary.get("chirality_correct_rate_pct"),
+                    "chirality_all_accuracy_pct": primary.get("assessable_correct_rate_pct"),
                     "chirality_daa_correct_count": daa.get("n_pass"),
                     "chirality_daa_eligible_count": daa.get("n_sites"),
+                    "chirality_daa_assessable_count": daa.get("n_assessable"),
                     "chirality_daa_skipped_count": daa.get("n_unassessable"),
-                    "chirality_daa_accuracy_pct": daa.get("chirality_correct_rate_pct"),
+                    "chirality_daa_accuracy_pct": daa.get("assessable_correct_rate_pct"),
                     "chirality_laa_correct_count": laa.get("n_pass"),
                     "chirality_laa_eligible_count": laa.get("n_sites"),
+                    "chirality_laa_assessable_count": laa.get("n_assessable"),
                     "chirality_laa_skipped_count": laa.get("n_unassessable"),
-                    "chirality_laa_accuracy_pct": laa.get("chirality_correct_rate_pct"),
+                    "chirality_laa_accuracy_pct": laa.get("assessable_correct_rate_pct"),
                     "warnings": " | ".join(summary.get("warnings", [])),
                     "unavailable_metrics_json": json.dumps(
                         summary.get("unavailable_metrics", []), separators=(",", ":")
@@ -1261,14 +1382,19 @@ def regenerate_batch_csv(
             )
     output = results_dir / "batch_summary.csv"
     if not rows:
-        return output
+        raise ValueError("No active prediction results to summarize")
     output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_name(output.name + ".tmp")
-    with temporary.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-        writer.writeheader()
-        writer.writerows(rows)
-    os.replace(temporary, output)
+    with tempfile.NamedTemporaryFile(mode="w", dir=output.parent, encoding="utf-8",
+                                     newline="", delete=False) as handle:
+        temporary = Path(handle.name)
+        try:
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+            writer.writeheader()
+            writer.writerows(rows)
+            handle.close()
+            os.replace(temporary, output)
+        finally:
+            temporary.unlink(missing_ok=True)
     return output
 
 
@@ -1291,6 +1417,10 @@ def main() -> int:
     if not chirality_script.is_file():
         print(f"Chirality script is missing: {chirality_script}", file=sys.stderr)
         return 2
+    companion = chirality_script.with_name("chirality_angles.py")
+    if not companion.is_file():
+        print(f"Chirality companion is missing: {companion}", file=sys.stderr)
+        return 2
     custom_script = Path(__file__).with_name("target_aligned_binder_rmsd.py")
     role_script = Path(__file__).with_name("role_metrics.py")
     try:
@@ -1308,15 +1438,16 @@ def main() -> int:
             args.dockq_threshold,
             args.target_self_aligned_rmsd_threshold_angstrom,
             args.binder_self_aligned_rmsd_threshold_angstrom,
+            args.chirality_scope,
         )
         print(f"Batch manifest: {batch_manifest}")
-        active_run_fingerprints: set[str] = set()
+        active_summary_paths: list[Path] = []
         for prediction_path in report["discovered_predictions"]:
             sample_id, sample, prediction = records[prediction_path]
             if sample.get("skip") or prediction.get("skip"):
-                write_skipped_summary(
+                active_summary_paths.append(write_skipped_summary(
                     evaluation_dir, sample_id, prediction_path, sample, prediction
-                )
+                ))
                 continue
             result = run_one(
                 evaluation_dir,
@@ -1333,11 +1464,10 @@ def main() -> int:
                 args.resume_incomplete,
                 run_identities[prediction_path],
             )
-            if result.get("run_fingerprint"):
-                active_run_fingerprints.add(result["run_fingerprint"])
+            active_summary_paths.append(Path(result["run_dir"]) / "summary.json")
         output = regenerate_batch_csv(
             evaluation_dir,
-            active_run_fingerprints,
+            active_summary_paths,
             args.binder_rmsd_threshold_angstrom,
             args.dockq_threshold,
             args.target_self_aligned_rmsd_threshold_angstrom,

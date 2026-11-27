@@ -1,0 +1,2844 @@
+{
+  "schema_version": 1,
+  "samples": {
+    "1AN1": {
+      "reference": "references/GT/1AN1.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/1AN1_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/1AN1_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/1AN1_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/1AN1_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/1AN1_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "1ER8": {
+      "reference": "references/GT/1ER8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/1ER8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/1ER8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/1ER8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/1ER8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/1ER8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "1PCG": {
+      "reference": "references/GT/1PCG.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/1PCG_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.928, target fit RMSD 0.759442 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed17/1PCG_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User requested best-scoring equivalent-copy mapping on 2026-10-12. Highest OpenStructure DockQ average among 4 one-to-one assignments; ties broken by lower target backbone fit RMSD, then tag. Selected 00: DockQ 0.932, target fit RMSD 0.728452 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed2026/1PCG_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.925, target fit RMSD 0.760500 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed256/1PCG_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 00: DockQ 0.926, target fit RMSD 0.759029 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed387/1PCG_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.930, target fit RMSD 0.731453 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        }
+      }
+    },
+    "1ZEA": {
+      "reference": "references/GT/1ZEA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/1ZEA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/1ZEA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/1ZEA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/1ZEA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/1ZEA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "2HGT": {
+      "reference": "references/GT/2HGT.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C_D",
+          "chains": [
+            "C",
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/2HGT_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/2HGT_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/2HGT_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/2HGT_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/2HGT_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "2WPH": {
+      "reference": "references/GT/2WPH.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/2WPH_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/2WPH_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/2WPH_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/2WPH_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/2WPH_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "2WPI": {
+      "reference": "references/GT/2WPI.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/2WPI_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/2WPI_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/2WPI_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/2WPI_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/2WPI_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "C",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "3AX5": {
+      "reference": "references/GT/3AX5.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/3AX5_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/3AX5_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/3AX5_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/3AX5_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/3AX5_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "3FHV": {
+      "reference": "references/GT/3FHV.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/3FHV_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.234, target fit RMSD 13.182160 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed17/3FHV_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User requested best-scoring equivalent-copy mapping on 2026-10-12. Highest OpenStructure DockQ average among 2 one-to-one assignments; ties broken by lower target backbone fit RMSD, then tag. Selected 1: DockQ 0.155, target fit RMSD 14.446359 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/3FHV_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 0: DockQ 0.055, target fit RMSD 12.274726 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed256/3FHV_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.218, target fit RMSD 14.572413 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed387/3FHV_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.179, target fit RMSD 13.372308 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        }
+      }
+    },
+    "3IWY": {
+      "reference": "references/GT/3IWY.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/3IWY_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/3IWY_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/3IWY_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/3IWY_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/3IWY_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "C": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "3V0X": {
+      "reference": "references/GT/3V0X.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "skip": true,
+      "skip_reason": "User requested deferral: the reference interaction uses the nonpolymer inhibitor ANH, which is absent from the predictions and outside the confirmed evaluation scope.",
+      "predictions": {
+        "predicted/seed109/3V0X_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {},
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/3V0X_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {},
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/3V0X_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {},
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/3V0X_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {},
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/3V0X_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {},
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "4GLN": {
+      "reference": "references/GT/4GLN.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+      },
+      "target_chains": [
+        "B",
+        "C"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/4GLN_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "C",
+            "C": "D",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed corrected AF3 copy-order mapping on 2026-10-12: reference A\u2192model A, D\u2192B, B\u2192C, C\u2192D. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed17/4GLN_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "C",
+            "C": "D",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed corrected AF3 copy-order mapping on 2026-10-12: reference A\u2192model A, D\u2192B, B\u2192C, C\u2192D. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed2026/4GLN_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "C",
+            "C": "D",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed corrected AF3 copy-order mapping on 2026-10-12: reference A\u2192model A, D\u2192B, B\u2192C, C\u2192D. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed256/4GLN_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "C",
+            "C": "D",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed corrected AF3 copy-order mapping on 2026-10-12: reference A\u2192model A, D\u2192B, B\u2192C, C\u2192D. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed387/4GLN_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "C",
+            "C": "D",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed corrected AF3 copy-order mapping on 2026-10-12: reference A\u2192model A, D\u2192B, B\u2192C, C\u2192D. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        }
+      }
+    },
+    "4JAA": {
+      "reference": "references/GT/4JAA.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/4JAA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/4JAA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/4JAA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/4JAA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/4JAA_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "4X0W": {
+      "reference": "references/GT/4X0W.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/4X0W_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/4X0W_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/4X0W_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/4X0W_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/4X0W_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "6KBE": {
+      "reference": "references/GT/6KBE.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/6KBE_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/6KBE_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/6KBE_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/6KBE_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/6KBE_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "6Q77": {
+      "reference": "references/GT/6Q77.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/6Q77_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/6Q77_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/6Q77_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/6Q77_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/6Q77_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "6RK9": {
+      "reference": "references/GT/6RK9.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/6RK9_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Current AF3 model B matches the complete reference binder C sequence with two added terminal residues; target A matches exactly. Previous skip condition concerned a different model and is resolved here."
+        },
+        "predicted/seed17/6RK9_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Current AF3 model B matches the complete reference binder C sequence with two added terminal residues; target A matches exactly. Previous skip condition concerned a different model and is resolved here."
+        },
+        "predicted/seed2026/6RK9_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Current AF3 model B matches the complete reference binder C sequence with two added terminal residues; target A matches exactly. Previous skip condition concerned a different model and is resolved here."
+        },
+        "predicted/seed256/6RK9_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Current AF3 model B matches the complete reference binder C sequence with two added terminal residues; target A matches exactly. Previous skip condition concerned a different model and is resolved here."
+        },
+        "predicted/seed387/6RK9_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "C": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Current AF3 model B matches the complete reference binder C sequence with two added terminal residues; target A matches exactly. Previous skip condition concerned a different model and is resolved here."
+        }
+      }
+    },
+    "7B4U": {
+      "reference": "references/GT/7B4U.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "D"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7B4U_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "D": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7B4U_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "D": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7B4U_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "D": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7B4U_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "D": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7B4U_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "D": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7F4F": {
+      "reference": "references/GT/7F4F.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7F4F_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7F4F_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7F4F_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7F4F_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7F4F_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7F4H": {
+      "reference": "references/GT/7F4H.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_G",
+          "chains": [
+            "G"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "G"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7F4H_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7F4H_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7F4H_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7F4H_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7F4H_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "G": "G"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7F55": {
+      "reference": "references/GT/7F55.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7F55_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7F55_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7F55_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7F55_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7F55_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7LL8": {
+      "reference": "references/GT/7LL8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        },
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C",
+        "D"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7LL8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.204, target fit RMSD 0.755006 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed17/7LL8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C",
+            "D": "D"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User requested best-scoring equivalent-copy mapping on 2026-10-12. Highest OpenStructure DockQ average among 4 one-to-one assignments; ties broken by lower target backbone fit RMSD, then tag. Selected 10: DockQ 0.195, target fit RMSD 0.711276 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed2026/7LL8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.196, target fit RMSD 0.715826 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed256/7LL8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 11: DockQ 0.216, target fit RMSD 0.724212 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        },
+        "predicted/seed387/7LL8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "D",
+            "D": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 01: DockQ 0.215, target fit RMSD 0.757315 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. Reference binder chains C and D scored jointly. 2026-11-05: two sequence-identical binder copies occupy distinct symmetric pockets; each is an independent single-chain binder group for self-aligned and target-aligned binder RMSD."
+        }
+      }
+    },
+    "7P0A": {
+      "reference": "references/GT/7P0A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7P0A_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7P0A_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7P0A_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7P0A_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7P0A_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7P0T": {
+      "reference": "references/GT/7P0T.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7P0T_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7P0T_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7P0T_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7P0T_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7P0T_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7PIU": {
+      "reference": "references/GT/7PIU.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7PIU_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7PIU_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7PIU_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7PIU_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7PIU_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7S1M": {
+      "reference": "references/GT/7S1M.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7S1M_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7S1M_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7S1M_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7S1M_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7S1M_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7U9K": {
+      "reference": "references/GT/7U9K.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A",
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7U9K_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.558, target fit RMSD 1.659937 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed17/7U9K_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User requested best-scoring equivalent-copy mapping on 2026-10-12. Highest OpenStructure DockQ average among 2 one-to-one assignments; ties broken by lower target backbone fit RMSD, then tag. Selected 1: DockQ 0.506, target fit RMSD 1.670592 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json."
+        },
+        "predicted/seed2026/7U9K_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.564, target fit RMSD 1.646052 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed256/7U9K_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.504, target fit RMSD 1.649226 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        },
+        "predicted/seed387/7U9K_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "B",
+            "B": "A",
+            "C": "C"
+          },
+          "mapping_notes": "User-confirmed per-seed equivalent-copy selection: highest OpenStructure mean DockQ; ties by lower target backbone fit RMSD, then candidate tag. Selected 1: DockQ 0.551, target fit RMSD 1.670224 \u00c5. Candidate scores: annotations/equivalent_mapping_candidates/scores.json. Label chain IDs and ordered sequences audited across seeds. "
+        }
+      }
+    },
+    "7Y24": {
+      "reference": "references/GT/7Y24.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "F"
+      ],
+      "binders": [
+        {
+          "id": "binder_E",
+          "chains": [
+            "E"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "E"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7Y24_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7Y24_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7Y24_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7Y24_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7Y24_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "F": "F",
+            "E": "E"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7Y26": {
+      "reference": "references/GT/7Y26.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_C",
+          "chains": [
+            "C"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "D",
+        "F"
+      ],
+      "chirality_chains": [
+        "C"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7Y26_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7Y26_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7Y26_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7Y26_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7Y26_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "C": "C"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "7YH8": {
+      "reference": "references/GT/7YH8.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_B",
+          "chains": [
+            "B"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "B"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/7YH8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/7YH8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/7YH8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/7YH8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/7YH8_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "B": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "8GQP": {
+      "reference": "references/GT/8GQP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/8GQP_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/8GQP_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/8GQP_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/8GQP_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/8GQP_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "8I95": {
+      "reference": "references/GT/8I95.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/8I95_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/8I95_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/8I95_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/8I95_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/8I95_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "8I9A": {
+      "reference": "references/GT/8I9A.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/8I9A_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/8I9A_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/8I9A_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/8I9A_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/8I9A_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "8X8N": {
+      "reference": "references/GT/8X8N.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/8X8N_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/8X8N_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/8X8N_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/8X8N_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/8X8N_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "8XZF": {
+      "reference": "references/GT/8XZF.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/8XZF_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/8XZF_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/8XZF_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/8XZF_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/8XZF_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "9F00": {
+      "reference": "references/GT/9F00.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_D",
+          "chains": [
+            "D"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/9F00_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed17/9F00_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed2026/9F00_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed256/9F00_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed387/9F00_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "D": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        }
+      }
+    },
+    "9F01": {
+      "reference": "references/GT/9F01.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_H",
+          "chains": [
+            "H"
+          ]
+        }
+      ],
+      "context_chains": [],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/9F01_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed17/9F01_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed2026/9F01_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed256/9F01_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        },
+        "predicted/seed387/9F01_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "H": "B"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. User confirmed target/binder roles, chain mapping, and chirality scope on 2026-10-12; ordered sequences and label/auth IDs audited."
+        }
+      }
+    },
+    "9UMJ": {
+      "reference": "references/GT/9UMJ.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "B"
+      ],
+      "binders": [
+        {
+          "id": "binder_A",
+          "chains": [
+            "A"
+          ]
+        }
+      ],
+      "context_chains": [
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "chirality_chains": [
+        "A"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/9UMJ_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/9UMJ_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/9UMJ_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/9UMJ_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/9UMJ_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "B": "B",
+            "A": "A"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "9UMX": {
+      "reference": "references/GT/9UMX.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "A"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/9UMX_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/9UMX_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/9UMX_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/9UMX_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/9UMX_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "A": "A",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    },
+    "9YDP": {
+      "reference": "references/GT/9YDP.cif",
+      "reference_chain_id_type": "label",
+      "reference_assembly": {
+        "selection": "biological_assembly",
+        "id": "1",
+        "notes": "Materialized RCSB assembly 1; SHA-256 matches GT/gt_manifest.json. Prior user-confirmed roles retained."
+      },
+      "target_chains": [
+        "E"
+      ],
+      "binders": [
+        {
+          "id": "binder_F",
+          "chains": [
+            "F"
+          ]
+        }
+      ],
+      "context_chains": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "chirality_chains": [
+        "F"
+      ],
+      "nonpolymer_ligands": [],
+      "predictions": {
+        "predicted/seed109/9YDP_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed17/9YDP_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed2026/9YDP_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed256/9YDP_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        },
+        "predicted/seed387/9YDP_full_model.cif": {
+          "model_chain_id_type": "label",
+          "chain_mapping": {
+            "E": "E",
+            "F": "F"
+          },
+          "mapping_notes": "Transferred from seed17 after verifying matching label/auth chain IDs, ordered sequences, and residue modifications across seeds. Prior user-confirmed roles; current AF3 label/auth IDs, ordered sequences, modifications, and GT assembly hash audited. Mapping follows unique sequence identity and input chain order."
+        }
+      }
+    }
+  }
+}

@@ -145,6 +145,52 @@ class FoldingThresholdTest(unittest.TestCase):
 
 
 class MethodSummaryThresholdTest(unittest.TestCase):
+    def test_dockq_override_reclassifies_interfaces_once_per_prediction(self) -> None:
+        first = {
+            "status": "SUCCESS",
+            "prediction_path": "predicted/method/one.cif",
+            "target_binder_dockq_threshold": "0.23",
+            "target_binder_dockq_success_fraction": "1.0",
+            "target_binder_dockq_interface_success_count": "2",
+            "target_binder_dockq_interface_available_count": "2",
+            "target_binder_dockq_per_interface_json": json.dumps(
+                [{"dockq": 0.4}, {"dockq": 0.8}, {"dockq": None}]
+            ),
+        }
+        second = {
+            **first,
+            "prediction_path": "predicted/method/two.cif",
+            "target_binder_dockq_interface_success_count": "1",
+            "target_binder_dockq_interface_available_count": "1",
+            "target_binder_dockq_per_interface_json": '[{"dockq": 0.9}]',
+        }
+        report = summarize_batch_metrics.summarize(
+            [first, first, second], Path("batch.csv"), dockq_threshold=0.8
+        )
+        success = report["methods"][0]["docking"]["dockq_above_threshold"]
+        self.assertEqual(success["threshold"], 0.8)
+        self.assertEqual(success["n_available"], 2)
+        self.assertEqual(success["n_success_interfaces"], 1)
+        self.assertEqual(success["n_available_interfaces"], 3)
+        self.assertEqual(success["success_rate_pct"], 50.0)
+
+    def test_legacy_dockq_counts_require_the_matching_cutoff(self) -> None:
+        row = {
+            "status": "SUCCESS",
+            "prediction_path": "predicted/method/one.cif",
+            "target_binder_dockq_threshold": "0.45",
+            "target_binder_dockq_success_fraction": "1.0",
+            "target_binder_dockq_interface_success_count": "1",
+            "target_binder_dockq_interface_available_count": "1",
+        }
+        for cutoff, expected in ((0.45, 100.0), (0.8, None)):
+            with self.subTest(cutoff=cutoff):
+                report = summarize_batch_metrics.summarize(
+                    [row], Path("batch.csv"), dockq_threshold=cutoff
+                )
+                success = report["methods"][0]["docking"]["dockq_above_threshold"]
+                self.assertEqual(success["success_rate_pct"], expected)
+
     def test_complex_balanced_interface_success_and_role_lddt(self) -> None:
         rows = [
             {
@@ -153,6 +199,9 @@ class MethodSummaryThresholdTest(unittest.TestCase):
                 "target_only_lddt": "0.8",
                 "binder_only_lddt_complex_mean": "0.6",
                 "ost_lddt": "0.9",
+                "target_only_lddt_no_stereochecks": "0.7",
+                "binder_only_lddt_complex_mean_no_stereochecks": "0.5",
+                "ost_lddt_no_stereochecks": "0.85",
                 "target_binder_dockq_mean": "0.25",
                 "target_binder_dockq_wave": "0.16",
                 "target_binder_dockq_success_fraction": "0.5",
@@ -164,6 +213,7 @@ class MethodSummaryThresholdTest(unittest.TestCase):
                 ]),
                 "target_binder_ilddt_macro": "0.7",
                 "target_binder_ilddt_micro": "0.65",
+                "target_binder_ilddt_macro_no_stereochecks": "0.6",
             },
             {
                 "status": "SUCCESS",
@@ -192,10 +242,32 @@ class MethodSummaryThresholdTest(unittest.TestCase):
         self.assertAlmostEqual(method["docking"]["ilddt_macro_mean"]["value"], 0.8)
         self.assertAlmostEqual(method["folding"]["target_only_lddt_mean"]["value"], 0.9)
         self.assertAlmostEqual(method["folding"]["binder_only_lddt_mean"]["value"], 0.7)
+        self.assertEqual(
+            method["folding"]["target_only_lddt_mean_no_stereochecks"],
+            {"value": 0.7, "n": 1},
+        )
+        self.assertEqual(
+            method["folding"]["binder_only_lddt_mean_no_stereochecks"],
+            {"value": 0.5, "n": 1},
+        )
+        self.assertEqual(
+            method["folding"]["global_scored_subset_lddt_mean_no_stereochecks"],
+            {"value": 0.85, "n": 1},
+        )
+        self.assertEqual(
+            method["docking"]["ilddt_macro_mean_no_stereochecks"], {"value": 0.6, "n": 1}
+        )
+        self.assertEqual(
+            method["docking"]["ilddt_micro_mean_no_stereochecks"], {"value": None, "n": 0}
+        )
         rendered = summarize_batch_metrics.markdown(report)
         self.assertIn("Mean target-only lDDT", rendered)
-        self.assertIn("75.000% (2 complexes; 2/3 interfaces)", rendered)
+        self.assertIn("75.000% (2 predictions; 2/3 interfaces)", rendered)
         self.assertIn("Supplemental metrics", rendered)
+        table_rows = [line for line in rendered.splitlines() if line.startswith("|")]
+        self.assertEqual(len(table_rows), 9)
+        for start in range(0, len(table_rows), 3):
+            self.assertEqual(len({row.count("|") for row in table_rows[start:start + 3]}), 1)
 
     def test_rates_use_prediction_denominators_with_group_fractions(self) -> None:
         rows = [
@@ -341,8 +413,8 @@ class MethodSummaryThresholdTest(unittest.TestCase):
         self.assertEqual(folding["chirality_violation"]["n_assessable"], 102)
         self.assertAlmostEqual(folding["chirality_violation"]["violation_rate_pct"], 200 / 102)
         rendered = summarize_batch_metrics.markdown(report)
-        self.assertIn("median of complex means", rendered)
-        self.assertIn("33.333% (2 complexes; 2/4 groups)", rendered)
+        self.assertIn("median of prediction means", rendered)
+        self.assertIn("33.333% (2 predictions; 2/4 groups)", rendered)
 
 
 if __name__ == "__main__":
