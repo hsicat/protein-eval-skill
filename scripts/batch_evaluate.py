@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit or execute an annotated batch of Boltz structure evaluations.
+"""Audit or score an annotated batch of protein and peptide complex predictions.
 
 Run this script in the ``urop`` conda environment. OpenStructure is invoked in
 the separate ``ost212`` environment. The script never infers biological roles,

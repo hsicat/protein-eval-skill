@@ -1,11 +1,14 @@
 ---
 name: protein-eval-skill
-description: Audit and batch-evaluate Boltz protein/peptide complex predictions against annotated ground truth using OpenStructure, target-aligned and self-aligned binder RMSDs, and residue chirality. Use for evaluation directories containing recursive predicted structures and results; do not use for de novo structure prediction or unannotated automatic chain-role guessing.
+description: Audit and batch-evaluate protein and peptide complex predictions from any modeling tool against annotated reference structures. Uses OpenStructure, backbone RMSDs, and Cα chirality. Trigger for PDB or mmCIF evaluation batches with annotated target and binder chains.
 ---
 
 # Protein Evaluation Skill
 
 Evaluate only after biological roles, the exact reference assembly/prepared structure, sample matching, and every reference-to-prediction chain mapping are explicit. Never infer these from matching chain letters alone.
+
+Use single-model structure files from any predictor. The runner reads PDB and
+mmCIF coordinates and their annotations.
 
 ## Before evaluation
 
@@ -53,9 +56,8 @@ The thresholds are fingerprinted batch/report settings and therefore remain
 traceable without forcing the underlying structure scores to be recomputed.
 
 For a single-method evaluation directory whose `predicted/` subdirectories
-are seed names (such as AF3 baseline or AF3 steering), pass
-`--method-name af3_baseline` or `--method-name af3_steering` so the
-method summary combines all seeds under the actual method name.
+are seed names, pass `--method-name METHOD` so the method summary groups all
+seeds under that method's name.
 
 The runner uses the chirality scripts bundled in `<skill-dir>/scripts/` by
 default. Pass `--chirality-script <path>` only to test an explicitly inspected
